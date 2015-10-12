@@ -11,10 +11,9 @@ React.js, JSX, and jQuery. CompeteUp allows people to:
 - [ ] Sign up for an account
 - [ ] Log in / Log out
 - [ ] Search for different competitions to help improve different skills
-- [ ] Sort competitions by parameters (distance, number of members, newest)
-- [ ] Be able to see a calendar view of competitions
 - [ ] Have a profile page upon account creation
-- [ ] See other members' profile pages and be able to message them
+- [ ] Create competitions
+- [ ] See other members' profile pages
 - [ ] See a competition's home page and be able to join the competition
 
 ## Design Docs
@@ -35,39 +34,40 @@ The API will support CRUD operations as needed.
 
 [Details](./docs/phases/phase1.md)
 
-### Phase 2: Flux Architecture, Index Search, and User Profile (2.5 days)
+### Phase 2: Flux Architecture, Index Search, and User Profile (1.5 days)
 
 I will setting up a Flux architecture, the React Router, and the React view
 structure for the main application based on the component hierarchy. This
 includes the dispatcher, actions, and basic store structures (User, Competition,
-Photo, Discussion, Message). Then I will work on the Index Search bar. It will
-be able to search on-the-fly, to sort, and filter competitions similar to the
-Meetup index search bar. In addition, it should be able to show the calendar of
-events. Once this is done, I will create a React view for the UserProfile page.
-Users will be able to view and edit their profiles, as well as message other
-users. Lastly, while constructing the views I will start using basic bootstrap
-for styling.
+Photo). Then I will work on the Index Search bar. It will be able to search
+on-the-fly similar to the Meetup index search bar.
 
 [Details](./docs/phases/phase2.md)
 
-### Phase 3: Competition Profiles (2 days)
+### Phase 3: User Profile (1 day)
+
+I will create a React view for the UserProfile page. Users will be able to view and edit their profiles. User profile pages have  Lastly, while constructing the views I will start using basic bootstrap for styling.
+
+[Details](./docs/phases/phase3.md)
+
+### Phase 4: Competition Profiles (2 days)
 
 Now I will build out the frontend for CompetitionProfile, and I will start with
 the Competition Profile navigation bar. Then I will move on to the side panel
 and the main section. The main section will change to whatever is selected on
 the navigation bar. Once this is all complete, a user will be able to see
-the competition's information, description, upcoming events, members, photos,
-and the discussion board. Also, on the Index page, a random, but pertinent,
-competition image will appear on filtered/sorted competitions listings.
+the competition's information, description, upcoming events, members, and
+photos. Also, on the Index page, a random, but pertinent, competition image will
+appear. Users can join and create/edit competitions.
 
-[Details](./docs/phases/phase3.md)
+[Details](./docs/phases/phase4.md)
 
-### Phase 4: Finish up unfinished features and continue styling (1.5 days)
+### Phase 5: Finish up unfinished features and continue styling (1.5 days)
 
 In this phase I will test and tweak features, as well as finish up any ones that
-are not complete. Moreover, I will continue styling to make the site look great.
+are not complete. Moreover, I will continue styling to make the site look good.
 
-### Phase 5: Styling Cleanup and Seeding (1 day)
+### Phase 6: Styling Cleanup and Seeding (1 day)
 
 Even though Bootstrap is being used throughout building the project, I will
 still need to clean up the styling. In addition, I will seed engaging data so
@@ -78,3 +78,7 @@ it will be able to pique people's interest. Create a README.rdoc.
 - [ ] Search for members on competition profile page
 - [ ] Ability to delete your own discussions and upload photos
 - [ ] Creation and modification of competitions
+- [ ] Discussion board for Competition profile page
+- [ ] Users can message each other
+- [ ] Add more filtering/sorting ability
+- [ ] Calendar view for events on Index page

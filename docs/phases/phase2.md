@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture, Index Search, and User Profile
+# Phase 2: Flux Architecture and Index Search
 
 ## Rails
 ### Models
@@ -13,23 +13,15 @@
   - Navbar
   - IndexSearch
   - IndexMain
-  - IndexCalendar
-* UserProfile
-  - UserInfo
-  - UserCompetitions
-  - UserInterests
 
 ### Stores
-* UserStore
+* CompetitionStore
 
 ### Actions
-* ApiActions.receiveAllUsers
-* ApiActions.receiveSingleUser
+* ApiActions.receiveAllCompetitions
 
 ### ApiUtil
-* ApiUtil.fetchAllUsers
-* ApiUtil.fetchSingleUser
-* ApiUtil.updateUser
+* ApiUtil.fetchAllCompetitions
 
 ## Gems/Libraries
 * Flux Dispatcher

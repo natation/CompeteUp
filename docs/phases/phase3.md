@@ -1,4 +1,4 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3: User Profile
 
 ## Rails
 ### Models
@@ -9,37 +9,25 @@
 
 ## Flux
 ### Views (React Components)
-* CompetitionProfile
-  - CompetitionProfileNav
-  - CompetitionSidePanel
-    - CompetitionInfo
-    - CompetitionSuggestions
-  - CompetitionMain
-    - CompetitionDescription
-    - CompetitionUpcoming
-    - CompetitionMembers
-    - CompetitionPhotos
-    - CompetitionDiscussion
+* UserProfile
+  - UserInfo
+  - UserCompetitions
+  - UserInterests
 
 ### Stores
-* CompetitionStore
-* EventStore
-* PhotoStore
-* DiscussionStore
-* MessageStore
+* UserStore
 
 ### Actions
-* ApiActions.receiveAllCompetitions
-* ApiActions.receiveAllEvents
-* ApiActions.receiveAllPhotos
-* ApiActions.receiveAllDiscussions
-* ApiActions.receiveAllMessages
+* ApiActions.receiveAllUsers
+* ApiActions.receiveSingleUser
+* ApiActions.updateUserResult
 
 ### ApiUtil
-* ApiUtil.fetchAllCompetitions
-* ApiUtil.fetchAllEvents
-* ApiUtil.fetchAllPhotos
-* ApiUtil.fetchAllDiscussions
-* ApiUtil.fetchAllMessages
+* ApiUtil.fetchAllUsers
+* ApiUtil.fetchSingleUser
+* ApiUtil.updateUser
 
 ## Gems/Libraries
+* Flux Dispatcher
+* Underscore
+* Bootstrap

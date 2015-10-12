@@ -7,40 +7,37 @@
 * Event
 * UserCompetition
 * UserEvent
-* CompetitionEvent
 * Interest
 * UserInterest
 * CompetitionInterests
 * CompetitionPhotos
-* CompetitionDiscussion
-* UserMessage
 
 ### Controllers
-* UsersController (create, edit, index, new, show, update)
+* UsersController (create, index, new, show, update)
 * SessionsController (create, destroy, new)
-* Api::CompetitionController (index, show)
+* Api::CompetitionController (create, index, show, update)
 * Api::EventsController (index, show)
 * Api::InterestsController (index)
-* Api::UserInterestsController (index)
+* Api::UserInteresstsController (index)
 * Api::CompetitionInterestsController (index)
 * Api::CompetitionPhotosController (index)
-* Api::CompetitionDiscussionsController (index)
-* Api::UserMessagesController (index)
 
 ### Views
 * users/new.html.erb
+* users/create.json.jbuilder
 * users/index.json.jbuilder
 * users/show.json.jbuilder
+* users/update.json.jbuilder
 * session/new.html.erb
+* competitions/create.json.jbuilder
 * competitions/index.json.jbuilder
 * competitions/show.json.jbuilder
+* competitions/update.json.jbuilder
 * events/index.json.jbuilder
 * events/show.json.jbuilder
 * interests/index.json.jbuilder
 * competition_interests/index.json.jbuilder
 * competition_photos/index.json.jbuilder
-* competition_discussions/index.json.jbuilder
-* user_messages/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)

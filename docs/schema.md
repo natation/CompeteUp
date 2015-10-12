@@ -22,12 +22,13 @@ profile_pic_url       | string    |
 competition_owner_id  | integer   | not null, foreign key (references users), indexed
 
 ## events
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-date        | datetime  | not null
-duration    | integer   | not null
-description | text      | not null
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+date           | datetime  | not null
+duration       | integer   | not null
+description    | text      | not null
+competition_id | text      | not null, foreign key (references competitions), indexed
 
 ## user_competitions
 column name     | data type | details
@@ -42,13 +43,6 @@ column name | data type | details
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users), indexed, unique [event_id]
 event_id    | integer   | not null, foreign key (references events), indexed
-
-## competition_events
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-competition_id  | integer   | not null, foreign key (references competitions), indexed, unique [event_id]
-event_id        | integer   | not null, foreign key (references events), indexed
 
 ## interests
 column name     | data type | details
@@ -76,19 +70,3 @@ column name    | data type | details
 id             | integer   | not null, primary key
 url            | string    | not null
 competition_id | integer   | not null, foreign key (references competitions), indexed
-
-## competition_discussions
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-contents        | text      |
-author_id       | integer   | not null, foreign key (references users), indexed
-competition_id  | integer   | not null, foreign key (references competitions), indexed
-
-## user_messages
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-contents        | text      |
-receiver_id     | integer   | not null, foreign key (references users), indexed
-sender_id       | integer   | not null, foreign key (references users), indexed
