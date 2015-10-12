@@ -30,7 +30,7 @@
 ### CompetitionMain
 ![CompetitionMain]
 
-[component-heirarchy]: ./wireframes/component_heirarchy.png
+[component-heirarchy]: ./wireframes/component_hierarchy.png
 [component-details]: ./wireframes/component_details.png
 [new-user]: ./wireframes/new_user.png
 [new-session]: ./wireframes/new_session.png
