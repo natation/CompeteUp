@@ -28,6 +28,4 @@
 * ApiUtil.updateUser
 
 ## Gems/Libraries
-* Flux Dispatcher
-* Underscore
 * Bootstrap

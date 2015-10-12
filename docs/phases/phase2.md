@@ -26,4 +26,3 @@
 ## Gems/Libraries
 * Flux Dispatcher
 * Underscore
-* Bootstrap
