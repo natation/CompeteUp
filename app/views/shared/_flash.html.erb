@@ -1,0 +1,7 @@
+<% if flash[type] %>
+  <ul class="<%= type.to_s %>">
+    <% flash[type].each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

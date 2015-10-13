@@ -1,0 +1,22 @@
+<% action = for_sign_up ? users_url : session_url %>
+<% submit_val = for_sign_up ? "Sign Up" : "Log In" %>
+<% email = for_sign_up ? @user.email : "" %>
+
+<form action="<%= action %>" method="post">
+  <%= auth_token %>
+
+  <% if for_sign_up %>
+    <label for="user_name">Your name (this is public)</label>
+    <input type="text" name="user[name]" id="user_name" value="<%= @user.name %>">
+  <% end %>
+
+  <label for="user_email">Email address</label>
+  <input type="text" name="user[email]" id="user_email" value="<%= email %>">
+  <br>
+
+  <label for="user_password">Password</label>
+  <input type="password" name="user[password]" id="user_password">
+  <br>
+
+  <input type="submit" value="<%= submit_val %>">
+</form>

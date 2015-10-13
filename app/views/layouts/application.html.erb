@@ -7,6 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render "shared/user_info" %>
+  <br>
+  <%= render "shared/flash", type: :info %>
+  <%= render "shared/flash", type: :errors %>
 
 <%= yield %>
 
