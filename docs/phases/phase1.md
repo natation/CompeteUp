@@ -19,7 +19,7 @@
 * Api::CompetitionController (create, index, show, update)
 * Api::EventsController (index, show)
 * Api::InterestsController (index)
-* Api::UserInteresstsController (index)
+* Api::UserInterestsController (index)
 * Api::CompetitionInterestsController (index)
 * Api::CompetitionPhotosController (index)
 
