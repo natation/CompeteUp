@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_many :owned_competitions,
+    class_name: :Competition,
+    foreign_key: :competition_owner_id,
+    primary_key: :id
+  has_many :user_competitions
+  has_many :user_events
+  has_many :user_interests
+
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
     return user if user && user.is_password?(password)

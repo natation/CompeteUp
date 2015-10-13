@@ -1,0 +1,4 @@
+
+events table 10/13/15
+duration       | integer   | not null
+date           | datetime  | not null

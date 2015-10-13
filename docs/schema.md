@@ -25,10 +25,8 @@ competition_owner_id  | integer   | not null, foreign key (references users), in
 column name    | data type | details
 ---------------|-----------|-----------------------
 id             | integer   | not null, primary key
-date           | datetime  | not null
-duration       | integer   | not null
 description    | text      | not null
-competition_id | text      | not null, foreign key (references competitions), indexed
+competition_id | integer   | not null, foreign key (references competitions), indexed
 
 ## user_competitions
 column name     | data type | details
