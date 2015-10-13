@@ -13,6 +13,7 @@
 * CompetitionPhotos
 
 ### Controllers
+* StaticPagesController (index)
 * UsersController (create, index, new, show, update)
 * SessionsController (create, destroy, new)
 * Api::CompetitionController (create, index, show, update)
@@ -23,6 +24,7 @@
 * Api::CompetitionPhotosController (index)
 
 ### Views
+* static_pages/index.html.erb
 * users/new.html.erb
 * users/create.json.jbuilder
 * users/index.json.jbuilder
