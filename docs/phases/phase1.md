@@ -19,9 +19,6 @@
 * Api::CompetitionController (create, index, show, update)
 * Api::EventsController (index, show)
 * Api::InterestsController (index)
-* Api::UserInterestsController (index)
-* Api::CompetitionInterestsController (index)
-* Api::CompetitionPhotosController (index)
 
 ### Views
 * static_pages/index.html.erb
@@ -38,8 +35,6 @@
 * events/index.json.jbuilder
 * events/show.json.jbuilder
 * interests/index.json.jbuilder
-* competition_interests/index.json.jbuilder
-* competition_photos/index.json.jbuilder
 
 ## Flux
 ### Views (React Components)
