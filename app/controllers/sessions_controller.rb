@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(user_params[:email], user_params[:password])
     if @user
       login!(@user)
-      redirect_to static_pages_url
+      redirect_to root_url
     else
       render_info(["Invalid email or password. Please try again."])
       render :new

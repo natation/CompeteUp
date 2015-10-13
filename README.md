@@ -34,7 +34,7 @@ The API will support CRUD operations as needed.
 
 [Details](./docs/phases/phase1.md)
 
-### Phase 2: Flux Architecture, Index Search, and User Profile (1.5 days)
+### Phase 2: Flux Architecture and Index Search (1.5 days)
 
 I will setting up a Flux architecture, the React Router, and the React view
 structure for the main application based on the component hierarchy. This
