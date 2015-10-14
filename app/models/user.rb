@@ -26,6 +26,16 @@ class User < ActiveRecord::Base
   has_many :user_competitions
   has_many :user_events
   has_many :user_interests
+  has_many :competitions,
+    through: :user_competitions,
+    source: :competition
+  has_many :events,
+    through: :user_events,
+    source: :event
+  has_many :interests,
+    through: :user_interests,
+    source: :interest
+
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

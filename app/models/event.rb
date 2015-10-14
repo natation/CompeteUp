@@ -4,4 +4,7 @@ class Event < ActiveRecord::Base
   belongs_to :competition
 
   has_many :user_events
+  has_many :users,
+    through: :user_events,
+    source: :user
 end

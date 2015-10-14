@@ -9,4 +9,10 @@ class Competition < ActiveRecord::Base
   has_many :user_competitions
   has_many :competition_interests
   has_many :competition_photos
+  has_many :users,
+    through: :user_competitions,
+    source: :user
+  has_many :interests,
+    through: :competition_interests,
+    source: :interest
 end
