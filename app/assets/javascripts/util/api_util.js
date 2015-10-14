@@ -10,6 +10,15 @@
           ApiActions.receiveAllCompetitions(competitions);
         }
       });
+    },
+    logOut: function () {
+      $.ajax({
+        url: "/session/",
+        type: "DELETE",
+        success: function () {
+          window.location = "/";
+        }
+      });
     }
   };
 }(this));

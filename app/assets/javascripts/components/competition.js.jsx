@@ -19,8 +19,8 @@
         <div>
           <ul>
             {
-              this.state.competitions.map(function (competition) {
-                return <li>{competition.name}</li>;
+              this.state.competitions.map(function (competition, idx) {
+                return <li key={idx}>{competition.name}</li>;
               })
             }
           </ul>

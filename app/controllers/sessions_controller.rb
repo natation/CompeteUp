@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!(current_user)
-    render_info(["Sucessfully logged out"])
-    redirect_to new_session_url
+    render_info(["Sucessfully logged out"], false)
+    render json: {}
   end
 
   def new
