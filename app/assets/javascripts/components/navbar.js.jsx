@@ -6,14 +6,41 @@
     },
     render: function () {
       return (
-        <nav className="navbar">
-          <div className="row">
-            <div className="col-xs-offset-1 col-xs-1">Logo</div>
-            <div className="col-xs-offset-6 col-xs-1">
-              Welcome, user # {window.CURRENT_USER_ID}
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
+              <button type="button" className="navbar-toggle collapsed"
+                      data-toggle="collapse"
+                      data-target="#bs-example-navbar-collapse-1"
+                      aria-expanded="false">
+                <span className="sr-only">Toggle navigation</span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
+              <a className="navbar-brand" href="#">LOGO</a>
             </div>
-            <div className="col-xs-1">
-            <button onClick={this.handleLogout}>Log out</button>
+            <div className="collapse navbar-collapse"
+              id="bs-example-navbar-collapse-1">
+              <ul className="nav navbar-nav">
+                <li><a href="#">Find a Competition</a></li>
+                <li><a href="#">Start a Competition</a></li>
+              </ul>
+              <ul className="nav navbar-nav navbar-right">
+                <li className="dropdown">
+                  <a href="#" className="dropdown-toggle"
+                    data-toggle="dropdown" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                      Welcome, user {window.CURRENT_USER_ID}
+                      <span className="caret"></span>
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li role="separator" className="divider"></li>
+                    <li><a href="#">Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>

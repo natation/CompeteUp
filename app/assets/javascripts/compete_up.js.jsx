@@ -9,20 +9,14 @@ $(function() {
    var IndexRoute = ReactRouter.IndexRoute;
 
    var App = React.createClass({
-     render: function(){
-       return (
-         <div className="container">
-           <Navbar/>
-           <SearchBar/>
-           <Competition/>
-           <Interest/>
-           {this.props.children}
-         </div>
-       );
+   render: function(){
+       return this.props.children;
      }
    });
    var routes = (
-     <Route path="/" component={App}></Route>
+     <Route path="/" component={App}>
+       <IndexRoute component={Index}/>
+     </Route>
    );
    React.render(<Router>{routes}</Router>, root);
 });
