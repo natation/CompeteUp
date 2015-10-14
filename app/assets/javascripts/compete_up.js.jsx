@@ -12,7 +12,8 @@ $(function() {
      render: function(){
        return (
          <div>
-           <header><h1>Test</h1></header>
+           <Navbar/>
+           <Competition/>
            {this.props.children}
          </div>
        );

@@ -26,3 +26,4 @@
 ## Gems/Libraries
 * Flux Dispatcher
 * Underscore
+* jbuilder

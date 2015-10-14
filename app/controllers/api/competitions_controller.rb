@@ -3,6 +3,7 @@ class Api::CompetitionsController < ApplicationController
   end
 
   def index
+    @competitions = Competition.all
   end
 
   def show

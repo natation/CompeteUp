@@ -1,2 +1,3 @@
-<h1>Api::Competitions#index</h1>
-<p>Find me in app/views/api/competitions/index.html.erb</p>
+json.array! @competitions do |competition|
+  json.extract! competition, :name, :location, :description, :competition_owner_id
+end
