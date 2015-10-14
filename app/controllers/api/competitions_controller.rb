@@ -4,10 +4,8 @@ class Api::CompetitionsController < ApplicationController
 
   def index
     if params[:query].present?
-      puts "HAHAHAHAHAHHAHAHAHAH"
       @competitions = Competition.where("name ~ ?", params[:query])
     else
-            puts "BOOOOOOOOO"
       @competitions = Competition.none
     end
   end

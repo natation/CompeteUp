@@ -16,6 +16,7 @@
     render: function () {
       return (
         <div>
+          <h1>Competitions</h1>
           <ul>
             {
               this.state.competitions.map(function (competition, idx) {

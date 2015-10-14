@@ -22,6 +22,16 @@
         }
       });
     },
+    fetchAllInterests: function () {
+      $.ajax({
+        url: "/api/interests/",
+        type: "GET",
+        dataType: "json",
+        success: function (interests) {
+          ApiActions.receiveAllInterests(interests);
+        }
+      });
+    },
     logOut: function () {
       $.ajax({
         url: "/session/",

@@ -9,18 +9,13 @@ $(function() {
    var IndexRoute = ReactRouter.IndexRoute;
 
    var App = React.createClass({
-    //  getInitialState: function () {
-    //    return {competitions: CompetitionStore.all()}
-    //  },
-     handleSearchClick: function (searchText) {
-       ApiUtil.fetchCompetitionMatches(searchText);
-     },
      render: function(){
        return (
          <div className="container">
            <Navbar/>
-           <SearchBar handleSearchClick={this.handleSearchClick}/>
+           <SearchBar/>
            <Competition/>
+           <Interest/>
            {this.props.children}
          </div>
        );
