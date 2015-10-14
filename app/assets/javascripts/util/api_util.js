@@ -1,22 +1,12 @@
 (function(root) {
   'use strict';
   root.ApiUtil = {
-    fetchAllCompetitions: function () {
+    fetchCompetitionMatches: function (queryParams) {
       $.ajax({
         url: "/api/competitions/",
         type: "GET",
         dataType: "json",
-        success: function (competitions) {
-          ApiActions.receiveAllCompetitions(competitions);
-        }
-      });
-    },
-    fetchCompetitionMatches: function (queryStr) {
-      $.ajax({
-        url: "/api/competitions/",
-        type: "GET",
-        dataType: "json",
-        data: {query: queryStr},
+        data: {query: queryParams},
         success: function (competitions) {
           ApiActions.receiveAllCompetitions(competitions);
         }
@@ -29,6 +19,16 @@
         dataType: "json",
         success: function (interests) {
           ApiActions.receiveAllInterests(interests);
+        }
+      });
+    },
+    fetchCurrentUser: function () {
+      $.ajax({
+        url: "/users/" + window.CURRENT_USER_ID,
+        type: "GET",
+        dataType: "json",
+        success: function (user) {
+          ApiActions.receiveSingleUser(user);
         }
       });
     },

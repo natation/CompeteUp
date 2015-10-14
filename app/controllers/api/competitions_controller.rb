@@ -3,10 +3,16 @@ class Api::CompetitionsController < ApplicationController
   end
 
   def index
-    if params[:query].present?
-      @competitions = Competition.where("name ~ ?", params[:query])
+    query = params[:query]
+    if query.present?
+      if query[:searchText]
+        @competitions = Competition.where("name ~ ?", query[:searchText])
+      elsif query[:getCurrentUserJoinedCompetitions]
+        @competitions = Competition.joins(:user_competitions, :users)
+                                   .where("users.id = ?", current_user.id)
+      end
     else
-      @competitions = Competition.none
+      @competitions = Competition.all.take(9)
     end
   end
 
@@ -14,14 +20,5 @@ class Api::CompetitionsController < ApplicationController
   end
 
   def update
-  end
-
-  def search
-    if params[:query].present?
-      @competitions = Competition.where("name ~ ?", params[:query])
-    else
-      @competitions = Competition.none
-    end
-    render :index
   end
 end

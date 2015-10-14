@@ -6,7 +6,7 @@
       return {searchText: ""};
     },
     handleButtonClick: function () {
-      ApiUtil.fetchCompetitionMatches(this.state.searchText);
+      ApiUtil.fetchCompetitionMatches({searchText: this.state.searchText});
     },
     handleBarClick: function () {
       ApiUtil.fetchAllInterests();

@@ -4,7 +4,6 @@
     render: function () {
       return (
         <div className="container">
-          <Navbar/>
           <SearchBar/>
           <Competition/>
           <Interest/>

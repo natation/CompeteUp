@@ -5,6 +5,10 @@ User.create!({name: "Vic", email: "vic@vic.com",
                 bio: "I'm working on #{i}", password: "123456+#{i}"})
 end
 
+UserCompetition.create!({user_id: 1, competition_id: 1})
+UserCompetition.create!({user_id: 1, competition_id: 2})
+UserCompetition.create!({user_id: 1, competition_id: 4})
+
 Competition.create!({name: "Basketball", location: "San Francisco",
                      description: "Ball it up!", competition_owner_id: 2})
 

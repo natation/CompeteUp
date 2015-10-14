@@ -1,6 +1,6 @@
 (function(root) {
   'use strict';
-  root.Competition = React.createClass({
+  root.UserCompetitions = React.createClass({
     getInitialState: function () {
       return {competitions: CompetitionStore.all()};
     },
@@ -9,22 +9,24 @@
     },
     componentDidMount: function () {
       CompetitionStore.addChangeListener(this._onChange);
-      ApiUtil.fetchAllCompetitions();
+      ApiUtil.fetchCompetitionMatches({getCurrentUserJoinedCompetitions: true});
     },
     componentWillUnmount: function () {
       CompetitionStore.removeChangeListener(this._onChange);
     },
     render: function () {
       return (
-        <div>
-          <h1>Competitions</h1>
-          <ul>
-            {
-              this.state.competitions.map(function (competition, idx) {
-                return <li key={idx}>{competition.name}</li>;
-              })
-            }
-          </ul>
+        <div className="row">
+          <div className="col-md-7">
+            <h3>Competitions:</h3>
+            <ul>
+              {
+                this.state.competitions.map(function (competition, idx) {
+                  return <li key={idx}>{competition.name}</li>;
+                })
+              }
+            </ul>
+          </div>
         </div>
       );
     }

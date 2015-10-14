@@ -1,4 +1,3 @@
-
 -events table 10/13/15
 duration       | integer   | not null
 date           | datetime  | not null
@@ -53,3 +52,15 @@ date           | datetime  | not null
 //     </div>
 //   </div>
 // </nav>
+
+10:48AM
+Nesting routes
+when go to /hi
+this.props.children of App are Navbar and SearchBar
+<Route path="/" component={App}>
+  <IndexRoute component={Index}/>
+  <Route path="hi" components={{navbar: Navbar, searchBar: SearchBar}}/>
+</Route>
+
+-11:10AM Add location and member since in user profile
+-11:59AM Ask if the window.CURRENT_USER is ok in ajax request
