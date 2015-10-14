@@ -8,18 +8,17 @@
       this.setState({user: UserStore.getCurrentUser()});
     },
     componentDidMount: function () {
-      UserStore.addCurrentUserReceivedListener(this._onChange);
+      UserStore.addChangeListener(this._onChange);
       ApiUtil.fetchCurrentUser();
     },
     componentWillUnmount: function () {
-      UserStore.removeCurrentUserReceivedListener(this._onChange);
+      UserStore.removeChangeListener(this._onChange);
     },
     render: function () {
-
-      var memberSince = "the beginning of time";
+      var memberSince = "";
       var location = "San Francisco, CA";
-      var userName = "MEOW";
-      var userBio = "LADEEDA";
+      var userName = "";
+      var userBio = "";
       if (this.state.user) {
         userName = this.state.user.name;
         userBio = this.state.user.bio;
@@ -29,7 +28,7 @@
         <div className="col-md-7">
           <div className="row">
             <div className="col-md-3">
-              <h3>{userName}</h3>
+              <h2>{userName}</h2>
             </div>
           </div>
           <div className="row">

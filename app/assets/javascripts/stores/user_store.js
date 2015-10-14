@@ -1,7 +1,7 @@
 (function(root) {
   'use strict';
   var _users = [];
-  var CURRENT_USER_RECEIVED = "CURRENT_USER_RECEIVED";
+  var CHANGE_EVENT = "CHANGE_EVENT";
 
   var resetUsers = function (users) {
     _users = users;
@@ -14,17 +14,17 @@
     getCurrentUser: function () {
       return _.first(_users);
     },
-    addCurrentUserReceivedListener: function (callback) {
-      UserStore.on(CURRENT_USER_RECEIVED, callback);
+    addChangeListener: function (callback) {
+      UserStore.on(CHANGE_EVENT, callback);
     },
-    removeCurrentUserReceivedListener: function (callback) {
-      UserStore.removeListener(CURRENT_USER_RECEIVED, callback);
+    removeChangeListener: function (callback) {
+      UserStore.removeListener(CHANGE_EVENT, callback);
     },
     dispatcherId: AppDispatcher.register(function (payload) {
       switch (payload.actionType) {
         case UserConstants.CURRENT_USER_RECEIVED:
           resetUsers(payload.user);
-          UserStore.emit(CURRENT_USER_RECEIVED);
+          UserStore.emit(CHANGE_EVENT);
           break;
       }
     })

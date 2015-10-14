@@ -12,11 +12,12 @@
         }
       });
     },
-    fetchAllInterests: function () {
+    fetchAllInterests: function (queryParams) {
       $.ajax({
         url: "/api/interests/",
         type: "GET",
         dataType: "json",
+        data: {query: queryParams},
         success: function (interests) {
           ApiActions.receiveAllInterests(interests);
         }

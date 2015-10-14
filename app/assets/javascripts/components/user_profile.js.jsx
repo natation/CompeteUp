@@ -5,9 +5,12 @@
       return (
         <div className="row">
           <UserInfo/>
-          <div className="col-md-5">
+          <div className="col-md-1">
             <div className="row">
-
+              <UserProfilePicture/>
+            </div>
+            <div className="row">
+              <UserInterests/>
             </div>
           </div>
         </div>
@@ -15,6 +18,3 @@
     }
   });
 }(this));
-
-
-// <UserInterests/>
