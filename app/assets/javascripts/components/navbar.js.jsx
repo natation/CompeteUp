@@ -37,7 +37,7 @@
                   <ul className="dropdown-menu">
                     <li><a href="#">Profile</a></li>
                     <li role="separator" className="divider"></li>
-                    <li><a href="#">Log Out</a></li>
+                    <li><a href="#" onClick={this.handleLogout}>Log Out</a></li>
                   </ul>
                 </li>
               </ul>
