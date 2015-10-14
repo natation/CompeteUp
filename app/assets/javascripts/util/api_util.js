@@ -11,6 +11,17 @@
         }
       });
     },
+    fetchCompetitionMatches: function (queryStr) {
+      $.ajax({
+        url: "/api/competitions/",
+        type: "GET",
+        dataType: "json",
+        data: {query: queryStr},
+        success: function (competitions) {
+          ApiActions.receiveAllCompetitions(competitions);
+        }
+      });
+    },
     logOut: function () {
       $.ajax({
         url: "/session/",

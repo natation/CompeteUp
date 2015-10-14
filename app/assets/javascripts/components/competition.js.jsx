@@ -9,7 +9,6 @@
     },
     componentDidMount: function () {
       CompetitionStore.addChangeListener(this._onChange);
-      ApiUtil.fetchAllCompetitions();
     },
     componentWillUnmount: function () {
       CompetitionStore.removeChangeListener(this._onChange);
