@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     primary_key: :id
   has_many :user_competitions
   has_many :user_events
-  has_many :user_interests
+  has_many :user_interests, inverse_of: :user
   has_many :competitions,
     through: :user_competitions,
     source: :competition

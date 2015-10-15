@@ -6,27 +6,63 @@
   <%= auth_token %>
 
   <% if for_sign_up %>
-  <div class="row form-group">
-    <div class="col-md-offset-3 col-md-6">
-      <label for="user_name">Your name (this is public)</label>
-      <input type="text" class="form-control" name="user[name]" id="user_name" value="<%= @user.name %>">
-    </div>
-  </div>
+  <%= render "shared/form_group", for_name: "user_name",
+                                  label: "Your name (this is public)",
+                                  type: "text",
+                                  name: "user[name]",
+                                  value: @user.name %>
   <% end %>
+  <%= render "shared/form_group", for_name: "user_email",
+                                  label: "Email Address",
+                                  type: "text",
+                                  name: "user[email]",
+                                  value: email %>
 
-  <div class="row form-group">
-    <div class="col-md-offset-3 col-md-6">
-      <label for="user_email">Email address</label>
-      <input type="text" class="form-control" name="user[email]" id="user_email" value="<%= email %>">
+  <%= render "shared/form_group", for_name: "user_password",
+                                  label: "Password",
+                                  type: "password",
+                                  name: "user[password]",
+                                  value: false %>
+  <% if for_sign_up %>
+    <div class="row form-group">
+      <div class="col-md-offset-3 col-md-6">
+        <label for="user_location">Location:</label>
+        <select class="form-control" id="user_location" name="user[location]">
+          <% @locations.each do |location|  %>
+            <% selected = @user.location == location ? "selected" : "" %>
+            <option value="<%= location %>" <%= selected %>><%= location %></option>
+          <% end %>
+        </select>
+      </div>
     </div>
-  </div>
+    </select>
 
-  <div class="row form-group">
-    <div class="col-md-offset-3 col-md-6">
-      <label for="user_password">Password</label>
-      <input type="password" class="form-control" name="user[password]" id="user_password">
+    <div class="row form-group">
+      <div class="col-md-offset-3 col-md-6">
+        <label>Interests:</label>
+        <input type="hidden" name="user[interests][]" value=""/>
+        <% @interests.each do |interest| %>
+          <label class="checkbox-inline">
+          <input
+            type="checkbox"
+            name="user[interest_ids][]"
+            value="<%= interest.id %>"
+            <%= "checked" if @user.interests.include?(interest) %>>
+              <%= interest.name %>
+          </input>
+          </label>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+    <div class="row form-group">
+      <div class="col-md-offset-3 col-md-6">
+        <label for="user_bio">Bio</label>
+        <textarea class="form-control" name="user[bio]"
+                  id="user_bio"><%= @user.bio %></textarea>
+      </div>
+    </div>
+  <% end %>
 
   <div class="row">
     <div class="col-md-offset-3 col-md-6">

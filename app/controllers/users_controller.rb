@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to static_pages_url
     else
+      fail
       render_errors(@user)
       render :new
     end
@@ -15,6 +16,9 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @locations = ["San Francisco, CA", "Berkeley, CA",
+                    "Los Angeles, CA", "Eureka, CA"]
+    @interests = Interest.all
   end
 
   def show
@@ -25,6 +29,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :bio)
+    params.require(:user).permit(:name, :email, :password, :bio, :location, interest_ids: [])
   end
 end

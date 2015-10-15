@@ -1,8 +1,10 @@
-User.create!({name: "Vic", email: "vic@vic.com",
+locations = ["San Francisco, CA", "Berkeley, CA", "Los Angeles, CA", "Eureka, CA"]
+User.create!({name: "Vic", email: "vic@vic.com", location:"San Francisco, CA",
               bio: "I'm working", password: "123456"})
 5.times do |i|
   User.create!({name: "user #{i}", email: "user#{i}@example.com",
-                bio: "I'm working on #{i}", password: "123456+#{i}"})
+                bio: "I'm working on #{i}", password: "123456+#{i}",
+                location: locations[rand(4)]})
 end
 
 UserCompetition.create!({user_id: 1, competition_id: 1})

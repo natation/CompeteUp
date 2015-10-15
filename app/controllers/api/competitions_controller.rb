@@ -8,8 +8,7 @@ class Api::CompetitionsController < ApplicationController
       if query[:searchText]
         @competitions = Competition.where("name ~ ?", query[:searchText])
       elsif query[:getCurrentUserJoinedCompetitions]
-        @competitions = Competition.joins(:user_competitions, :users)
-                                   .where("users.id = ?", current_user.id)
+        @competitions = current_user.competitions
       end
     else
       @competitions = Competition.all.take(9)

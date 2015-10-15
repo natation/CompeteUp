@@ -28,7 +28,7 @@
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li className="dropdown">
-                  <a href="#" className="dropdown-toggle"
+                  <a href="#/profile" className="dropdown-toggle"
                     data-toggle="dropdown" role="button"
                     aria-haspopup="true" aria-expanded="false">
                       Welcome, user {window.CURRENT_USER_ID}
@@ -37,7 +37,7 @@
                   <ul className="dropdown-menu">
                     <li><a href="#/profile">Profile</a></li>
                     <li role="separator" className="divider"></li>
-                    <li><a href="#" onClick={this.handleLogout}>Log Out</a></li>
+                    <li><a href="{javascript:void(0)}" onClick={this.handleLogout}>Log Out</a></li>
                   </ul>
                 </li>
               </ul>
