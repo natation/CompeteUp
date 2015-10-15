@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+  var Link = ReactRouter.Link;
   root.UserInfo = React.createClass({
     getInitialState: function () {
       return {user: UserStore.getCurrentUser()};
@@ -15,20 +16,22 @@
       UserStore.removeChangeListener(this._onChange);
     },
     render: function () {
-      var memberSince = "";
-      var location = "San Francisco, CA";
       var userName = "";
+      var location = "";
       var userBio = "";
+      var memberSince = "";
       if (this.state.user) {
         userName = this.state.user.name;
+        location = this.state.user.location;
         userBio = this.state.user.bio;
-        memberSince = this.state.user.created_at;
+        memberSince = this.state.user.memberSince;
       }
       return (
         <div className="col-md-7">
           <div className="row">
             <div className="col-md-3">
               <h2>{userName}</h2>
+              <Link to="profile/edit">Edit</Link>
             </div>
           </div>
           <div className="row">

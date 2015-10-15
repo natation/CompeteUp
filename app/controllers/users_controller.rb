@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to root_url
     else
+      @interests = Interest.all
       render_errors(@user)
       render :new
     end
@@ -15,8 +16,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @locations = ["San Francisco, CA", "Berkeley, CA",
-                    "Los Angeles, CA", "Eureka, CA"]
     @interests = Interest.all
   end
 
