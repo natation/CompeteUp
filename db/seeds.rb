@@ -7,21 +7,21 @@ User.create!({name: "Vic", email: "vic@vic.com", location:"San Francisco, CA",
                 location: locations[rand(4)]})
 end
 
-# Competition.create!({name: "Basketball", location: "San Francisco",
-#                      description: "Ball it up!", competition_owner_id: 2})
+Competition.create!({name: "Basketball", location: "San Francisco",
+                     description: "Ball it up!", competition_owner_id: 2})
 
-# Competition.create!({name: "Football", location: "San Francisco",
-#                      description: "49ers are cool!", competition_owner_id: 2})
-#
-# Competition.create!({name: "Soccer", location: "San Francisco",
-#                     description: "Earthquakes are cool!", competition_owner_id: 3})
-# Competition.create!({name: "AppAcademy", location: "San Francisco",
-#                      description: "Coding all the time!", competition_owner_id: 4})
-#
-# Interest.create!(name: "Sports")
-# Interest.create!(name: "Coding")
-# Interest.create!(name: "Cats")
-# Interest.create!(name: "Dogs")
-#
-# User.first.competition_ids = [1, 2, 4]
-# User.first.interest_ids = [1, 2, 3]
+Competition.create!({name: "Football", location: "San Francisco",
+                     description: "49ers are cool!", competition_owner_id: 2})
+
+Competition.create!({name: "Soccer", location: "San Francisco",
+                    description: "Earthquakes are cool!", competition_owner_id: 3})
+Competition.create!({name: "AppAcademy", location: "San Francisco",
+                     description: "Coding all the time!", competition_owner_id: 4})
+
+Interest.create!(name: "Sports")
+Interest.create!(name: "Coding")
+Interest.create!(name: "Cats")
+Interest.create!(name: "Dogs")
+
+User.first.competition_ids = [1, 2, 4]
+User.first.interest_ids = [1, 2, 3]
