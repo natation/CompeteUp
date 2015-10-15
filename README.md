@@ -47,8 +47,8 @@ on-the-fly similar to the Meetup index search bar.
 ### Phase 3: User Profile (1 day)
 
 I will create a React view for the UserProfile page. Users will be able to view
-and edit their profiles. User profile pages have  Lastly, while constructing the
-views I will start using basic bootstrap for styling.
+and edit their profiles. While constructing the views I will start using basic
+bootstrap for styling.
 
 [Details](./docs/phases/phase3.md)
 

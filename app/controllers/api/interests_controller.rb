@@ -3,9 +3,9 @@ class Api::InterestsController < ApplicationController
     query = params[:query]
     if query.present?
       if query[:getCurrentUserInterests]
-        @interests = Interest.joins(:user_interests, :users)
-                             .where("users.id = ?", current_user.id)
         @interests = current_user.interests
+      elsif query[:fetchNone]
+        @interests = Interest.none
       end
     else
       @interests = Interest.all.take(20)

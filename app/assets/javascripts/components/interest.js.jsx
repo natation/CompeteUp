@@ -9,6 +9,7 @@
     },
     componentDidMount: function () {
       InterestStore.addChangeListener(this._onChange);
+      ApiUtil.fetchAllInterests({fetchNone: true});
     },
     componentWillUnmount: function () {
       InterestStore.removeChangeListener(this._onChange);

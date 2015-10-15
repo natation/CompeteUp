@@ -1,9 +1,9 @@
 class Event < ActiveRecord::Base
-  validates :description, :competition_id, presence: true
+  validates :description, :competition, presence: true
 
   belongs_to :competition
 
-  has_many :user_events
+  has_many :user_events, dependent: :destroy
   has_many :users,
     through: :user_events,
     source: :user

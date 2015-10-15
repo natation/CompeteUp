@@ -3,9 +3,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      redirect_to static_pages_url
+      redirect_to root_url
     else
-      fail
       render_errors(@user)
       render :new
     end
@@ -29,6 +28,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :bio, :location, interest_ids: [])
+    params.require(:user).permit(:name, :email, :password, :bio,
+                                 :location, interest_ids: [])
   end
 end

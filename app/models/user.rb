@@ -23,9 +23,9 @@ class User < ActiveRecord::Base
     class_name: :Competition,
     foreign_key: :competition_owner_id,
     primary_key: :id
-  has_many :user_competitions
-  has_many :user_events
-  has_many :user_interests, inverse_of: :user
+  has_many :user_competitions, dependent: :destroy
+  has_many :user_events, dependent: :destroy
+  has_many :user_interests, dependent: :destroy, inverse_of: :user
   has_many :competitions,
     through: :user_competitions,
     source: :competition

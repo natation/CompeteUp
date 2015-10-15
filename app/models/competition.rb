@@ -6,8 +6,8 @@ class Competition < ActiveRecord::Base
     primary_key: :id
 
   has_many :events
-  has_many :user_competitions
-  has_many :competition_interests
+  has_many :user_competitions, dependent: :destroy
+  has_many :competition_interests, dependent: :destroy
   has_many :competition_photos
   has_many :users,
     through: :user_competitions,
