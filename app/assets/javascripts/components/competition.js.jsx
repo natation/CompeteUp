@@ -2,7 +2,6 @@
   'use strict';
   root.Competition = React.createClass({
     getInitialState: function () {
-      debugger;
       return {competitions: CompetitionStore.all()};
     },
     _onChange: function () {
