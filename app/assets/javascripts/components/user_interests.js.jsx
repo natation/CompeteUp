@@ -41,7 +41,7 @@
             {
               this.state.interests.map(function (interest, idx) {
                 return (
-                  <OverlayTrigger trigger="click" placement="top" key={idx}
+                  <OverlayTrigger trigger="click" placement="left" key={idx}
                     overlay={
                       <Popover title="Competitions with this interest">
                         <Button id={interest.name} onClick={this._removeInterest}>

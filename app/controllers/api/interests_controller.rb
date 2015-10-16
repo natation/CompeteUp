@@ -14,8 +14,12 @@ class Api::InterestsController < ApplicationController
 
   def destroy
     @interest = Interest.find_by_name(params[:name])
-    new_interest_ids = current_user.interest_ids - [@interest.id]
-    current_user.interest_ids = new_interest_ids
-    render json: {responseJSON: "Interest #{params[:name]} removed", status: 200}
+    if @interest.present?
+      new_interest_ids = current_user.interest_ids - [@interest.id]
+      current_user.interest_ids = new_interest_ids
+      render json: {responseJSON: "Interest #{params[:name]} removed", status: 200}
+    else
+      render json: {responseJSON: "No such interest", status: :unprocessable_entity}
+    end
   end
 end

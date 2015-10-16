@@ -32,14 +32,14 @@
         case MessageConstants.MESSAGE_RECEIVED:
           resetMessages(payload.message);
           if (!payload.flashNow) {
-            addNotification(payload.message);
+            addNotification(payload.message.responseJSON);
           }
           MessageStore.emit(CHANGE_EVENT);
           break;
         case MessageConstants.ERROR_RECEIVED:
           resetMessages(payload.error);
           if (!payload.flashNow) {
-            addNotification(payload.error);
+            addNotification(payload.error.responseJSON);
           }
           MessageStore.emit(CHANGE_EVENT);
           break;

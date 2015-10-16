@@ -37,7 +37,7 @@
           <div className="row">
             <div className="col-md-3">
               <h2>{userName}</h2>
-              <Link to="profile/edit">Edit</Link>
+              <Link to="profile/edit">Edit Info</Link>
             </div>
           </div>
           <div className="row">
