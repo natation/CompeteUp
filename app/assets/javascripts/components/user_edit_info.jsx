@@ -9,6 +9,15 @@
               location: "",
               errors: []};
     },
+    componentWillMount: function () {
+      UserStore.addChangeListener(this._onChange);
+      MessageStore.addChangeListener(this._onReceiveMessage);
+      ApiUtil.fetchCurrentUser();
+    },
+    componentWillUnmount: function () {
+      UserStore.removeChangeListener(this._onChange);
+      MessageStore.removeChangeListener(this._onReceiveMessage);
+    },
     _onChange: function () {
       var user = UserStore.getCurrentUser();
       this.setState(
@@ -35,15 +44,6 @@
       user.email = this.state.email;
       user.location = this.state.location;
       ApiUtil.updateCurrentUser(user);
-    },
-    componentDidMount: function () {
-      UserStore.addChangeListener(this._onChange);
-      MessageStore.addChangeListener(this._onReceiveMessage);
-      ApiUtil.fetchCurrentUser();
-    },
-    componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onChange);
-      MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     render: function () {
       var errorText = "";
@@ -80,14 +80,14 @@
             </div>
           </div>
           <div className="row">
-            <div className="col-md-offset-3 col-md-6">
+            <div className="col-md-offset-3 col-md-5">
               <div className="row">
                 <button type="submit"
                         className="btn btn-default">
                         Update User
                 </button>
               </div>
-              <div className="row">
+              <div className="col-md-4">
                 <Link to="profile" className="btn btn-default">Cancel</Link>
               </div>
             </div>

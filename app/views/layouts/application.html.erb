@@ -13,9 +13,14 @@
   <%= yield %>
   <% if current_user  %>
     <script>
+      <% interests = [] %>
+      <% Interest.select(:name, :id).each do |interest| %>
+        <% interests << interest %>
+      <% end %>
       window.CURRENT_USER_ID = <%= current_user.id %>;
       window.LOCATIONS = ["San Francisco, CA", "Berkeley, CA",
                       "Los Angeles, CA", "Eureka, CA"];
+      window.INTERESTS = <%= interests.to_json.html_safe %>;
     </script>
   <% end %>
 

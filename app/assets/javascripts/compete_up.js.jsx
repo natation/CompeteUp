@@ -22,7 +22,8 @@ $(function() {
      <Route path="/" component={App}>
        <IndexRoute component={Index}/>
        <Route path="profile" component={UserProfile}/>
-       <Route path="profile/edit" component={UserEditForm}/>
+       <Route path="profile/editUserInfo" component={UserEditForm}/>
+       <Route path="profile/editInterests" component={UserEditInterests}/>
      </Route>
    );
    React.render(<Router>{routes}</Router>, root);

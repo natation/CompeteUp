@@ -37,22 +37,22 @@
           <div className="row">
             <div className="col-md-3">
               <h2>{userName}</h2>
-              <Link to="profile/edit">Edit Info</Link>
+              <Link to="profile/editUserInfo">Edit Info</Link>
             </div>
           </div>
           <div className="row">
             <div className="col-md-5">
-              <h3>Location: </h3>
+              <h4>Location: </h4>
               {location}
             </div>
-            <div className="col-md-5">
-              <h3>CompeteUp member since: </h3>
+            <div className="col-md-7">
+              <h4>CompeteUp member since: </h4>
               {memberSince}
             </div>
           </div>
           <div className="row">
             <div className="col-md-7">
-              <h3>Bio: </h3>
+              <h4>Bio: </h4>
               {userBio}
             </div>
           </div>

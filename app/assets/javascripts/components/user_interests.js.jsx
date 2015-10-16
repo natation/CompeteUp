@@ -4,6 +4,8 @@
   var Popover = ReactBootstrap.Popover;
   var Button = ReactBootstrap.Button;
   var Glyphicon = ReactBootstrap.Glyphicon;
+  var Link = ReactRouter.Link;
+
   root.UserInterests = React.createClass({
     getInitialState: function () {
       return {interests: InterestStore.all(),
@@ -20,7 +22,7 @@
     _removeInterest: function (e) {
       ApiUtil.removeInterest(e.currentTarget.id);
     },
-    componentDidMount: function () {
+    componentWillMount: function () {
       InterestStore.addChangeListener(this._onChange);
       MessageStore.addChangeListener(this._onReceiveMessage);
       ApiUtil.fetchAllInterests({getCurrentUserInterests: true});
@@ -35,9 +37,9 @@
         message = <h4>{this.state.message}</h4>;
       }
       return (
-        <div className="col-md-6">
+        <div className="col-md-3">
           {message}
-          <h3>Interests:</h3>
+          <h3>Interests:</h3><Link to="profile/editInterests">Edit Interests</Link>
             {
               this.state.interests.map(function (interest, idx) {
                 return (

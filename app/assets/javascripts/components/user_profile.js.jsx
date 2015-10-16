@@ -5,7 +5,7 @@
       return (
         <div className="row">
           <UserInfo/>
-          <div className="col-md-1">
+          <div className="col-md-5">
             <div className="row">
               <UserProfilePicture/>
             </div>
