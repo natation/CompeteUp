@@ -19,16 +19,18 @@
         user: [user]
       });
     },
-    sendMessage: function (message) {
+    sendMessage: function (message, flashNow) {
       AppDispatcher.dispatch({
         actionType: MessageConstants.MESSAGE_RECEIVED,
-        message: message
+        message: message,
+        flashNow: flashNow
       });
     },
-    sendError: function (error) {
+    sendError: function (error, flashNow) {
       AppDispatcher.dispatch({
         actionType: MessageConstants.ERROR_RECEIVED,
-        error: error
+        error: error,
+        flashNow: flashNow
       });
     }
   };

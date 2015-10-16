@@ -11,4 +11,11 @@ class Api::InterestsController < ApplicationController
       @interests = Interest.all.take(20)
     end
   end
+
+  def destroy
+    @interest = Interest.find_by_name(params[:name])
+    new_interest_ids = current_user.interest_ids - [@interest.id]
+    current_user.interest_ids = new_interest_ids
+    render json: {responseJSON: "Interest #{params[:name]} removed", status: 200}
+  end
 end

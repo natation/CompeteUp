@@ -40,10 +40,24 @@
         dataType: "json",
         data: {user: user},
         success: function (message) {
-          ApiActions.sendMessage(message);
+          ApiActions.sendMessage(message, false);
         },
         error: function (error) {
-          ApiActions.sendError(error);
+          ApiActions.sendError(error, true);
+        }
+      });
+    },
+    removeInterest: function (name) {
+      $.ajax({
+        url: "api/interests/" + window.CURRENT_USER_ID,
+        type: "DELETE",
+        dataType: "json",
+        data: {name: name},
+        success: function (message) {
+          ApiActions.sendMessage(message, true);
+        },
+        error: function (error) {
+          ApiActions.sendError(error, true);
         }
       });
     },
