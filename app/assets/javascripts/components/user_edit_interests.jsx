@@ -24,7 +24,7 @@
     _onReceiveMessage: function () {
       var message = MessageStore.getMessage();
       if (message.status < 400) {
-        this.history.pushState(null, "/profile");
+        this.props.history.pushState(null, "/profile");
       }
       else {
         this.setState({errors: message.responseJSON});
@@ -40,6 +40,16 @@
         this.checkedInterests.splice(foundInterestIdx, 1);
       }
       this.setState({checkHappened: !this.state.checkHappened});
+    },
+    handleSubmit: function (e) {
+      e.preventDefault();
+      var user = {};
+      var interest_ids = [""];
+      _.each(this.checkedInterests, function (interest) {
+        interest_ids.push(interest.id);
+      }, this);
+      user.interest_ids = interest_ids;
+      ApiUtil.updateCurrentUser(user);
     },
     render: function () {
       return (
