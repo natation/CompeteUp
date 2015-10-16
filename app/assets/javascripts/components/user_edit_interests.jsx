@@ -19,7 +19,7 @@
       this.setState({checkedInterests: InterestStore.all()});
     },
     _onReceiveMessage: function () {
-      var message = MessageStore.getMessage();
+      var message = MessageStore.getMessages();
       if (message.status < 400) {
         this.props.history.pushState(null, "/profile");
       }

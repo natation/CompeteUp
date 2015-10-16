@@ -1,25 +1,25 @@
 (function(root) {
   'use strict';
   var _messages = {};
-  var _notifications = [];
+  var _delayedMessages = [];
   var CHANGE_EVENT = "CHANGE_EVENT";
 
   var resetMessages = function (messages) {
     _messages = messages;
   };
 
-  var addNotification = function (notification) {
-    _notifications.push(notification);
+  var addDelayedMessage = function (delayedMessage) {
+    _delayedMessages.push(delayedMessage);
   };
 
   root.MessageStore = $.extend({}, EventEmitter.prototype, {
-    getMessage: function () {
+    getMessages: function () {
       return $.extend({}, _messages);
     },
-    getNotifications: function () {
-      var unReadNotifications = _notifications;
-      _notifications = [];
-      return unReadNotifications;
+    getDelayedMessages: function () {
+      var unReadMessages = _delayedMessages;
+      _delayedMessages = [];
+      return unReadMessages;
     },
     addChangeListener: function (callback) {
       MessageStore.on(CHANGE_EVENT, callback);
@@ -32,14 +32,14 @@
         case MessageConstants.MESSAGE_RECEIVED:
           resetMessages(payload.message);
           if (!payload.flashNow) {
-            addNotification(payload.message.responseJSON);
+            addDelayedMessage(payload.message.responseJSON);
           }
           MessageStore.emit(CHANGE_EVENT);
           break;
         case MessageConstants.ERROR_RECEIVED:
           resetMessages(payload.error);
           if (!payload.flashNow) {
-            addNotification(payload.error.responseJSON);
+            addDelayedMessage(payload.error.responseJSON);
           }
           MessageStore.emit(CHANGE_EVENT);
           break;

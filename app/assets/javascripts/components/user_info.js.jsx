@@ -11,7 +11,7 @@
     componentWillMount: function () {
       UserStore.addChangeListener(this._onChange);
       ApiUtil.fetchCurrentUser();
-      this.notifications = MessageStore.getNotifications();
+      this.currentMessages = MessageStore.getDelayedMessages();
     },
     componentWillUnmount: function () {
       UserStore.removeChangeListener(this._onChange);
@@ -28,8 +28,8 @@
         memberSince = this.state.user.memberSince;
       }
       var successText = "";
-      if (this.notifications.length > 0) {
-        successText = <div><h3>{this.notifications[0]}</h3></div>;
+      if (this.currentMessages.length > 0) {
+        successText = <div><h3>{this.currentMessages[0]}</h3></div>;
       }
       return (
         <div className="col-md-7">

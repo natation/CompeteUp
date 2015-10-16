@@ -29,7 +29,7 @@
       );
     },
     _onReceiveMessage: function () {
-      var message = MessageStore.getMessage();
+      var message = MessageStore.getMessages();
       if (message.status < 400) {
         this.history.pushState(null, "/profile");
       }

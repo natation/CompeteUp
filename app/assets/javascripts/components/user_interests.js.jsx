@@ -15,7 +15,7 @@
       this.setState({interests: InterestStore.all()});
     },
     _onReceiveMessage: function () {
-      var receivedMessage = MessageStore.getMessage();
+      var receivedMessage = MessageStore.getMessages();
       this.setState({message: receivedMessage.responseJSON});
       ApiUtil.fetchAllInterests({getCurrentUserInterests: true});
     },
