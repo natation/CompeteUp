@@ -33,6 +33,20 @@
         }
       });
     },
+    updateCurrentUser: function (user) {
+      $.ajax({
+        url: "/users/" + window.CURRENT_USER_ID,
+        type: "PATCH",
+        dataType: "json",
+        data: {user: user},
+        success: function (message) {
+          ApiActions.sendMessage(message);
+        },
+        error: function (error) {
+          ApiActions.sendError(error);
+        }
+      });
+    },
     logOut: function () {
       $.ajax({
         url: "/session/",

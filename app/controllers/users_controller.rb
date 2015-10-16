@@ -23,6 +23,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+    if @user.update(user_params)
+      render json: {message: "User update successful", status: 200}
+    else
+      render json: @user.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   private

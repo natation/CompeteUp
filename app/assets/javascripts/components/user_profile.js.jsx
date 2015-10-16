@@ -12,9 +12,6 @@
             <div className="row">
               <UserInterests/>
             </div>
-            <div className="row">
-
-            </div>
           </div>
         </div>
       );

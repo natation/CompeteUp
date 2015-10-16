@@ -1,11 +1,13 @@
 (function(root) {
   'use strict';
+  var Link = ReactRouter.Link;
   root.UserEditForm = React.createClass({
-    mixins: [React.addons.LinkedStateMixin],
+    mixins: [React.addons.LinkedStateMixin, ReactRouter.History],
     getInitialState: function () {
       return {name: "",
               email: "",
-              location: ""};
+              location: "",
+              errors: []};
     },
     _onChange: function () {
       var user = UserStore.getCurrentUser();
@@ -17,19 +19,40 @@
         }
       );
     },
+    _onReceiveMessage: function () {
+      var message = MessageStore.getMessage();
+      if (message.status < 400) {
+        this.history.pushState(null, "/profile");
+      }
+      else {
+        this.setState({errors: message.responseJSON});
+      }
+    },
     handleSubmit: function (e) {
       e.preventDefault();
+      var user = {};
+      user.name = this.state.name;
+      user.email = this.state.email;
+      user.location = this.state.location;
+      ApiUtil.updateCurrentUser(user);
     },
     componentDidMount: function () {
       UserStore.addChangeListener(this._onChange);
+      MessageStore.addChangeListener(this._onReceiveMessage);
       ApiUtil.fetchCurrentUser();
     },
     componentWillUnmount: function () {
       UserStore.removeChangeListener(this._onChange);
+      MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     render: function () {
+      var errorText = "";
+      if (this.state.errors.length > 0) {
+        errorText = <h3>{this.state.errors.join(", ")}</h3>;
+      }
       return (
         <form onSubmit={this.handleSubmit}>
+          {errorText}
           <div className="row form-group">
             <div className="col-md-offset-3 col-md-6">
               <label>Name: </label>
@@ -47,10 +70,10 @@
           <div className="row form-group">
             <div className="col-md-offset-3 col-md-6">
               <label>Location:</label>
-              <select className="form-control" value={this.linkState("location")}>
+              <select className="form-control" valueLink={this.linkState("location")}>
                 {
                   LOCATIONS.map(function(location, idx) {
-                    return <option key={idx} value={location}>{location}</option>;
+                    return <option key={idx} valueLink={location}>{location}</option>;
                   })
                 }
               </select>
@@ -58,7 +81,15 @@
           </div>
           <div className="row">
             <div className="col-md-offset-3 col-md-6">
-              <button type="submit" className="btn btn-default">Update User</button>
+              <div className="row">
+                <button type="submit"
+                        className="btn btn-default">
+                        Update User
+                </button>
+              </div>
+              <div className="row">
+                <Link to="profile" className="btn btn-default">Cancel</Link>
+              </div>
             </div>
           </div>
         </form>
