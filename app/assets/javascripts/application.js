@@ -21,4 +21,5 @@
 //= require react_bootstrap
 //= require underscore
 //= require components
+//= require cloudinary
 //= require_tree .

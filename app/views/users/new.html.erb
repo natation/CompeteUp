@@ -10,3 +10,24 @@
     <h3>Already a member? <a href="<%= new_session_url %>">Log in</a></h3>
   </div>
 </div>
+
+<script type="text/javascript">
+  var $widget = $("#uploadWidget");
+  $widget.on("click", function (e) {
+    e.preventDefault();
+    cloudinary.openUploadWidget({ cloud_name: 'dbgfyqa1e',
+                                  upload_preset: 'm50nybft'},
+      function(error, result) {
+        if (result) {
+          $widget.text("Upload Successful");
+          $widget.append("<p>" + result[0].original_filename + "</p>");
+          $("<input>").attr({
+              type: "hidden",
+              name: "user[profile_pic_url]",
+              value: result[0].url
+          }).appendTo('form');
+        }
+      }
+    );
+  });
+</script>

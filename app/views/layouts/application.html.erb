@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
   <%= render "shared/flash", type: :info %>
@@ -13,11 +14,12 @@
   <%= yield %>
   <% if current_user  %>
     <script>
+      window.CURRENT_USER_ID = <%= current_user.id %>;
+
       <% interests = [] %>
       <% Interest.select(:name, :id).each do |interest| %>
         <% interests << interest %>
       <% end %>
-      window.CURRENT_USER_ID = <%= current_user.id %>;
       window.LOCATIONS = ["San Francisco, CA", "Berkeley, CA",
                       "Los Angeles, CA", "Eureka, CA"];
       window.INTERESTS = <%= interests.to_json.html_safe %>;

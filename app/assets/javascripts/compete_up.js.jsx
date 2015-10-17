@@ -24,6 +24,7 @@ $(function() {
        <Route path="profile" component={UserProfile}/>
        <Route path="profile/editUserInfo" component={UserEditForm}/>
        <Route path="profile/editInterests" component={UserEditInterests}/>
+       <Route path="profile/editProfilePic" component={UserEditProfilePic}/>
        <Route path="competitions/:id" component={CompetitionProfile}/>
      </Route>
    );
