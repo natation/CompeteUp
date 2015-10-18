@@ -26,6 +26,7 @@ $(function() {
        <Route path="profile/editInterests" component={UserEditInterests}/>
        <Route path="profile/editProfilePic" component={UserEditProfilePic}/>
        <Route path="competitions/:id" component={CompetitionProfile}/>
+       <Route path="startCompetition" component={StartCompetition}/>
      </Route>
    );
    React.render(<Router>{routes}</Router>, root);

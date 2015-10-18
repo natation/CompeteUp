@@ -7,7 +7,7 @@ class Competition < ActiveRecord::Base
 
   has_many :events
   has_many :user_competitions, dependent: :destroy
-  has_many :competition_interests, dependent: :destroy
+  has_many :competition_interests, dependent: :destroy, inverse_of: :competition
   has_many :competition_photos
   has_many :users,
     through: :user_competitions,

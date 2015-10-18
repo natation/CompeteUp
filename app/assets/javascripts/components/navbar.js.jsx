@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+  var Link = ReactRouter.Link;
   root.Navbar = React.createClass({
     handleLogout: function () {
       ApiUtil.logOut();
@@ -24,7 +25,7 @@
               id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li><a href="#">Find a Competition</a></li>
-                <li><a href="#">Start a Competition</a></li>
+                <li><Link to="/startCompetition">Start a Competition</Link></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 <li className="dropdown">

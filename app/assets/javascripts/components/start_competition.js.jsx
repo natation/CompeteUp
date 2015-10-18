@@ -1,15 +1,21 @@
 (function(root) {
   'use strict';
   var Link = ReactRouter.Link;
-  root.UserEditInterests = React.createClass({
+  root.StartCompetition = React.createClass({
+    mixins: [React.addons.LinkedStateMixin],
     getInitialState: function () {
-      return {checkedInterests: InterestStore.all(),
-              errors: []};
+      return {
+        location: "",
+        checkedInterests: InterestStore.all(),
+        name: "",
+        description: "",
+        errors: []
+      };
     },
     componentWillMount: function () {
       InterestStore.addChangeListener(this._onChange);
       MessageStore.addChangeListener(this._onReceiveMessage);
-      ApiUtil.fetchAllInterests({getCurrentUserInterests: true});
+      this.profilePicUrl = "";
     },
     componentWillUnmount: function () {
       InterestStore.removeChangeListener(this._onChange);
@@ -38,15 +44,34 @@
       }
       this.setState({checkedInterests: this.state.checkedInterests});
     },
+    handleNewPicUpload: function (e) {
+      e.preventDefault();
+      var that = this;
+      cloudinary.openUploadWidget({ cloud_name: 'dbgfyqa1e',
+                                    upload_preset: 'm50nybft'},
+        function(error, result) {
+          if (result) {
+            var $widget = $("#uploadWidget");
+            $widget.text("Upload Successful");
+            $widget.append("<p>" + result[0].original_filename + "</p>");
+            that.profilePicUrl = result[0].url;
+          }
+        }
+      );
+    },
     handleSubmit: function (e) {
       e.preventDefault();
-      var user = {};
+      var competition = {};
       var interest_ids = [""];
       _.each(this.state.checkedInterests, function (interest) {
         interest_ids.push(interest.id);
       }, this);
-      user.interest_ids = interest_ids;
-      ApiUtil.updateCurrentUser(user);
+      competition.interest_ids = interest_ids;
+      competition.location = this.state.location;
+      competition.name = this.state.name;
+      competition.description = this.state.description;
+      user.profile_pic_url = this.profilePicUrl;
+      ApiUtil.createCompetition(competition);
     },
     render: function () {
       var errorText = "";
@@ -55,6 +80,20 @@
       }
       return (
         <form onSubmit={this.handleSubmit}>
+          {errorText}
+          <div className="row form-group">
+            <div className="col-md-offset-3 col-md-6">
+              <label>Location:</label>
+              <select className="form-control" valueLink={this.linkState("location")}>
+                {
+                  LOCATIONS.map(function(location, idx) {
+                    return <option key={idx} valueLink={location}>{location}</option>;
+                  })
+                }
+              </select>
+            </div>
+          </div>
+
           <div className="row form-group">
             <div className="col-md-offset-3 col-md-6">
               <label>Interests: </label>
@@ -83,11 +122,30 @@
             </div>
           </div>
           <div className="row form-group">
-            <div className="col-md-offset-3 col-md-2">
-              <button type="submit" className="btn btn-default">Update Interests</button>
+            <div className="col-md-offset-3 col-md-6">
+              <label>Name: </label>
+              <input type="text" className="form-control"
+                     valueLink={this.linkState("name")}/>
             </div>
-            <div className="col-md-2">
-              <Link to="profile" className="btn btn-default">Cancel</Link>
+          </div>
+          <div className="row form-group">
+            <div className="col-md-offset-3 col-md-6">
+              <label>Email: </label>
+              <input type="text" className="form-control"
+                     valueLink={this.linkState("email")}/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-offset-3 col-md-5">
+              <div className="row">
+                <button type="submit"
+                        className="btn btn-default">
+                        Create Competition
+                </button>
+              </div>
+              <div className="col-md-4">
+                <Link to="/" className="btn btn-default">Cancel</Link>
+              </div>
             </div>
           </div>
         </form>
