@@ -15,16 +15,33 @@
       CompetitionStore.removeChangeListener(this._onChange);
     },
     render: function () {
+      var src = "http://res.cloudinary.com/dbgfyqa1e/image/upload/c_limit,h_100,w_150/v1445154603/competition-default_cyldui.png";
+      var finished = [];
+      var competitionsForRow = [];
+      var done = false;
+      _.each(this.state.competitions, function (competition, idx) {
+        competitionsForRow.push(
+          <div key={idx} className="col-md-4">
+              <img src={competition.profile_pic_url || src}
+                 height="100px"></img>
+               <h4>{competition.name}</h4>
+          </div>
+        );
+        if ((idx + 1) % 3 === 0 || done) {
+          finished.push(
+            <div key={idx} className="row">
+              {competitionsForRow}
+            </div>
+          );
+          competitionsForRow = [];
+        } else if (idx === this.state.competitions.length - 1) {
+          done = true;
+        }
+      }, this);
       return (
         <div>
           <h1>Competitions</h1>
-          <ul>
-            {
-              this.state.competitions.map(function (competition, idx) {
-                return <li key={idx}>{competition.name}</li>;
-              })
-            }
-          </ul>
+            {finished}
         </div>
       );
     }
