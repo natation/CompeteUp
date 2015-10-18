@@ -49,12 +49,26 @@
     },
     removeInterest: function (name) {
       $.ajax({
-        url: "api/interests/" + window.CURRENT_USER_ID,
+        url: "/api/interests/" + window.CURRENT_USER_ID,
         type: "DELETE",
         dataType: "json",
         data: {name: name},
         success: function (message) {
           ApiActions.sendMessage(message, true);
+        },
+        error: function (error) {
+          ApiActions.sendError(error, true);
+        }
+      });
+    },
+    createCompetition: function (competition) {
+      $.ajax({
+        url: "/api/competitions/",
+        type: "POST",
+        dataType: "json",
+        data: {competition: competition},
+        success: function (message) {
+          ApiActions.sendMessage(message, false);
         },
         error: function (error) {
           ApiActions.sendError(error, true);

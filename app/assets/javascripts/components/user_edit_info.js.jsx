@@ -7,6 +7,7 @@
       return {name: "",
               email: "",
               location: "",
+              bio: "",
               errors: []};
     },
     componentWillMount: function () {
@@ -24,7 +25,8 @@
         {
           name: user.name,
           email: user.email,
-          location: user.location
+          location: user.location,
+          bio: user.bio
         }
       );
     },
@@ -43,6 +45,7 @@
       user.name = this.state.name;
       user.email = this.state.email;
       user.location = this.state.location;
+      user.bio = this.state.bio;
       ApiUtil.updateCurrentUser(user);
     },
     render: function () {
@@ -77,6 +80,12 @@
                   })
                 }
               </select>
+            </div>
+          </div>
+          <div className="row form-group">
+            <div className="col-md-offset-3 col-md-6">
+              <label>Bio: </label>
+              <textarea className="form-control" valueLink={this.linkState("bio")}></textarea>
             </div>
           </div>
           <div className="row">

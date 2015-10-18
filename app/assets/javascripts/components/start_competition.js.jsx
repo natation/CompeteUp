@@ -5,27 +5,23 @@
     mixins: [React.addons.LinkedStateMixin],
     getInitialState: function () {
       return {
-        location: "",
-        checkedInterests: InterestStore.all(),
+        location: "San Francisco, CA",
+        checkedInterests: [],
         name: "",
         description: "",
         errors: []
       };
     },
     componentWillMount: function () {
-      InterestStore.addChangeListener(this._onChange);
       MessageStore.addChangeListener(this._onReceiveMessage);
       this.profilePicUrl = "";
     },
     componentWillUnmount: function () {
-      InterestStore.removeChangeListener(this._onChange);
       MessageStore.removeChangeListener(this._onReceiveMessage);
-    },
-    _onChange: function () {
-      this.setState({checkedInterests: InterestStore.all()});
     },
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();
+      debugger;
       if (message.status < 400) {
         this.props.history.pushState(null, "/profile");
       }
@@ -70,7 +66,7 @@
       competition.location = this.state.location;
       competition.name = this.state.name;
       competition.description = this.state.description;
-      user.profile_pic_url = this.profilePicUrl;
+      competition.profile_pic_url = this.profilePicUrl;
       ApiUtil.createCompetition(competition);
     },
     render: function () {
@@ -96,7 +92,7 @@
 
           <div className="row form-group">
             <div className="col-md-offset-3 col-md-6">
-              <label>Interests: </label>
+              <label>Associated Interests: </label>
               {
                 window.INTERESTS.map(function (interest, idx) {
                   var foundInterestIdx = _.findIndex(this.state.checkedInterests,
@@ -130,9 +126,18 @@
           </div>
           <div className="row form-group">
             <div className="col-md-offset-3 col-md-6">
-              <label>Email: </label>
-              <input type="text" className="form-control"
-                     valueLink={this.linkState("email")}/>
+              <label>Description: </label>
+              <textarea className="form-control"
+                        valueLink={this.linkState("description")}></textarea>
+            </div>
+          </div>
+          <div className="row form-group">
+            <div className="col-md-offset-3 col-md-6">
+              <button className="btn btn-default"
+                      onClick={this.handleNewPicUpload}
+                      id="uploadWidget">
+                        Upload New Profile Picture
+              </button>
             </div>
           </div>
           <div className="row">
