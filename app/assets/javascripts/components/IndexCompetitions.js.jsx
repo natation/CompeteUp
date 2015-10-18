@@ -27,15 +27,13 @@
                <h4>{competition.name}</h4>
           </div>
         );
-        if ((idx + 1) % 3 === 0 || done) {
+        if ((idx + 1) % 3 === 0 || idx === this.state.competitions.length - 1) {
           finished.push(
             <div key={idx} className="row">
               {competitionsForRow}
             </div>
           );
           competitionsForRow = [];
-        } else if (idx === this.state.competitions.length - 1) {
-          done = true;
         }
       }, this);
       return (

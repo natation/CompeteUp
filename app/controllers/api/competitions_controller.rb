@@ -14,7 +14,8 @@ class Api::CompetitionsController < ApplicationController
     query = params[:query]
     if query.present?
       if query[:searchText]
-        @competitions = Competition.where("name ~ ?", query[:searchText])
+        @competitions = Competition.where("lower(name) ~ ?",
+                                          query[:searchText].downcase)
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions
       end

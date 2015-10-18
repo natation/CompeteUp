@@ -1,12 +1,12 @@
 (function(root) {
   'use strict';
   root.SearchBar = React.createClass({
-    mixins: [React.addons.LinkedStateMixin],
     getInitialState: function () {
       return {searchText: ""};
     },
-    handleButtonClick: function () {
-      ApiUtil.fetchCompetitionMatches({searchText: this.state.searchText});
+    handleKeyPress: function (e) {
+      var searchQuery = e.target.value ? {searchText: e.target.value} : null;
+      ApiUtil.fetchCompetitionMatches(searchQuery);
     },
     handleBarClick: function () {
       ApiUtil.fetchAllInterests();
@@ -17,8 +17,7 @@
           <div className="col-md-6">
             <div className="input-group col-md-12">
               <input type="text" className="form-control input-lg"
-                     valueLink={this.linkState("searchText")}
-                     onClick={this.handleBarClick}
+                     onChange={this.handleKeyPress}
                      placeholder="All Competitions"/>
               <div className="input-group-btn">
                 <button className="btn btn-info btn-lg" type="button"
