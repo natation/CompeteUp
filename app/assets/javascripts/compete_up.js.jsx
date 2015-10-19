@@ -25,7 +25,12 @@ $(function() {
        <Route path="profile/editUserInfo" component={UserEditForm}/>
        <Route path="profile/editInterests" component={UserEditInterests}/>
        <Route path="profile/editProfilePic" component={UserEditProfilePic}/>
-       <Route path="competitions/:id" component={CompetitionProfile}/>
+       <Route path="competitions/:id" component={CompetitionProfile}>
+         <IndexRoute component={CompetitionHome}/>
+         <Route path="members" component={CompetitionMembers}/>
+         <Route path="photos" component={CompetitionPhotos}/>
+         <Route path="join" component={CompetitionJoin}/>
+       </Route>
        <Route path="startCompetition" component={StartCompetition}/>
      </Route>
    );

@@ -21,7 +21,6 @@
     },
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();
-      debugger;
       if (message.status < 400) {
         this.props.history.pushState(null, "/profile");
       }

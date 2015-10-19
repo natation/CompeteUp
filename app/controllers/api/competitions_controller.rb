@@ -18,6 +18,8 @@ class Api::CompetitionsController < ApplicationController
                                           query[:searchText].downcase)
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions
+      elsif query[:getCurrentCompetition]
+        @competitions = Competition.where("id = ?", query[:getCurrentCompetition])
       end
     else
       @competitions = Competition.all.take(9)
@@ -25,6 +27,7 @@ class Api::CompetitionsController < ApplicationController
   end
 
   def show
+    @competition = Competition.find(params[:id])
   end
 
   def update

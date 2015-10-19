@@ -11,6 +11,9 @@
     all: function () {
       return _competitions.slice();
     },
+    getCurrentCompetition: function () {
+      return _.first(_competitions);
+    },
     addChangeListener: function (callback) {
       CompetitionStore.on(CHANGED_EVENT, callback);
     },

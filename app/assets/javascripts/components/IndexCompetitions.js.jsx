@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+  var Link = ReactRouter.Link;
   root.Competition = React.createClass({
     getInitialState: function () {
       return {competitions: CompetitionStore.all()};
@@ -20,15 +21,19 @@
       var competitionsForRow = [];
       var done = false;
       _.each(this.state.competitions, function (competition, idx) {
-        if (typeof this.state.user !== "undefined") {
-          publicId = this.state.user.profile_pic_url;
+        if (typeof this.state.competition !== "undefined") {
+          if (this.state.competition.profile_pic_url) {
+            publicId = this.state.competition.profile_pic_url;
+          }
         }
         var url = $.cloudinary.url(publicId,
                                   { width: 100, height: 150, crop: 'fill',
                                     radius: 20});
         competitionsForRow.push(
           <div key={idx} className="col-md-4">
-            <img alt={competition.name} src={url}></img>
+            <Link to={"competitions/" + competition.id}>
+              <img alt={competition.name} src={url}></img>
+            </Link>
             <h4>{competition.name}</h4>
           </div>
         );

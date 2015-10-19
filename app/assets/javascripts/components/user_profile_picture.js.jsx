@@ -18,7 +18,9 @@
     render: function () {
       var publicId = "blank-profile_ox71we";
       if (typeof this.state.user !== "undefined") {
-        publicId = this.state.user.profile_pic_url;
+        if (this.state.user.profile_pic_url) {
+          publicId = this.state.user.profile_pic_url;
+        }
       }
       var url = $.cloudinary.url(publicId,
                                 { width: 100, height: 150, crop: 'fill',

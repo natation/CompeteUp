@@ -1,6 +1,7 @@
 (function(root) {
   'use strict';
   var Link = ReactRouter.Link;
+  var IndexLink = ReactRouter.IndexLink;
   root.Navbar = React.createClass({
     handleLogout: function () {
       ApiUtil.logOut();
