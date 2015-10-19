@@ -20,6 +20,7 @@
 //= require eventemitter
 //= require react_bootstrap
 //= require underscore
-//= require components
 //= require cloudinary
+//= require jquery_cloudinary
+//= require components
 //= require_tree .

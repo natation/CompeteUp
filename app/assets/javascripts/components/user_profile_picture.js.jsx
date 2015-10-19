@@ -16,14 +16,17 @@
       UserStore.removeChangeListener(this._onChange);
     },
     render: function () {
-      var url = "http://res.cloudinary.com/dbgfyqa1e/image/upload/v1445067162/blank-profile_ox71we.jpg";
+      var publicId = "blank-profile_ox71we";
       if (typeof this.state.user !== "undefined") {
-        url = this.state.user.profile_pic_url || url;
+        publicId = this.state.user.profile_pic_url;
       }
+      var url = $.cloudinary.url(publicId,
+                                { width: 100, height: 150, crop: 'fill',
+                                  radius: 20});
       return (
         <div className="col-md-6">
           <h3>Profile Pic</h3>
-          <img src={url} alt="Profile Pic" height="100px"/>
+          <img src={url} alt="Profile Pic"/>
           <div className="row">
             <Link to="profile/editProfilePic">Edit Profile Pic</Link>
           </div>

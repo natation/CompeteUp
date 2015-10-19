@@ -37,7 +37,7 @@
             var $widget = $("#uploadWidget");
             $widget.text("Upload Successful");
             $widget.append("<p>" + result[0].original_filename + "</p>");
-            that.profilePicUrl = result[0].url;
+            that.profilePicUrl = result[0].public_id;
           }
         }
       );
@@ -53,13 +53,16 @@
       if (this.state.errors.length > 0) {
         errorText = <h3>{this.state.errors.join(", ")}</h3>;
       }
-      var url = "http://res.cloudinary.com/dbgfyqa1e/image/upload/v1445067162/blank-profile_ox71we.jpg";
+      var publicId = "blank-profile_ox71we.png";
       if (typeof this.state.user !== "undefined") {
-        url = this.state.user.profile_pic_url || url;
+        publicId = this.state.user.profile_pic_url;
       }
+      var url = $.cloudinary.url(publicId,
+                                { width: 100, height: 150, crop: 'fill',
+                                  radius: 20});
       return (
         <form onSubmit={this.handleSubmit}>
-          <img src={url} alt="Profile Pic" height="100px"/>
+          <img src={url} alt="Profile Pic"/>
           <div className="row form-group">
             <div className="col-md-offset-2 col-md-3">
               <button className="btn btn-default"

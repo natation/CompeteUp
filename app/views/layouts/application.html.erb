@@ -23,6 +23,7 @@
       window.LOCATIONS = ["San Francisco, CA", "Berkeley, CA",
                       "Los Angeles, CA", "Eureka, CA"];
       window.INTERESTS = <%= interests.to_json.html_safe %>;
+      $.cloudinary.config("cloud_name", "dbgfyqa1e");
     </script>
   <% end %>
 
