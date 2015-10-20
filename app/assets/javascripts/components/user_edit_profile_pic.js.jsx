@@ -3,7 +3,7 @@
   var Link = ReactRouter.Link;
   root.UserEditProfilePic = React.createClass({
     getInitialState: function () {
-      return {user: UserStore.getCurrentUser(),
+      return {user: UserStore.getUser(),
               errors: ""};
     },
     componentWillMount: function () {
@@ -16,7 +16,7 @@
       MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     _onChange: function () {
-      this.setState({user: UserStore.getCurrentUser()});
+      this.setState({user: UserStore.getUser()});
     },
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();

@@ -8,15 +8,15 @@ User.create!({name: "Vic", email: "vic@vic.com", location:"San Francisco, CA",
                 location: locations[rand(4)]})
 end
 
-Competition.create!({name: "Basketball", location: "San Francisco",
+Competition.create!({name: "Basketball", location: "San Francisco, CA",
                      description: "Ball it up!", competition_owner_id: 2})
 
-Competition.create!({name: "Football", location: "San Francisco",
+Competition.create!({name: "Football", location: "San Francisco, CA",
                      description: "49ers are cool!", competition_owner_id: 2})
 
-Competition.create!({name: "Soccer", location: "San Francisco",
+Competition.create!({name: "Soccer", location: "San Francisco, CA",
                     description: "Earthquakes are cool!", competition_owner_id: 3})
-Competition.create!({name: "AppAcademy", location: "San Francisco",
+Competition.create!({name: "AppAcademy", location: "San Francisco, CA",
                      description: "Coding all the time!", competition_owner_id: 4})
 
 

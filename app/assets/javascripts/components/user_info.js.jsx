@@ -3,10 +3,10 @@
   var Link = ReactRouter.Link;
   root.UserInfo = React.createClass({
     getInitialState: function () {
-      return {user: UserStore.getCurrentUser()};
+      return {user: UserStore.getUser()};
     },
     _onChange: function () {
-      this.setState({user: UserStore.getCurrentUser()});
+      this.setState({user: UserStore.getUser()});
     },
     componentWillMount: function () {
       UserStore.addChangeListener(this._onChange);

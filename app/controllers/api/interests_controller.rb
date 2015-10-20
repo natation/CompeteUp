@@ -6,6 +6,9 @@ class Api::InterestsController < ApplicationController
         @interests = current_user.interests
       elsif query[:fetchNone]
         @interests = Interest.none
+      elsif query[:getCurrentCompetitionInterests]
+        competition = Competition.find(query[:getCurrentCompetitionInterests])
+        @interests = competition.interests
       end
     else
       @interests = Interest.all.take(20)

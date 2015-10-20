@@ -12,10 +12,8 @@
         case "photos":
           selectedKey = 3;
         break;
-        default:
-          selectedKey = 1;
       }
-      return {competition: {},
+      return {competition: {id: this.props.params.id},
               selectedKey: selectedKey};
     },
     componentWillMount: function () {
@@ -35,19 +33,20 @@
     },
     render: function () {
       return (
-        <div className="container">
+        <Grid>
           <CompetitionNavbar selectedKey={this.state.selectedKey}
                              name={this.state.competition.name}
                              handleSelect={this.handleCompetitionNavbarSelect}/>
-          <div className="row">
-            <div className="col-md-4">
-              <CompetitionSidebar />
-            </div>
-            <div className="col-md-8">
-              {this.props.children}
-            </div>
-          </div>
-        </div>
+          <Row>
+           <Col md={4}>
+             <CompetitionSidebar {...this.state.competition}/>
+           </Col>
+           <Col md={8}>
+             {this.props.children}
+           </Col>
+          </Row>
+
+        </Grid>
       );
     }
   });

@@ -20,7 +20,7 @@
       MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     _onChange: function () {
-      var user = UserStore.getCurrentUser();
+      var user = UserStore.getUser();
       this.setState(
         {
           name: user.name,
