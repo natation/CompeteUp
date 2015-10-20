@@ -20,6 +20,9 @@ class Api::CompetitionsController < ApplicationController
         @competitions = current_user.competitions
       elsif query[:getCurrentCompetition]
         @competitions = Competition.where("id = ?", query[:getCurrentCompetition])
+      elsif query[:suggestionFor]
+        competition = Competition.find(query[:suggestionFor])
+        @competitions = competition.getCompetitionSuggestions
       end
     else
       @competitions = Competition.all.take(9)

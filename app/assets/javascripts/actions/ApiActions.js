@@ -7,6 +7,12 @@
         competitions: competitions
       });
     },
+    receiveAllSuggestions: function (competitions) {
+      AppDispatcher.dispatch({
+        actionType: CompetitionConstants.SUGGESTIONS_RECEIVED,
+        competitions: competitions
+      });
+    },
     receiveAllInterests: function (interests) {
       AppDispatcher.dispatch({
         actionType: InterestConstants.INTERESTS_RECEIVED,

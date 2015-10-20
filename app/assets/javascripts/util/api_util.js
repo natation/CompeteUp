@@ -12,6 +12,17 @@
         }
       });
     },
+    fetchCompetitionSuggestions: function (queryParams) {
+      $.ajax({
+        url: "/api/competitions/",
+        type: "GET",
+        dataType: "json",
+        data: {query: queryParams},
+        success: function (competitions) {
+          ApiActions.receiveAllSuggestions(competitions);
+        }
+      });
+    },
     fetchAllInterests: function (queryParams) {
       $.ajax({
         url: "/api/interests/",
@@ -25,7 +36,7 @@
     },
     fetchCurrentUser: function () {
       $.ajax({
-        url: "/users/" + window.CURRENT_USER_ID,
+        url: "/users/1",
         type: "GET",
         dataType: "json",
         success: function (user) {
@@ -35,7 +46,7 @@
     },
     fetchUser: function (userParams) {
       $.ajax({
-        url: "/users/" + window.CURRENT_USER_ID,
+        url: "/users/1",
         type: "GET",
         dataType: "json",
         data: {user: userParams},
@@ -46,7 +57,7 @@
     },
     updateCurrentUser: function (user) {
       $.ajax({
-        url: "/users/" + window.CURRENT_USER_ID,
+        url: "/users/1",
         type: "PATCH",
         dataType: "json",
         data: {user: user},
@@ -60,7 +71,7 @@
     },
     removeInterest: function (name) {
       $.ajax({
-        url: "/api/interests/" + window.CURRENT_USER_ID,
+        url: "/api/interests/1",
         type: "DELETE",
         dataType: "json",
         data: {name: name},

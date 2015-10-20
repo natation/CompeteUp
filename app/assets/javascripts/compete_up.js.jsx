@@ -11,7 +11,7 @@ $(function() {
    var App = React.createClass({
    render: function () {
        return (
-         <div className="container">
+         <div>
            <Navbar/>
            {this.props.children}
          </div>
@@ -21,6 +21,7 @@ $(function() {
    var routes = (
      <Route path="/" component={App}>
        <IndexRoute component={Index}/>
+       <Route path="find" component={Index}/>
        <Route path="profile" component={UserProfile}/>
        <Route path="profile/editUserInfo" component={UserEditForm}/>
        <Route path="profile/editInterests" component={UserEditInterests}/>
