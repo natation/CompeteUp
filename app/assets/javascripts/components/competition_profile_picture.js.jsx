@@ -10,9 +10,9 @@
                                 { width: 100, height: 150, crop: 'fill',
                                   radius: 20});
       return (
-        <Row>
+        <RB.Row>
           <img src={url} alt="Profile Pic"/>
-        </Row>
+        </RB.Row>
       );
     }
   });

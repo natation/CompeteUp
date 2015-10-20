@@ -17,14 +17,14 @@
     },
     render: function () {
       return (
-        <Row>
+        <RB.Row>
           <h4>{this.props.location}</h4>
           <h4>Established: {this.props.established}</h4>
           <h4>Organizer:</h4>
             <Link to={"users/" + this.state.user.id}>
               {this.state.user.name}
             </Link>
-        </Row>
+        </RB.Row>
       );
     }
   });

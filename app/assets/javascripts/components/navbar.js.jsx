@@ -34,9 +34,9 @@
               id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li>
-                  <a href="">
+                  <Link to="/find">
                     <strong>Find</strong> a Competition
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link to="/startCompetition">

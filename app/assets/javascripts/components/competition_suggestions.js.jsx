@@ -16,7 +16,7 @@
     },
     render: function () {
       return (
-        <Row>
+        <RB.Row>
           <h4>Other suggested competitions</h4>
           <ul>
             {
@@ -25,7 +25,7 @@
               })
             }
           </ul>
-        </Row>
+        </RB.Row>
       );
     }
   });

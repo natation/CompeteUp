@@ -79,13 +79,19 @@ body {
     border: 2px solid $lightgray;
     border-radius: 13px;
   }
-  .dropdown-menu {
+  .dropdown-menu > li {
     a {
+      display: block;
       border: none;
+      border-radius: none;
       &:hover {
         background: $red;
         color: white;
       }
+    }
+    &:hover {
+      background: $red;
+      color: white;
     }
   }
 }

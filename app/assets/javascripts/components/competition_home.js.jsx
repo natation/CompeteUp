@@ -4,9 +4,9 @@
   root.CompetitionHome = React.createClass({
     render: function () {
       return (
-        <Grid>
+        <RB.Grid>
           <h2>Events</h2>
-        </Grid>
+        </RB.Grid>
       );
     }
   });

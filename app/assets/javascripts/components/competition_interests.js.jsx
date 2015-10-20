@@ -16,9 +16,9 @@
     },
     render: function () {
       return (
-        <Row>
+        <RB.Row>
           <h4>We're about:</h4>
-          <Col md={12}>
+          <RB.Col md={12}>
             {
               this.state.interests.map(function (interest, idx){
                 return (
@@ -26,8 +26,8 @@
                 );
               })
             }
-          </Col>
-        </Row>
+          </RB.Col>
+        </RB.Row>
 
       );
     }

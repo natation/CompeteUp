@@ -33,20 +33,19 @@
     },
     render: function () {
       return (
-        <Grid>
+        <RB.Grid>
           <CompetitionNavbar selectedKey={this.state.selectedKey}
                              name={this.state.competition.name}
                              handleSelect={this.handleCompetitionNavbarSelect}/>
-          <Row>
-           <Col md={4}>
-             <CompetitionSidebar {...this.state.competition}/>
-           </Col>
-           <Col md={8}>
-             {this.props.children}
-           </Col>
-          </Row>
-
-        </Grid>
+          <RB.Row>
+            <RB.Col md={4}>
+              <CompetitionSidebar {...this.state.competition}/>
+            </RB.Col>
+            <RB.Col md={8}>
+              {this.props.children}
+            </RB.Col>
+          </RB.Row>
+        </RB.Grid>
       );
     }
   });
