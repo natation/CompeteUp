@@ -16,16 +16,16 @@
       CompetitionStore.removeChangeListener(this._onChange);
     },
     render: function () {
-      var publicId = "competition-default_cyldui.png";
       var finished = [];
       var competitionsForRow = [];
       var done = false;
       _.each(this.state.competitions, function (competition, idx) {
+        var publicId = "competition-default_cyldui.png";
         if (competition.profile_pic_url) {
           publicId = competition.profile_pic_url;
         }
         var url = $.cloudinary.url(publicId,
-                                  { width: 350, crop: 'fill',
+                                  { width: 350, height: 230, crop: 'fill',
                                     radius: 20});
         competitionsForRow.push(
           <div key={idx} className="col-md-4">

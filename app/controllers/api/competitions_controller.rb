@@ -25,7 +25,7 @@ class Api::CompetitionsController < ApplicationController
         @competitions = competition.getCompetitionSuggestions
       end
     else
-      @competitions = Competition.all.take(9)
+      @competitions = Competition.limit(9).order("RANDOM()")
     end
   end
 

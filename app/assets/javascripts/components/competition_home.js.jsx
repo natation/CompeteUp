@@ -5,7 +5,7 @@
     render: function () {
       return (
         <RB.Grid>
-          <h2>Events</h2>
+          <h2>Upcoming Events (upcoming)...</h2>
         </RB.Grid>
       );
     }

@@ -7,7 +7,7 @@
         publicId = this.props.profile_pic_url;
       }
       var url = $.cloudinary.url(publicId,
-                                { width: 100, height: 150, crop: 'fill',
+                                { width: 200, height: 250, crop: 'fill',
                                   radius: 20});
       return (
         <RB.Row>
