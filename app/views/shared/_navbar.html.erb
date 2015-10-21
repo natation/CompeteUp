@@ -1,14 +1,21 @@
 <nav class="navbar">
   <div class="row">
-    <div class="col-xs-offset-1 col-xs-1">Logo</div>
+    <div class="col-xs-offset-1 col-xs-1">
+      <a href="/"><img src="/assets/logo.png"/></a>
+    </div>
     <% if for_sign_up %>
-      <div class="col-xs-1">Sign up Page</div>
+      <div class="col-xs-offset-6 col-xs-1">
+        <a href="<%= new_session_url %>">
+          <button class="btn btn-default btn-lg" style="margin-top:20px;">Log in</button>
+        </a>
+      </div>
+    <% else %>
+      <div class="col-xs-offset-6 col-xs-1">
+        <a href="<%= new_user_url %>">
+          <button class="btn btn-default btn-lg" style="margin-top:20px;">Sign up</button>
+        </a>
+      </div>
     <% end %>
-    <div class="col-xs-offset-6 col-xs-1">
-      <a href="<%= new_user_url %>">Sign up</a>
-    </div>
-    <div class="col-xs-1">
-      <a href="<%= new_session_url %>">Log in</a>
-    </div>
+
   </div>
 </nav>
