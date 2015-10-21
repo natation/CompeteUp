@@ -17,7 +17,7 @@
     render: function () {
       return (
         <RB.Row>
-          <h4>Other suggested competitions</h4>
+          <h4>Other competitions our members are entered in:</h4>
           <ul>
             {
               this.state.competitions.map(function (competition, idx) {

@@ -21,13 +21,11 @@
       var competitionsForRow = [];
       var done = false;
       _.each(this.state.competitions, function (competition, idx) {
-        if (typeof this.state.competition !== "undefined") {
-          if (this.state.competition.profile_pic_url) {
-            publicId = this.state.competition.profile_pic_url;
-          }
+        if (competition.profile_pic_url) {
+          publicId = competition.profile_pic_url;
         }
         var url = $.cloudinary.url(publicId,
-                                  { width: 100, height: 150, crop: 'fill',
+                                  { width: 350, crop: 'fill',
                                     radius: 20});
         competitionsForRow.push(
           <div key={idx} className="col-md-4">
@@ -47,10 +45,10 @@
         }
       }, this);
       return (
-        <div>
+        <RB.Grid className="main-content">
           <h1>Competitions</h1>
             {finished}
-        </div>
+        </RB.Grid>
       );
     }
   });

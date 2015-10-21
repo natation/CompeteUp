@@ -22,7 +22,7 @@
             {
               this.state.interests.map(function (interest, idx){
                 return (
-                  <Button key={idx} bsStyle="default">{interest.name}</Button>
+                  <RB.Button key={idx} bsStyle="default">{interest.name}</RB.Button>
                 );
               })
             }

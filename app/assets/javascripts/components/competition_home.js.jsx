@@ -11,4 +11,3 @@
     }
   });
 }(this));
-          // <Link to={this.props}</Link>

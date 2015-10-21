@@ -97,6 +97,20 @@
         }
       });
     },
+    joinCompetition: function (competition) {
+      $.ajax({
+        url: "/api/competitions/",
+        type: "POST",
+        dataType: "json",
+        data: {competition: competition},
+        success: function (message) {
+          ApiActions.sendMessage(message, false);
+        },
+        error: function (error) {
+          ApiActions.sendError(error, true);
+        }
+      });
+    },
     logOut: function () {
       $.ajax({
         url: "/session/",

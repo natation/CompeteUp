@@ -63,27 +63,29 @@
                                 { width: 100, height: 150, crop: 'fill',
                                   radius: 20});
       return (
-        <form onSubmit={this.handleSubmit}>
-          <img src={url} alt="Profile Pic"/>
-          <div className="row form-group">
-            <div className="col-md-offset-2 col-md-3">
-              <button className="btn btn-default"
-                      onClick={this.handleNewPicUpload}
-                      id="uploadWidget">
-                        Upload New Profile Picture
-              </button>
+        <RB.Grid>
+          <form onSubmit={this.handleSubmit}>
+            <img src={url} alt="Profile Pic"/>
+            <div className="row form-group">
+              <div className="col-md-offset-2 col-md-3">
+                <button className="btn btn-default"
+                        onClick={this.handleNewPicUpload}
+                        id="uploadWidget">
+                          Upload New Profile Picture
+                </button>
+              </div>
+              <div className="col-md-3">
+                <button type="submit"
+                        className="btn btn-default">
+                          Update Profile Picture
+                </button>
+              </div>
+              <div className="col-md-3">
+                <Link to="profile" className="btn btn-default">Cancel</Link>
+              </div>
             </div>
-            <div className="col-md-3">
-              <button type="submit"
-                      className="btn btn-default">
-                        Update Profile Picture
-              </button>
-            </div>
-            <div className="col-md-3">
-              <Link to="profile" className="btn btn-default">Cancel</Link>
-            </div>
-          </div>
-        </form>
+          </form>
+        </RB.Grid>
       );
     }
   });

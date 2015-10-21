@@ -49,7 +49,7 @@
             var $widget = $("#uploadWidget");
             $widget.text("Upload Successful");
             $widget.append("<p>" + result[0].original_filename + "</p>");
-            that.profilePicUrl = result[0].url;
+            that.profilePicUrl = result[0].public_id;
           }
         }
       );
