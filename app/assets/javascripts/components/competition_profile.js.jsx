@@ -18,26 +18,40 @@
     },
     componentWillMount: function () {
       CompetitionStore.addChangeListener(this._onChange);
+      MessageStore.addChangeListener(this._onReceiveMessage);
       ApiUtil.fetchCompetitionMatches({getCurrentCompetition: this.props.params.id});
       this.basePath = "/competitions/" + this.props.params.id + "/";
     },
     componentWillUnmount: function () {
       CompetitionStore.removeChangeListener(this._onChange);
+      MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     _onChange: function () {
       this.setState({competition: CompetitionStore.getCurrentCompetition()});
     },
+    _onReceiveMessage: function () {
+      var message = MessageStore.getMessages();
+      if (message.status < 400) {
+        this.handleCompetitionNavbarSelect(1, "home");
+      }
+    },
     handleCompetitionNavbarSelect: function (selectedKey, path) {
-      this.setState({selectedKey: selectedKey});
-      this.props.history.pushState(null, this.basePath + path);
+      if (path !== "join") {
+        this.setState({selectedKey: selectedKey});
+        this.props.history.pushState(null, this.basePath + path);
+      } else {
+        ApiUtil.joinCompetition({id: this.props.params.id});
+      }
     },
     render: function () {
+      var competitionJoined = "";
       return (
         <RB.Grid>
           <CompetitionNavbar selectedKey={this.state.selectedKey}
                              name={this.state.competition.name}
                              handleSelect={this.handleCompetitionNavbarSelect}/>
           <RB.Row>
+            {competitionJoined}
             <RB.Col md={4}>
               <CompetitionSidebar {...this.state.competition}/>
             </RB.Col>

@@ -1,12 +1,19 @@
 class Api::CompetitionsController < ApplicationController
   def create
-    @competition = Competition.new(competition_params.merge(
-                      {competition_owner_id: current_user.id}))
-    if @competition.save
-      current_user.competition_ids += [@competition.id]
-      render json: {responseJSON: "Competition #{params[:name]} created!", status: 200}
+    join_competition = params[:joinCompetition]
+    if (join_competition)
+      current_user.competition_ids =
+        (current_user.competition_ids + [join_competition[:id]]).uniq
+      render json: {responseJSON: "Competition joined!", status: 200}
     else
-      render json: @competition.errors.full_messages, status: :unprocessable_entity
+      @competition = Competition.new(competition_params.merge(
+                        {competition_owner_id: current_user.id}))
+      if @competition.save
+        current_user.competition_ids += [@competition.id]
+        render json: {responseJSON: "Competition #{params[:name]} created!", status: 200}
+      else
+        render json: @competition.errors.full_messages, status: :unprocessable_entity
+      end
     end
   end
 

@@ -102,7 +102,7 @@
         url: "/api/competitions/",
         type: "POST",
         dataType: "json",
-        data: {competition: competition},
+        data: {joinCompetition: competition},
         success: function (message) {
           ApiActions.sendMessage(message, false);
         },
