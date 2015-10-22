@@ -6,7 +6,7 @@
         <div className="container-fluid">
           <RB.Row>
             <RB.Jumbotron className="jumbotron-main">
-              <h3>Welcome, {window.CURRENT_USER_INFO.name}!</h3>
+              <h2>Welcome, {window.CURRENT_USER_INFO.name}!</h2>
             </RB.Jumbotron>
           </RB.Row>
           <RB.Grid className="search-bar">

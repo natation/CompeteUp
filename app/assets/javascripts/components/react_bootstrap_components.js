@@ -10,4 +10,6 @@
   root.RB.Navbar = ReactBootstrap.Navbar;
   root.RB.NavItem = ReactBootstrap.NavItem;
   root.RB.MenuItem = ReactBootstrap.MenuItem;
+  root.RB.Input = ReactBootstrap.Input;
+  root.RB.Glyphicon = ReactBootstrap.Glyphicon;
 }(this));
