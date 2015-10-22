@@ -117,10 +117,11 @@ body {
   position: relative;
   margin-bottom: 50px;
   > div {
-    width: 50%;
+    width: 70%;
     position: absolute;
-    top: -63px;
-    left: 25%;
+    left: 50%;
+    top: -30px;
+    transform: translateX(-50%) translateY(-50%);
     background: gray;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -131,7 +132,11 @@ body {
   .col-md-3, .col-md-6 {
     padding-left: 0px;
     .col-md-6 {
-      padding-right: 0px;
+      // padding-right: 0px;
+      a {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
     }
   }
   .col-md-4 {
@@ -147,26 +152,37 @@ body {
 .glyphicon-search {
   position: absolute;
   color: $lightgray;
-  left: 85%;
+  right: 10px;
   top: 10px;
 }
 
-.with-margin {
-  margin-top: 10px;
+.glyphicon-none {
+
+}
+
+.search-holder {
+  margin-left: 0px;
+  padding-right: 0px;
+}
+
+.with-top-padding {
+  padding-top: 15px;
+  margin: 0;
 }
 
 .competitions {
-  width: 90%;
+  padding-left: 50px;
+  padding-right: 50px;
   min-height: 500px;
   margin-top: 30px;
   margin-bottom: 50px;
   div {
     position: relative;
-    padding-right: 0px;
+    padding: 0 5px 5px 5px;
     h2 {
       position: absolute;
       bottom: 0px;
-      left: 20px;
+      left: 15px;
       color: white;
       text-shadow: 1px 1px 1px gray,
                    3px 3px 5px $red;
@@ -179,5 +195,6 @@ body {
       border: 7px solid $red;
       border-radius: 50%;
     }
+    overflow: hidden;
   }
 }

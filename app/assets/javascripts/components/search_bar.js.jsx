@@ -6,27 +6,36 @@
               searchGlyphShow: true};
     },
     handleKeyPress: function (e) {
-      var searchQuery = e.target.value ? {searchText: e.target.value} : null;
+      var searchString = e.target.value;
+      if (searchString) {
+        this.setState({searchGlyphShow: false});
+      } else {
+        this.setState({searchGlyphShow: true});
+      }
+      var searchQuery = searchString ? {searchText: searchString} : null;
       ApiUtil.fetchCompetitionMatches(searchQuery);
     },
     handleBarClick: function () {
       ApiUtil.fetchAllInterests();
     },
     render: function () {
-      var searchGlyph = <RB.Glyphicon glyph="search"/>;
+      var glyphShown = "";
+      if (this.state.searchGlyphShow) {
+        glyphShown = <RB.Glyphicon glyph="search"/>;
+      }
       return (
       	<RB.Row md={6}>
-          <RB.Col md={6}>
+          <RB.Col className="search-holder" md={6}>
              <RB.Input
                type="text"
                placeholder="All Competitions"
                onChange={this.handleKeyPress}
                standalone>
              </RB.Input>
-             {searchGlyph}
+             {glyphShown}
           </RB.Col>
           <RB.Col md={6}>
-            <RB.Row>
+            <RB.Row className="search-holder">
               <RB.Col md={4} mdOffset={2}>
                 <h6>Search by:</h6>
               </RB.Col>

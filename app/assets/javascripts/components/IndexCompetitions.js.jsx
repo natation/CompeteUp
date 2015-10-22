@@ -25,9 +25,9 @@
           publicId = competition.profile_pic_url;
         }
         var url = $.cloudinary.url(publicId,
-                                  { width: 350, height: 230, crop: 'fill'});
+                                  { width: 300, height: 230, crop: 'fill'});
         competitionsForRow.push(
-          <div key={idx} className="col-md-4 with-margin">
+          <div key={idx} className="col-md-4">
             <Link to={"competitions/" + competition.id}>
               <img alt={competition.name} src={url} className="focus">
                 <h2>{competition.name}</h2>
@@ -37,7 +37,7 @@
         );
         if ((idx + 1) % 3 === 0 || idx === this.state.competitions.length - 1) {
           finished.push(
-            <div key={idx} className="row">
+            <div key={idx} className="row with-top-padding">
               {competitionsForRow}
             </div>
           );
@@ -45,7 +45,7 @@
         }
       }, this);
       return (
-        <RB.Grid className="competitions">
+        <RB.Grid className="competitions container-fullwidth" standalone>
           {finished}
         </RB.Grid>
       );
