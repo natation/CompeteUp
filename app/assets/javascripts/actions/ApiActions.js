@@ -21,8 +21,20 @@
     },
     receiveSingleUser: function (user) {
       AppDispatcher.dispatch({
-        actionType: UserConstants.CURRENT_USER_RECEIVED,
-        user: [user]
+        actionType: UserConstants.USERS_RECEIVED,
+        users: [user]
+      });
+    },
+    receiveOrganizer: function (user) {
+      AppDispatcher.dispatch({
+        actionType: UserConstants.ORGANIZER_RECEIVED,
+        user: user
+      });
+    },
+    receiveAllUsers: function (users) {
+      AppDispatcher.dispatch({
+        actionType: UserConstants.USERS_RECEIVED,
+        users: users
       });
     },
     sendMessage: function (message, flashNow) {

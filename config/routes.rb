@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "static_pages#index"
   resources :static_pages, only: [:index]
-  resources :users, only: [:create, :new, :show, :update]
+  resources :users, only: [:create, :index, :new, :show, :update]
   resource :session, only: [:create, :destroy, :new]
   namespace :api, defaults: {format: :json} do
     resources :competitions, only: [:create, :index, :update]

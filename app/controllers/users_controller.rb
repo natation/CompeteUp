@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   end
 
   def index
+    u_params = params[:user]
+    if u_params && user_params[:competition_id]
+      @users = Competition.find(user_params[:competition_id]).users
+    end
   end
 
   def new
@@ -20,7 +24,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    if user_params && user_params[:showUserById]
+    u_params = params[:user]
+    if u_params && user_params[:showUserById]
       @user = User.find(user_params[:showUserById])
     end
   end
@@ -37,7 +42,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :bio,
-                                 :location, :profile_pic_url, :showUserById,
+                                 :location, :profile_pic_url,
+                                 :showUserById,
+                                 :competition_id,
                                  interest_ids: [])
   end
 end

@@ -11,6 +11,9 @@
     componentWillUnmount: function () {
       InterestStore.removeChangeListener(this._onChange);
     },
+    componentWillReceiveProps: function (nextProps) {
+      ApiUtil.fetchAllInterests({getCurrentCompetitionInterests: nextProps.id});
+    },
     _onChange: function () {
       this.setState({interests: InterestStore.all()});
     },
@@ -28,7 +31,6 @@
             }
           </RB.Col>
         </RB.Row>
-
       );
     }
   });

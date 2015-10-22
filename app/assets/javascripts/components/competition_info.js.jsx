@@ -6,14 +6,17 @@
       return {user: {}};
     },
     componentDidMount: function () {
-      UserStore.addChangeListener(this._onChange);
-      ApiUtil.fetchUser({showUserById: this.props.competition_owner_id});
+      UserStore.addOrganizerChangeListener(this._onChange);
+      ApiUtil.fetchOrganizer({showUserById: this.props.competition_owner_id});
     },
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onChange);
+      UserStore.removeOrganizerChangeListener(this._onChange);
+    },
+    componentWillReceiveProps: function (nextProps) {
+      ApiUtil.fetchOrganizer({showUserById: nextProps.competition_owner_id});
     },
     _onChange: function () {
-      this.setState({user: UserStore.getUser()});
+      this.setState({user: UserStore.getOrganizer()});
     },
     render: function () {
       var rendered = <RB.Row></RB.Row>;

@@ -26,6 +26,11 @@
       CompetitionStore.removeChangeListener(this._onChange);
       MessageStore.removeChangeListener(this._onReceiveMessage);
     },
+    componentWillReceiveProps: function (nextProps) {
+      this.state.selectedKey = 1;
+      ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.params.id});
+      this.basePath = "/competitions/" + nextProps.params.id + "/";
+    },
     _onChange: function () {
       this.setState({competition: CompetitionStore.getCurrentCompetition()});
     },
