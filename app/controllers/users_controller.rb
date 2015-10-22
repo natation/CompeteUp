@@ -20,6 +20,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    if user_params && user_params[:showUserById]
+      @user = User.find(user_params[:showUserById])
+    end
   end
 
   def update
@@ -34,6 +37,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :bio,
-                                 :location, :profile_pic_url, interest_ids: [])
+                                 :location, :profile_pic_url, :showUserById,
+                                 interest_ids: [])
   end
 end

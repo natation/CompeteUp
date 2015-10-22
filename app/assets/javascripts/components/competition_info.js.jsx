@@ -7,7 +7,7 @@
     },
     componentDidMount: function () {
       UserStore.addChangeListener(this._onChange);
-      ApiUtil.fetchUser({id: this.props.competition_owner_id});
+      ApiUtil.fetchUser({showUserById: this.props.competition_owner_id});
     },
     componentWillUnmount: function () {
       UserStore.removeChangeListener(this._onChange);
@@ -16,16 +16,20 @@
       this.setState({user: UserStore.getUser()});
     },
     render: function () {
-      return (
-        <RB.Row>
-          <h4>{this.props.location}</h4>
-          <h4>Established: {this.props.established}</h4>
-          <h4>Organizer:</h4>
-            <Link to={"users/" + this.state.user.id}>
-              {this.state.user.name}
-            </Link>
-        </RB.Row>
-      );
+      var rendered = <RB.Row></RB.Row>;
+      if (this.props.name) {
+        rendered = (
+          <RB.Row>
+            <h4>{this.props.location}</h4>
+            <h4>Established: {this.props.established}</h4>
+            <h4>Organizer:</h4>
+              <Link to={"users/" + this.state.user.id}>
+                {this.state.user.name}
+              </Link>
+          </RB.Row>
+        );
+      }
+      return rendered;
     }
   });
 }(this));

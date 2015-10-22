@@ -13,7 +13,7 @@
           selectedKey = 3;
         break;
       }
-      return {competition: {id: this.props.params.id},
+      return {competition: {},
               selectedKey: selectedKey};
     },
     componentWillMount: function () {
@@ -44,23 +44,25 @@
       }
     },
     render: function () {
-      var competitionJoined = "";
-      return (
-        <RB.Grid>
-          <CompetitionNavbar selectedKey={this.state.selectedKey}
-                             name={this.state.competition.name}
-                             handleSelect={this.handleCompetitionNavbarSelect}/>
-          <RB.Row>
-            {competitionJoined}
-            <RB.Col md={4}>
-              <CompetitionSidebar {...this.state.competition}/>
-            </RB.Col>
-            <RB.Col md={8}>
-              {this.props.children}
-            </RB.Col>
-          </RB.Row>
-        </RB.Grid>
-      );
+      var rendered = <RB.Grid></RB.Grid>;
+      if (this.state.competition.name) {
+        rendered = (
+          <RB.Grid>
+            <CompetitionNavbar selectedKey={this.state.selectedKey}
+                               name={this.state.competition.name}
+                               handleSelect={this.handleCompetitionNavbarSelect}/>
+            <RB.Row>
+              <RB.Col md={4}>
+                <CompetitionSidebar {...this.state.competition}/>
+              </RB.Col>
+              <RB.Col md={8}>
+                {this.props.children}
+              </RB.Col>
+            </RB.Row>
+          </RB.Grid>
+        );
+      }
+      return rendered;
     }
   });
 }(this));
