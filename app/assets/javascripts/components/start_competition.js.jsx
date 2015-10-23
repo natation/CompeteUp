@@ -8,8 +8,7 @@
         location: "San Francisco, CA",
         checkedInterests: [],
         name: "",
-        description: "",
-        errors: []
+        description: ""
       };
     },
     componentWillMount: function () {
@@ -23,9 +22,6 @@
       var message = MessageStore.getMessages();
       if (message.status < 400) {
         this.props.history.pushState(null, "/profile");
-      }
-      else {
-        this.setState({errors: message.responseJSON});
       }
     },
     handleCheckboxClicked: function (e) {
@@ -69,13 +65,8 @@
       ApiUtil.createCompetition(competition);
     },
     render: function () {
-      var errorText = "";
-      if (this.state.errors.length > 0) {
-        errorText = <h3>{this.state.errors.join(", ")}</h3>;
-      }
       return (
         <form onSubmit={this.handleSubmit}>
-          {errorText}
           <div className="row form-group">
             <div className="col-md-offset-3 col-md-6">
               <label>Location:</label>

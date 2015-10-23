@@ -30,28 +30,6 @@
         }
         var url = $.cloudinary.url(publicId,
                                   { width: 300, height: 230, crop: 'fill'});
-        var element;
-        if (this.props.listGroup) {
-          element = (
-            <RB.ListGroupItem>
-              <Link to={"competitions/" + competition.id}>
-                <img alt={competition.name} src={url} className="competition-focus">
-                  <h2>{competition.name}</h2>
-                </img>
-              </Link>
-            </RB.ListGroupItem>
-          );
-        } else {
-          element = (
-          <div key={idx} className="col-md-4">
-            <Link to={"competitions/" + competition.id}>
-              <img alt={competition.name} src={url} className="competition-focus">
-                <h2>{competition.name}</h2>
-              </img>
-            </Link>
-          </div>
-          );
-        }
         competitionsForRow.push(
           <div key={idx} className="col-md-4">
             <Link to={"competitions/" + competition.id}>
@@ -73,11 +51,13 @@
           competitionsForRow = [];
         }
       }, this);
+      var header = "";
       if (finished.length === 0) {
-        finished.push(<h2>No competitions found</h2>);
+        header = <h2>No competitions found</h2>;
       }
       return (
-        <RB.Grid className="competitions container-fullwidth" standalone>
+        <RB.Grid className="competitions">
+          {header}
           {finished}
         </RB.Grid>
       );

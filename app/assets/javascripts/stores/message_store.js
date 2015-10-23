@@ -31,18 +31,12 @@
       switch (payload.actionType) {
         case MessageConstants.MESSAGE_RECEIVED:
           resetMessages(payload.message);
-          // if (!payload.flashNow) {
-            // addDelayedMessage(payload.message.responseJSON);
-            resetDelayedMessage(payload.message);
-          // }
+          resetDelayedMessage(payload.message);
           MessageStore.emit(CHANGE_EVENT);
           break;
         case MessageConstants.ERROR_RECEIVED:
           resetMessages(payload.error);
-          // if (!payload.flashNow) {
-            // addDelayedMessage(payload.error.responseJSON);
-            resetDelayedMessage(payload.error);
-          // }
+          resetDelayedMessage(payload.error);
           MessageStore.emit(CHANGE_EVENT);
           break;
       }

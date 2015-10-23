@@ -3,8 +3,6 @@
   var Link = ReactRouter.Link;
   root.UserEditInterests = React.createClass({
     getInitialState: function () {
-      // return {checkedInterests: InterestStore.all(),
-      //         errors: []};
       return {checkedInterests: InterestStore.all()};
     },
     componentWillMount: function () {
@@ -20,13 +18,9 @@
       this.setState({checkedInterests: InterestStore.all()});
     },
     _onReceiveMessage: function () {
-      debugger
       var message = MessageStore.getMessages();
       if (message.status < 400) {
         this.props.history.pushState(null, "/profile");
-      }
-      else {
-        this.setState({errors: message.responseJSON});
       }
     },
     handleCheckboxClicked: function (e) {
@@ -51,10 +45,6 @@
       ApiUtil.updateCurrentUser(user);
     },
     render: function () {
-      var errorText = "";
-      // if (this.state.errors.length > 0) {
-        // errorText = <h3>{this.state.errors.join(", ")}</h3>;
-      // }
       return (
         <form onSubmit={this.handleSubmit}>
           <div className="row form-group">

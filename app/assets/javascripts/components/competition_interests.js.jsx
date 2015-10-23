@@ -18,18 +18,26 @@
       this.setState({interests: InterestStore.all()});
     },
     render: function () {
-      return (
-        <RB.Row>
-          <h4>We're about:</h4>
+      var interests = [];
+      if (this.state.interests.length > 0) {
+        interests.push(<h4>We're about:</h4>);
+        interests.push(
           <RB.Col md={12}>
             {
               this.state.interests.map(function (interest, idx){
                 return (
-                  <RB.Button key={idx} bsStyle="default">{interest.name}</RB.Button>
+                  <RB.Button key={idx} bsStyle="default">
+                    {interest.name}
+                  </RB.Button>
                 );
               })
             }
           </RB.Col>
+        );
+      }
+      return (
+        <RB.Row>
+          {interests}
         </RB.Row>
       );
     }

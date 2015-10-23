@@ -7,8 +7,7 @@
       return {name: "",
               email: "",
               location: "",
-              bio: "",
-              errors: []};
+              bio: ""};
     },
     componentWillMount: function () {
       UserStore.addChangeListener(this._onChange);
@@ -35,9 +34,6 @@
       if (message.status < 400) {
         this.props.history.pushState(null, "/profile");
       }
-      else {
-        this.setState({errors: message.responseJSON});
-      }
     },
     handleSubmit: function (e) {
       e.preventDefault();
@@ -49,14 +45,9 @@
       ApiUtil.updateCurrentUser(user);
     },
     render: function () {
-      var errorText = "";
-      // if (this.state.errors.length > 0) {
-      //   errorText = <h3>{this.state.errors.join(", ")}</h3>;
-      // }
       return (
         <RB.Grid>
           <form onSubmit={this.handleSubmit}>
-            {errorText}
             <div className="row form-group">
               <div className="col-md-offset-3 col-md-6">
                 <label>Name: </label>

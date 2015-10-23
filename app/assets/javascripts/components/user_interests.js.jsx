@@ -8,15 +8,12 @@
 
   root.UserInterests = React.createClass({
     getInitialState: function () {
-      return {interests: InterestStore.all(),
-              message: ""};
+      return {interests: InterestStore.all()};
     },
     _onChange: function () {
       this.setState({interests: InterestStore.all()});
     },
     _onReceiveMessage: function () {
-      var receivedMessage = MessageStore.getMessages();
-      this.setState({message: receivedMessage.responseJSON});
       ApiUtil.fetchAllInterests({getCurrentUserInterests: true});
     },
     _removeInterest: function (e) {
@@ -32,15 +29,8 @@
       MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     render: function () {
-      var message = "";
-      // if (this.state.message.length > 0) {
-      //   message = <div className="alert alert-success" id="success">
-      //               {this.state.message}
-      //             </div>;
-      // }
       return (
         <div className="col-md-3">
-          {message}
           <h3>Interests:</h3><Link to="profile/editInterests">Edit Interests</Link>
             {
               this.state.interests.map(function (interest, idx) {

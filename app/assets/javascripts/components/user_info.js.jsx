@@ -11,7 +11,6 @@
     componentWillMount: function () {
       UserStore.addChangeListener(this._onChange);
       ApiUtil.fetchCurrentUser();
-      // this.currentMessages = MessageStore.getDelayedMessages();
     },
     componentWillUnmount: function () {
       UserStore.removeChangeListener(this._onChange);
@@ -27,13 +26,8 @@
         userBio = this.state.user.bio;
         memberSince = this.state.user.memberSince;
       }
-      var successText = "";
-      // if (this.currentMessages.length > 0) {
-      //   successText = <div><h3>{this.currentMessages[0]}</h3></div>;
-      // }
       return (
         <div className="col-md-7">
-          {successText}
           <div className="row">
             <div className="col-md-3">
               <h2>{userName}</h2>

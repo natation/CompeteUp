@@ -76,7 +76,6 @@
           ApiActions.sendSuccess(message, false);
         },
         error: function (error) {
-          // ApiActions.sendError(error, true);
           ApiActions.sendError(error, false);
         }
       });
@@ -88,11 +87,9 @@
         dataType: "json",
         data: {name: name},
         success: function (message) {
-          // ApiActions.sendSuccess(message, true);
           ApiActions.sendSuccess(message, false);
         },
         error: function (error) {
-          // ApiActions.sendError(error, true);
           ApiActions.sendError(error, false);
         }
       });
@@ -104,11 +101,10 @@
         dataType: "json",
         data: {competition: competition},
         success: function (message) {
-          ApiActions.sendSuccess(message, false);
+          ApiActions.sendSuccess(message);
         },
         error: function (error) {
-          // ApiActions.sendError(error, true);
-          ApiActions.sendError(error, false);
+          ApiActions.sendError(error);
         }
       });
     },
@@ -119,11 +115,10 @@
         dataType: "json",
         data: {joinCompetition: competition},
         success: function (message) {
-          ApiActions.sendSuccess(message, false);
+          ApiActions.sendSuccess(message);
         },
         error: function (error) {
-          // ApiActions.sendError(error, true);
-          ApiActions.sendError(error, false);
+          ApiActions.sendError(error);
         }
       });
     },

@@ -2,7 +2,6 @@
   'use strict';
   root.CompetitionJoin = React.createClass({
     getInitialState: function () {
-      return {errors: ""};
     },
     componentWillMount: function () {
       MessageStore.addChangeListener(this._onReceiveMessage);
@@ -23,10 +22,6 @@
       ApiUtil.joinCompetition(this.props.params.id);
     },
     render: function () {
-      var errorText = "";
-      if (this.state.errors.length > 0) {
-        errorText = <h3>{this.state.errors.join(", ")}</h3>;
-      }
       return <RB.Button onClick={this._handleJoin}>Join</RB.Button>;
     }
   });
