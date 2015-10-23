@@ -73,10 +73,11 @@
         dataType: "json",
         data: {user: user},
         success: function (message) {
-          ApiActions.sendMessage(message, false);
+          ApiActions.sendSuccess(message, false);
         },
         error: function (error) {
-          ApiActions.sendError(error, true);
+          // ApiActions.sendError(error, true);
+          ApiActions.sendError(error, false);
         }
       });
     },
@@ -87,10 +88,12 @@
         dataType: "json",
         data: {name: name},
         success: function (message) {
-          ApiActions.sendMessage(message, true);
+          // ApiActions.sendSuccess(message, true);
+          ApiActions.sendSuccess(message, false);
         },
         error: function (error) {
-          ApiActions.sendError(error, true);
+          // ApiActions.sendError(error, true);
+          ApiActions.sendError(error, false);
         }
       });
     },
@@ -101,10 +104,11 @@
         dataType: "json",
         data: {competition: competition},
         success: function (message) {
-          ApiActions.sendMessage(message, false);
+          ApiActions.sendSuccess(message, false);
         },
         error: function (error) {
-          ApiActions.sendError(error, true);
+          // ApiActions.sendError(error, true);
+          ApiActions.sendError(error, false);
         }
       });
     },
@@ -115,10 +119,11 @@
         dataType: "json",
         data: {joinCompetition: competition},
         success: function (message) {
-          ApiActions.sendMessage(message, false);
+          ApiActions.sendSuccess(message, false);
         },
         error: function (error) {
-          ApiActions.sendError(error, true);
+          // ApiActions.sendError(error, true);
+          ApiActions.sendError(error, false);
         }
       });
     },

@@ -50,9 +50,9 @@
     },
     render: function () {
       var errorText = "";
-      if (this.state.errors.length > 0) {
-        errorText = <h3>{this.state.errors.join(", ")}</h3>;
-      }
+      // if (this.state.errors.length > 0) {
+      //   errorText = <h3>{this.state.errors.join(", ")}</h3>;
+      // }
       return (
         <RB.Grid>
           <form onSubmit={this.handleSubmit}>

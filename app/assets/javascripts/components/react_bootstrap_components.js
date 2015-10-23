@@ -14,4 +14,5 @@
   root.RB.Glyphicon = ReactBootstrap.Glyphicon;
   root.RB.ListGroup = ReactBootstrap.ListGroup;
   root.RB.ListGroupItem = ReactBootstrap.ListGroupItem;
+  root.RB.Alert = ReactBootstrap.Alert;
 }(this));

@@ -33,9 +33,11 @@
     },
     render: function () {
       var message = "";
-      if (this.state.message.length > 0) {
-        message = <h4>{this.state.message}</h4>;
-      }
+      // if (this.state.message.length > 0) {
+      //   message = <div className="alert alert-success" id="success">
+      //               {this.state.message}
+      //             </div>;
+      // }
       return (
         <div className="col-md-3">
           {message}

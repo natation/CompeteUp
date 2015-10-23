@@ -1,15 +1,15 @@
 (function(root) {
   'use strict';
   var _messages = {};
-  var _delayedMessages = [];
+  var _delayedMessage = {};
   var CHANGE_EVENT = "CHANGE_EVENT";
 
   var resetMessages = function (messages) {
     _messages = messages;
   };
 
-  var addDelayedMessage = function (delayedMessage) {
-    _delayedMessages.push(delayedMessage);
+  var resetDelayedMessage = function (delayedMessage) {
+    _delayedMessage = delayedMessage;
   };
 
   root.MessageStore = $.extend({}, EventEmitter.prototype, {
@@ -17,9 +17,9 @@
       return $.extend({}, _messages);
     },
     getDelayedMessages: function () {
-      var unReadMessages = _delayedMessages;
-      _delayedMessages = [];
-      return unReadMessages;
+      var unReadMessage = _delayedMessage;
+      _delayedMessage = {};
+      return unReadMessage;
     },
     addChangeListener: function (callback) {
       MessageStore.on(CHANGE_EVENT, callback);
@@ -31,16 +31,18 @@
       switch (payload.actionType) {
         case MessageConstants.MESSAGE_RECEIVED:
           resetMessages(payload.message);
-          if (!payload.flashNow) {
-            addDelayedMessage(payload.message.responseJSON);
-          }
+          // if (!payload.flashNow) {
+            // addDelayedMessage(payload.message.responseJSON);
+            resetDelayedMessage(payload.message);
+          // }
           MessageStore.emit(CHANGE_EVENT);
           break;
         case MessageConstants.ERROR_RECEIVED:
           resetMessages(payload.error);
-          if (!payload.flashNow) {
-            addDelayedMessage(payload.error.responseJSON);
-          }
+          // if (!payload.flashNow) {
+            // addDelayedMessage(payload.error.responseJSON);
+            resetDelayedMessage(payload.error);
+          // }
           MessageStore.emit(CHANGE_EVENT);
           break;
       }

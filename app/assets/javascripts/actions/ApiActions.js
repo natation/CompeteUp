@@ -37,7 +37,7 @@
         users: users
       });
     },
-    sendMessage: function (message, flashNow) {
+    sendSuccess: function (message, flashNow) {
       AppDispatcher.dispatch({
         actionType: MessageConstants.MESSAGE_RECEIVED,
         message: message,

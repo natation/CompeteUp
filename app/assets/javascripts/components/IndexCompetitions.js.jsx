@@ -73,6 +73,9 @@
           competitionsForRow = [];
         }
       }, this);
+      if (finished.length === 0) {
+        finished.push(<h2>No competitions found</h2>);
+      }
       return (
         <RB.Grid className="competitions container-fullwidth" standalone>
           {finished}
