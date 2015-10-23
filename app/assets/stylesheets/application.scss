@@ -192,7 +192,8 @@ body {
   }
   .competition-focus {
     width: 100%;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
+    border: 7px solid rgba(0, 0, 0, 0);
     &:hover {
       border: 7px solid $red;
       border-radius: 50%;

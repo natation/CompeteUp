@@ -20,12 +20,12 @@ class Api::CompetitionsController < ApplicationController
   def index
     query = params[:query]
     if query.present?
-      if query[:searchTextByName]
+      if query[:searchByName]
         @competitions = Competition.where("lower(name) ~ ?",
-                                          query[:searchTextByName].downcase)
-      elsif query[:searchTextByInterest]
+                                          query[:searchByName].downcase)
+      elsif query[:searchByInterest]
         interests = Interest.where("lower(name) = ?",
-                                   query[:searchTextByInterest].downcase)
+                                   query[:searchByInterest].downcase)
         @competitions = interests.first.competitions
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions

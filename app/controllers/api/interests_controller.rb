@@ -2,7 +2,10 @@ class Api::InterestsController < ApplicationController
   def index
     query = params[:query]
     if query.present?
-      if query[:getCurrentUserInterests]
+      if query[:searchByName]
+        @interests = Interest.where("lower(name) ~ ?",
+                                          query[:searchByName].downcase)
+      elsif query[:getCurrentUserInterests]
         @interests = current_user.interests
       elsif query[:fetchNone]
         @interests = Interest.none

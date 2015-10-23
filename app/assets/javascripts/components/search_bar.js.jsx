@@ -6,19 +6,31 @@
               searchByName: true,
               interestsAppear: false};
     },
-    _handleKeyPress: function (e) {
+    _handleKeyPress: function (e, interestsClosing) {
       var searchString = e.target.value;
       this.setState({searchText: searchString});
       var searchQuery;
       if (this.state.searchByName) {
-        searchQuery = searchString ? {searchTextByName: searchString} : null;
+        searchQuery = searchString ? {searchByName: searchString} : null;
       } else {
-        searchQuery = searchString ? {searchTextByInterest: searchString} : null;
+        searchQuery = searchString ? {searchByInterest: searchString} : null;
       }
-      ApiUtil.fetchCompetitionMatches(searchQuery);
+      if (this.state.searchByName) {
+        ApiUtil.fetchCompetitionMatches(searchQuery);
+      } else if (interestsClosing) {
+        ApiUtil.fetchCompetitionMatches(searchQuery);
+        this.setState({searchText: ""});
+      } else {
+        ApiUtil.fetchAllInterests({searchByName: searchString});
+      }
     },
     _handleOnChange: function () {
-      this.setState({searchText: "", searchByName: !this.state.searchByName});
+      this.setState({searchText: "",
+                     searchByName: !this.state.searchByName});
+      if (this.state.interestsAppear) {
+        this.setState({interestsAppear: false});
+      }
+      this._handleKeyPress({target: {value: ""}}, true);
     },
     _handleClick: function () {
       if (!this.state.searchByName) {
@@ -26,24 +38,26 @@
       }
     },
     _handleInterestClick: function (name, e) {
-      this._handleKeyPress({target: {value: name}});
+      this._handleKeyPress({target: {value: name}}, true);
       this.setState({interestsAppear: false});
     },
     render: function () {
       var glyphShown = "";
       var interestsList = "";
+      var placeholder = "Showing All Competitions";
       if (!this.state.searchText) {
         glyphShown = <RB.Glyphicon glyph="search"/>;
       }
       if (this.state.interestsAppear) {
         interestsList = <IndexInterests handleClick={this._handleInterestClick}/>;
+        placeholder = "Showing All Interests";
       }
       return (
       	<RB.Row md={6}>
           <RB.Col className="search-holder" md={6}>
              <RB.Input
                type="text"
-               placeholder="Showing All Competitions"
+               placeholder={placeholder}
                onChange={this._handleKeyPress}
                onClick={this._handleClick}
                value={this.state.searchText}
