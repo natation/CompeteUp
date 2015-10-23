@@ -12,4 +12,6 @@
   root.RB.MenuItem = ReactBootstrap.MenuItem;
   root.RB.Input = ReactBootstrap.Input;
   root.RB.Glyphicon = ReactBootstrap.Glyphicon;
+  root.RB.ListGroup = ReactBootstrap.ListGroup;
+  root.RB.ListGroupItem = ReactBootstrap.ListGroupItem;
 }(this));

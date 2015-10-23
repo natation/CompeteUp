@@ -3,36 +3,54 @@
   root.SearchBar = React.createClass({
     getInitialState: function () {
       return {searchText: "",
-              searchGlyphShow: true};
+              searchByName: true,
+              interestsAppear: false};
     },
-    handleKeyPress: function (e) {
+    _handleKeyPress: function (e) {
       var searchString = e.target.value;
-      if (searchString) {
-        this.setState({searchGlyphShow: false});
+      this.setState({searchText: searchString});
+      var searchQuery;
+      if (this.state.searchByName) {
+        searchQuery = searchString ? {searchTextByName: searchString} : null;
       } else {
-        this.setState({searchGlyphShow: true});
+        searchQuery = searchString ? {searchTextByInterest: searchString} : null;
       }
-      var searchQuery = searchString ? {searchText: searchString} : null;
       ApiUtil.fetchCompetitionMatches(searchQuery);
     },
-    handleBarClick: function () {
-      ApiUtil.fetchAllInterests();
+    _handleOnChange: function () {
+      this.setState({searchText: "", searchByName: !this.state.searchByName});
+    },
+    _handleClick: function () {
+      if (!this.state.searchByName) {
+        this.setState({interestsAppear: !this.state.interestsAppear});
+      }
+    },
+    _handleInterestClick: function (name, e) {
+      this._handleKeyPress({target: {value: name}});
+      this.setState({interestsAppear: false});
     },
     render: function () {
       var glyphShown = "";
-      if (this.state.searchGlyphShow) {
+      var interestsList = "";
+      if (!this.state.searchText) {
         glyphShown = <RB.Glyphicon glyph="search"/>;
+      }
+      if (this.state.interestsAppear) {
+        interestsList = <IndexInterests handleClick={this._handleInterestClick}/>;
       }
       return (
       	<RB.Row md={6}>
           <RB.Col className="search-holder" md={6}>
              <RB.Input
                type="text"
-               placeholder="All Competitions"
-               onChange={this.handleKeyPress}
+               placeholder="Showing All Competitions"
+               onChange={this._handleKeyPress}
+               onClick={this._handleClick}
+               value={this.state.searchText}
                standalone>
              </RB.Input>
              {glyphShown}
+             {interestsList}
           </RB.Col>
           <RB.Col md={6}>
             <RB.Row className="search-holder">
@@ -43,7 +61,8 @@
                 <RB.Input
                   type="select"
                   placeholder="name"
-                  standalone>
+                  standalone
+                  onChange={this._handleOnChange}>
                     <option value="name">Name</option>
                     <option value="interest">Interest</option>
                 </RB.Input>

@@ -20,9 +20,13 @@ class Api::CompetitionsController < ApplicationController
   def index
     query = params[:query]
     if query.present?
-      if query[:searchText]
+      if query[:searchTextByName]
         @competitions = Competition.where("lower(name) ~ ?",
-                                          query[:searchText].downcase)
+                                          query[:searchTextByName].downcase)
+      elsif query[:searchTextByInterest]
+        interests = Interest.where("lower(name) = ?",
+                                   query[:searchTextByInterest].downcase)
+        @competitions = interests.first.competitions
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions
       elsif query[:getCurrentCompetition]
@@ -32,7 +36,7 @@ class Api::CompetitionsController < ApplicationController
         @competitions = competition.getCompetitionSuggestions
       end
     else
-      @competitions = Competition.limit(9).order("RANDOM()")
+      @competitions = Competition.limit(100).order("RANDOM()")
     end
   end
 

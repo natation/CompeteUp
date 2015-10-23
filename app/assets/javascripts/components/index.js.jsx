@@ -12,7 +12,7 @@
           <RB.Grid className="search-bar">
             <SearchBar/>
           </RB.Grid>
-          <Competition/>
+          <IndexCompetitions/>
         </div>
       );
     }

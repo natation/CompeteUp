@@ -1,6 +1,6 @@
 (function(root) {
   'use strict';
-  root.Interest = React.createClass({
+  root.IndexInterests = React.createClass({
     getInitialState: function () {
       return {interests: InterestStore.all()};
     },
@@ -9,23 +9,23 @@
     },
     componentDidMount: function () {
       InterestStore.addChangeListener(this._onChange);
-      ApiUtil.fetchAllInterests({fetchNone: true});
+      ApiUtil.fetchAllInterests();
     },
     componentWillUnmount: function () {
       InterestStore.removeChangeListener(this._onChange);
     },
     render: function () {
       return (
-        <div>
-          <h1>Interests</h1>
-          <ul>
-            {
-              this.state.interests.map(function (interest, idx) {
-                return <li key={idx}>{interest.name}</li>;
-              })
-            }
-          </ul>
-        </div>
+        <RB.ListGroup>
+          {
+            this.state.interests.map(function (interest, idx) {
+              return <RB.ListGroupItem key={idx}
+                      onClick={this.props.handleClick.bind(null, interest.name)}>
+                       {interest.name}
+                     </RB.ListGroupItem>;
+            }, this)
+          }
+        </RB.ListGroup>
       );
     }
   });

@@ -11,7 +11,7 @@ class Api::InterestsController < ApplicationController
         @interests = competition.interests
       end
     else
-      @interests = Interest.all.take(20)
+      @interests = Interest.limit(100).order("name")
     end
   end
 

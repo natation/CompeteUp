@@ -1,9 +1,10 @@
 (function(root) {
   'use strict';
   var Link = ReactRouter.Link;
-  root.Competition = React.createClass({
+  root.IndexCompetitions = React.createClass({
     getInitialState: function () {
-      return {competitions: CompetitionStore.all()};
+      return {competitions: CompetitionStore.all(),
+              displayNum: 9};
     },
     _onChange: function () {
       this.setState({competitions: CompetitionStore.all()});
@@ -20,16 +21,41 @@
       var competitionsForRow = [];
       var done = false;
       _.each(this.state.competitions, function (competition, idx) {
+        if (done) {
+          return;
+        }
         var publicId = "competition-default_cyldui.png";
         if (competition.profile_pic_url) {
           publicId = competition.profile_pic_url;
         }
         var url = $.cloudinary.url(publicId,
                                   { width: 300, height: 230, crop: 'fill'});
+        var element;
+        if (this.props.listGroup) {
+          element = (
+            <RB.ListGroupItem>
+              <Link to={"competitions/" + competition.id}>
+                <img alt={competition.name} src={url} className="competition-focus">
+                  <h2>{competition.name}</h2>
+                </img>
+              </Link>
+            </RB.ListGroupItem>
+          );
+        } else {
+          element = (
+          <div key={idx} className="col-md-4">
+            <Link to={"competitions/" + competition.id}>
+              <img alt={competition.name} src={url} className="competition-focus">
+                <h2>{competition.name}</h2>
+              </img>
+            </Link>
+          </div>
+          );
+        }
         competitionsForRow.push(
           <div key={idx} className="col-md-4">
             <Link to={"competitions/" + competition.id}>
-              <img alt={competition.name} src={url} className="focus">
+              <img alt={competition.name} src={url} className="competition-focus">
                 <h2>{competition.name}</h2>
               </img>
             </Link>
@@ -41,6 +67,9 @@
               {competitionsForRow}
             </div>
           );
+          if (idx + 1 >= this.state.displayNum) {
+            done = true;
+          }
           competitionsForRow = [];
         }
       }, this);
