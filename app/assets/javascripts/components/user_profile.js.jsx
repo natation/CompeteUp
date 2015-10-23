@@ -3,18 +3,18 @@
   root.UserProfile = React.createClass({
     render: function () {
       return (
-        <RB.Grid>
-          <div className="row">
+        <RB.Grid className="user-profile">
+          <RB.Row>
             <UserInfo/>
-            <div className="col-md-5">
-              <div className="row">
+            <RB.Col md={5} className="user-profile-pic-interests">
+              <RB.Row>
                 <UserProfilePicture/>
-              </div>
-              <div className="row">
+              </RB.Row>
+              <RB.Row>
                 <UserInterests/>
-              </div>
-            </div>
-          </div>
+              </RB.Row>
+            </RB.Col>
+          </RB.Row>
         </RB.Grid>
       );
     }

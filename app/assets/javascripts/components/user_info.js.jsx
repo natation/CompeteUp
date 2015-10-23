@@ -27,8 +27,8 @@
         memberSince = this.state.user.memberSince;
       }
       return (
-        <div className="col-md-7">
-          <div className="row">
+        <div className="col-md-7 user-info">
+          <div className="row user-name">
             <div className="col-md-3">
               <h2>{userName}</h2>
               <Link to="profile/editUserInfo">Edit Info</Link>

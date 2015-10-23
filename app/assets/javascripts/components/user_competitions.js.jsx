@@ -15,19 +15,26 @@
       CompetitionStore.removeChangeListener(this._onChange);
     },
     render: function () {
+      var competitionHeader = "";
+      if (this.state.competitions.length > 0) {
+        competitionHeader = <h4>Entered Competitions:</h4>;
+      }
       return (
-        <div className="row">
-          <div className="col-md-7">
-            <h3>Competitions:</h3>
-            <ul>
+        <RB.Row>
+          <RB.Col md={7}>
+            {competitionHeader}
+            <RB.ListGroup className="user-competitions">
               {
                 this.state.competitions.map(function (competition, idx) {
-                  return <li key={idx}>{competition.name}</li>;
-                })
+                  return <RB.ListGroupItem key={idx}
+                          href={"#/competitions/" + competition.id}>
+                           {competition.name}
+                         </RB.ListGroupItem>;
+                }, this)
               }
-            </ul>
-          </div>
-        </div>
+            </RB.ListGroup>
+          </RB.Col>
+        </RB.Row>
       );
     }
   });

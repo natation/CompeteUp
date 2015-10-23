@@ -139,6 +139,10 @@ body {
         padding-right: 15px;
       }
     }
+    .list-group {
+      position: absolute;
+      width: 100%;
+    }
   }
   .col-md-4 {
     padding-right: 5px;
@@ -201,7 +205,18 @@ body {
   }
 }
 
-.list-group {
+.user-profile {
+  padding-top: 20px;
+  .user-info {
+    > div {
+      border-bottom: 1px solid black;
+    }
+  }
+  margin-bottom: 50px;
+}
+
+.alerts {
   position: absolute;
   width: 100%;
+  z-index: 100;
 }

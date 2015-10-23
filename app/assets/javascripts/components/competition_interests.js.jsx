@@ -18,26 +18,24 @@
       this.setState({interests: InterestStore.all()});
     },
     render: function () {
-      var interests = [];
+      var interests = [],
+          header = "";
       if (this.state.interests.length > 0) {
-        interests.push(<h4>We're about:</h4>);
-        interests.push(
-          <RB.Col md={12}>
-            {
-              this.state.interests.map(function (interest, idx){
-                return (
-                  <RB.Button key={idx} bsStyle="default">
-                    {interest.name}
-                  </RB.Button>
-                );
-              })
-            }
-          </RB.Col>
-        );
+        header = <h4>We're about:</h4>;
+        _.each(this.state.interests, function (interest, idx){
+          interests.push(
+            <RB.Button key={idx} bsStyle="default">
+              {interest.name}
+            </RB.Button>
+          );
+        });
       }
       return (
         <RB.Row>
-          {interests}
+          <RB.Col md={12}>
+            {header}
+            {interests}
+          </RB.Col>
         </RB.Row>
       );
     }

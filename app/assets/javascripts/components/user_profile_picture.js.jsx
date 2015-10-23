@@ -23,16 +23,18 @@
         }
       }
       var url = $.cloudinary.url(publicId,
-                                { width: 100, height: 150, crop: 'fill',
+                                { width: 200, height: 150, crop: 'fill',
                                   radius: 20});
       return (
-        <div className="col-md-6">
-          <h3>Profile Pic</h3>
-          <img src={url} alt="Profile Pic"/>
+        <RB.Col md={12}>
+          <RB.Grid>
+            <img src={url} alt="Profile Pic"/>
+
+          </RB.Grid>
           <div className="row">
             <Link to="profile/editProfilePic">Edit Profile Pic</Link>
           </div>
-        </div>
+        </RB.Col>
       );
     }
   });

@@ -1,9 +1,6 @@
 (function(root) {
   'use strict';
-  var OverlayTrigger = ReactBootstrap.OverlayTrigger;
-  var Popover = ReactBootstrap.Popover;
-  var Button = ReactBootstrap.Button;
-  var Glyphicon = ReactBootstrap.Glyphicon;
+
   var Link = ReactRouter.Link;
 
   root.UserInterests = React.createClass({
@@ -17,6 +14,7 @@
       ApiUtil.fetchAllInterests({getCurrentUserInterests: true});
     },
     _removeInterest: function (e) {
+      document.getElementsByTagName("body")[0].click();
       ApiUtil.removeInterest(e.currentTarget.id);
     },
     componentWillMount: function () {
@@ -30,24 +28,26 @@
     },
     render: function () {
       return (
-        <div className="col-md-3">
+        <RB.Col md={12}>
           <h3>Interests:</h3><Link to="profile/editInterests">Edit Interests</Link>
             {
               this.state.interests.map(function (interest, idx) {
                 return (
-                  <OverlayTrigger trigger="click" rootClose placement="left" key={idx}
+                  <RB.OverlayTrigger trigger="click"
+                                     className={"overlay" + idx}
+                                     rootClose placement="left" key={idx}
                     overlay={
-                      <Popover title="Competitions with this interest">
-                        <Button id={interest.name} onClick={this._removeInterest}>
-                          Remove Interest <Glyphicon glyph="remove-circle"/>
-                        </Button>
-                      </Popover>}>
-                        <Button bsStyle="default">{interest.name}</Button>
-                  </OverlayTrigger>
+                      <RB.Popover title="Competitions with this interest">
+                        <RB.Button id={interest.name} onClick={this._removeInterest}>
+                          Remove Interest <RB.Glyphicon glyph="remove-circle"/>
+                        </RB.Button>
+                      </RB.Popover>}>
+                        <RB.Button bsStyle="default">{interest.name}</RB.Button>
+                  </RB.OverlayTrigger>
                 );
               }, this)
             }
-        </div>
+        </RB.Col>
       );
     }
   });
