@@ -6,8 +6,6 @@
       ApiUtil.logOut();
     },
     render: function () {
-      var logoUrl = $.cloudinary.url("logo_iznl6k", { width: 100, height: 70,
-                                                    crop: 'scale'});
       var profilePicPublicId = "blank-profile_ox71we";
       var pubId = window.CURRENT_USER_INFO.profilePicUrl;
       if (pubId !== 0) {
@@ -28,7 +26,7 @@
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link to="/"><img src={logoUrl} alt="logo" id="logo"/></Link>
+              <Link to="/"><img src="/assets/logo.png" alt="logo" id="logo"/></Link>
             </div>
             <div className="collapse navbar-collapse"
               id="bs-example-navbar-collapse-1">
