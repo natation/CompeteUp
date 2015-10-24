@@ -23,6 +23,17 @@
         }
       });
     },
+    fetchInterestCompetitions: function (queryParams) {
+      $.ajax({
+        url: "/api/competitions/",
+        type: "GET",
+        dataType: "json",
+        data: {query: queryParams},
+        success: function (competitions) {
+          ApiActions.receiveAllInterestCompetitions(competitions);
+        }
+      });
+    },
     fetchAllInterests: function (queryParams) {
       $.ajax({
         url: "/api/interests/",

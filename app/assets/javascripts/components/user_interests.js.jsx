@@ -42,7 +42,10 @@
                       key={idx}
                       overlay={
                         <RB.Popover title="Competitions with this interest">
-                          <RB.Button id={interest.name} onClick={this._removeInterest}>
+                          <UserInterestCompetitions name={interest.name}/>
+                          <RB.Button id={interest.name}
+                                     onClick={this._removeInterest}
+                                     bsSize="xsmall">
                             Remove Interest <RB.Glyphicon glyph="remove-circle"/>
                           </RB.Button>
                         </RB.Popover>}>

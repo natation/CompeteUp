@@ -36,6 +36,11 @@ body {
   height: 70px;
 }
 
+.navbar-html {
+  padding-bottom: 5px;
+  border-bottom: 1px dotted $red;
+}
+
 .navbar-nav > li > a {
   color: $lightgray;
 }
@@ -237,6 +242,24 @@ body {
 
 .user-edit-info {
   padding-top: 20px;
+}
+
+.user-edit-profile-pic {
+  padding-top: 20px;
+  > div {
+    padding-bottom: 10px;
+  }
+  #uploadWidget {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+.interest-competitions {
+  padding-left: 0;
+  img {
+    display: block;
+  }
 }
 
 .alerts {

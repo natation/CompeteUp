@@ -34,6 +34,9 @@ class Api::CompetitionsController < ApplicationController
       elsif query[:suggestionFor]
         competition = Competition.find(query[:suggestionFor])
         @competitions = competition.getCompetitionSuggestions
+      elsif query[:getInterestCompetitions]
+        @competitions = Interest.find_by_name(query[:getInterestCompetitions])
+                                .competitions.limit(5).order("RANDOM()")
       end
     else
       @competitions = Competition.limit(100).order("RANDOM()")

@@ -13,6 +13,12 @@
         competitions: competitions
       });
     },
+    receiveAllInterestCompetitions: function (competitions) {
+      AppDispatcher.dispatch({
+        actionType: CompetitionConstants.INTEREST_COMPETITIONS_RECEIVED,
+        competitions: competitions
+      });
+    },
     receiveAllInterests: function (interests) {
       AppDispatcher.dispatch({
         actionType: InterestConstants.INTERESTS_RECEIVED,
