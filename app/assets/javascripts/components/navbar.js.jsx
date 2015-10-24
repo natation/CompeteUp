@@ -11,7 +11,7 @@
       if (pubId !== 0) {
         profilePicPublicId = pubId;
       }
-      var url = $.cloudinary.url(profilePicPublicId, { height: 30,
+      var url = $.cloudinary.url(profilePicPublicId, {height: 30,
                                                     crop: 'scale'});
       return (
         <nav className="navbar navbar-default override-navbar">

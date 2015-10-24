@@ -212,6 +212,7 @@ body {
   .user-info {
     > div {
       border-bottom: 1px solid black;
+      padding-bottom: 10px;
     }
   }
   margin-bottom: 50px;
@@ -232,6 +233,10 @@ body {
   .interests {
     margin-top: 10px;
   }
+}
+
+.user-edit-info {
+  padding-top: 20px;
 }
 
 .alerts {

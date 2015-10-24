@@ -47,41 +47,43 @@
     render: function () {
       return (
         <RB.Grid className="edit-interests">
-          <RB.Col md={6} mdOffset={3}>
-            <form onSubmit={this.handleSubmit}>
-              <div className="row form-group">
-                <RB.Col md={6} mdOffset={3}>
-                  <label>Interests: </label>
-                  {
-                    window.INTERESTS.map(function (interest, idx) {
-                      var foundInterestIdx = _.findIndex(this.state.checkedInterests,
-                                                      {name: interest.name});
-                      var isChecked = true;
-                      if (foundInterestIdx < 0) {
-                        isChecked = false;
-                      }
-                      return (
-                        <label key={idx} className="checkbox">
-                          <input
-                            type="checkbox"
-                            name={interest.name}
-                            value={interest.id}
-                            onChange={this.handleCheckboxClicked}
-                            checked={isChecked}>
-                              {interest.name}
-                          </input>
-                        </label>
-                      );
-                    }, this)
-                  }
-                  <div className="row form-group">
-                      <button type="submit" className="btn btn-default">Update Interests</button>
-                      <Link to="profile" className="btn btn-default">Cancel</Link>
-                  </div>
-                </RB.Col>
-              </div>
-            </form>
-          </RB.Col>
+          <RB.Row>
+            <RB.Col md={6} mdOffset={3}>
+              <form onSubmit={this.handleSubmit}>
+                <div className="row form-group">
+                  <RB.Col md={6} mdOffset={3}>
+                    <label>Interests: </label>
+                    {
+                      window.INTERESTS.map(function (interest, idx) {
+                        var foundInterestIdx = _.findIndex(this.state.checkedInterests,
+                                                        {name: interest.name});
+                        var isChecked = true;
+                        if (foundInterestIdx < 0) {
+                          isChecked = false;
+                        }
+                        return (
+                          <label key={idx} className="checkbox">
+                            <input
+                              type="checkbox"
+                              name={interest.name}
+                              value={interest.id}
+                              onChange={this.handleCheckboxClicked}
+                              checked={isChecked}>
+                                {interest.name}
+                            </input>
+                          </label>
+                        );
+                      }, this)
+                    }
+                    <div className="row form-group">
+                        <button type="submit" className="btn btn-default">Update Interests</button>
+                        <Link to="profile" className="btn btn-default">Cancel</Link>
+                    </div>
+                  </RB.Col>
+                </div>
+              </form>
+            </RB.Col>
+          </RB.Row>
         </RB.Grid>
       );
     }
