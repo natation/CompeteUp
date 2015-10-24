@@ -32,10 +32,8 @@
       }
       return (
         <RB.Row>
-          <RB.Col md={12}>
-            {header}
-            {interests}
-          </RB.Col>
+          {header}
+          {interests}
         </RB.Row>
       );
     }

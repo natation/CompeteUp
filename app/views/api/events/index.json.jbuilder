@@ -1,2 +1,3 @@
-<h1>Api::Events#index</h1>
-<p>Find me in app/views/api/events/index.html.erb</p>
+json.array! @events do |event|
+  json.extract! event, :name, :description
+end

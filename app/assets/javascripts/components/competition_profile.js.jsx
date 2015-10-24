@@ -52,7 +52,7 @@
       var rendered = <RB.Grid></RB.Grid>;
       if (this.state.competition.name) {
         rendered = (
-          <RB.Grid>
+          <RB.Grid className="competition-profile">
             <CompetitionNavbar selectedKey={this.state.selectedKey}
                                name={this.state.competition.name}
                                handleSelect={this.handleCompetitionNavbarSelect}/>

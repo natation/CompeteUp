@@ -25,6 +25,14 @@
           <RB.Row>
             <h4>{this.props.location}</h4>
             <h4>Established: {this.props.established}</h4>
+            <RB.OverlayTrigger
+              trigger="click" rootClose placement="right"
+              overlay={
+                <RB.Popover title="About us">
+                  {this.props.description}
+                </RB.Popover>}>
+                <RB.Button bsStyle="default">About us...</RB.Button>
+            </RB.OverlayTrigger>
             <h4>Organizer:</h4>
               <Link to={"users/" + this.state.user.id}>
                 {this.state.user.name}

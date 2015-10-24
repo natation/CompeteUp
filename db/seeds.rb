@@ -88,3 +88,5 @@ User.first.competition_ids = [1, 2, 4]
 User.first.interest_ids = [1, 2, 3]
 User.last.competition_ids = [5, 8, 9]
 User.first.interest_ids = [5, 1, 6]
+
+Event.create!({name: "Hiking", description: "Let's go hiking!", competition_id: 1})

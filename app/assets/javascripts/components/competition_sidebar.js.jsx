@@ -3,12 +3,12 @@
   root.CompetitionSidebar = React.createClass({
     render: function () {
       return (
-        <RB.Grid>
+        <RB.Col md={12}>
           <CompetitionProfilePicture profile_pic_url={this.props.profile_pic_url}/>
           <CompetitionInfo {...this.props}/>
           <CompetitionInterests id={this.props.id}/>
           <CompetitionSuggestions id={this.props.id}/>
-        </RB.Grid>
+        </RB.Col>
       );
     }
   });

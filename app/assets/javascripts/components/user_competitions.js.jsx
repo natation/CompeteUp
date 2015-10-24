@@ -21,11 +21,7 @@
       if (this.state.competitions.length > 0) {
         competitionHeader = <h4>Entered Competitions:</h4>;
       }
-      var done = false;
       _.each(this.state.competitions, function (competition, idx, list) {
-        if (done) {
-          return;
-        }
         competitionsRow.push(
           <RB.Button key={idx}
             href={"#/competitions/" + competition.id}>

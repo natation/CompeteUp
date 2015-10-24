@@ -16,5 +16,7 @@
   root.RB.ListGroupItem = ReactBootstrap.ListGroupItem;
   root.RB.Alert = ReactBootstrap.Alert;
   root.RB.OverlayTrigger = ReactBootstrap.OverlayTrigger;
+  root.RB.Overlay = ReactBootstrap.Overlay;
   root.RB.Popover = ReactBootstrap.Popover;
+  root.RB.Panel = ReactBootstrap.Panel;
 }(this));

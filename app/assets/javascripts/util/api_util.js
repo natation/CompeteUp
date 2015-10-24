@@ -45,6 +45,17 @@
         }
       });
     },
+    fetchAllEvents: function (queryParams) {
+      $.ajax({
+        url: "api/events",
+        type: "GET",
+        dataType: "json",
+        data: {query: queryParams},
+        success: function (events) {
+          ApiActions.receiveAllEvents(events);
+        }
+      });
+    },
     fetchCurrentUser: function () {
       $.ajax({
         url: "/users/1",

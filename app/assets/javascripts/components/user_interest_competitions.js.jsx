@@ -29,7 +29,7 @@
             <RB.ListGroupItem key={idx}
               href={"#/competitions/" + competition.id}>
                {competition.name}
-              <img alt={competition.name} src={url}/>
+               <img alt={competition.name} src={url}/>
             </RB.ListGroupItem>
           );
         });

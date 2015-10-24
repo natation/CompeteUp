@@ -19,22 +19,33 @@
       this.setState({competitions: CompetitionStore.allSuggestions()});
     },
     render: function () {
-      var contents = [];
-      var rendered = <RB.Row></RB.Row>;
+      var contents = [],
+          finished = [],
+          rendered = <RB.Row></RB.Row>;
       if (this.state.competitions.length > 0) {
-        _.each(this.state.competitions, function (competition, idx) {
+        _.each(this.state.competitions, function (competition, idx, list) {
           contents.push(
-             <li key={idx}>
-                <a href={"#/competitions/" + competition.id}>
-                  {competition.name}
-                </a>
-             </li>
+            <RB.Button key={idx}
+              href={"#/competitions/" + competition.id}>
+               {competition.name}
+            </RB.Button>
           );
+          if (contents.length >= 3 ||
+              idx === list.length - 1) {
+            finished.push(
+              <RB.Col key={idx}>
+                {contents}
+              </RB.Col>
+            );
+            contents = [];
+          }
         });
         rendered = (
           <RB.Row>
-            <h3>Other competition suggestions</h3>
-            {contents}
+            <h4>Other competition suggestions: </h4>
+            <RB.Col>
+              {finished}
+            </RB.Col>
           </RB.Row>
         );
       }

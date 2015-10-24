@@ -25,6 +25,12 @@
         interests: interests
       });
     },
+    receiveAllEvents: function (events) {
+      AppDispatcher.dispatch({
+        actionType: EventConstants.EVENTS_RECEIVED,
+        events: events
+      });
+    },
     receiveSingleUser: function (user) {
       AppDispatcher.dispatch({
         actionType: UserConstants.USERS_RECEIVED,

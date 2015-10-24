@@ -38,7 +38,8 @@
                   <RB.Row key={idx}>
                     <RB.OverlayTrigger
                       trigger="click"
-                      rootClose placement="left"
+                      rootClose
+                      placement="left"
                       key={idx}
                       overlay={
                         <RB.Popover title="Competitions with this interest">
