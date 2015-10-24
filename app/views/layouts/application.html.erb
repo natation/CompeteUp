@@ -23,7 +23,9 @@
       window.LOCATIONS = ["San Francisco, CA", "Berkeley, CA",
                       "Los Angeles, CA", "Eureka, CA"];
       window.INTERESTS = <%= interests.to_json.html_safe %>;
-      $.cloudinary.config("cloud_name", "dbgfyqa1e");
+      window.cloud_name = "<%= ENV["cloudinary_cloud_name"] %>";
+      window.upload_preset = "<%= ENV["cloudinary_upload_preset"] %>";
+      $.cloudinary.config("cloud_name", cloud_name);
     </script>
   <% end %>
 </body>

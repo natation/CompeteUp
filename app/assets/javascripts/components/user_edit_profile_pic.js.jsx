@@ -26,8 +26,8 @@
     handleNewPicUpload: function (e) {
       e.preventDefault();
       var that = this;
-      cloudinary.openUploadWidget({ cloud_name: 'dbgfyqa1e',
-                                    upload_preset: 'm50nybft'},
+      cloudinary.openUploadWidget({cloud_name: cloud_name,
+                                    upload_preset: upload_preset},
         function(error, result) {
           if (result) {
             var $widget = $("#uploadWidget");

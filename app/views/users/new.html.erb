@@ -15,8 +15,8 @@
   var $widget = $("#uploadWidget");
   $widget.on("click", function (e) {
     e.preventDefault();
-    cloudinary.openUploadWidget({ cloud_name: 'dbgfyqa1e',
-                                  upload_preset: 'm50nybft'},
+    cloudinary.openUploadWidget({cloud_name: cloud_name,
+                                 upload_preset: upload_preset},
       function(error, result) {
         if (result) {
           $widget.text("Upload Successful");

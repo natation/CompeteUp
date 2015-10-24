@@ -31,6 +31,7 @@ gem 'react-rails', '~> 1.3.0'
 gem 'flux-rails-assets'
 gem 'underscore-rails'
 gem 'react-bootstrap-rails'
+gem 'figaro'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
