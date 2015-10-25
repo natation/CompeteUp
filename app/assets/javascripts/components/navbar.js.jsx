@@ -8,6 +8,7 @@
     componentDidMount: function () {
       UserStore.addCurrentUserListener(this._onChange);
       ApiUtil.fetchCurrentUser();
+      this.scrollToSearchBar();
     },
     componentWillUnmount: function () {
       UserStore.removeCurrentUserListener(this._onChange);
@@ -17,6 +18,18 @@
     },
     handleLogout: function () {
       ApiUtil.logOut();
+    },
+    scrollToSearchBar: function () {
+      setTimeout(function () {
+        if (window.location.hash.match(/#\/find/)) {
+          var searchBarOffsetTop =
+                $('.search-bar').offset().top - $('.navbar').outerHeight();
+          $('body').animate({scrollTop: searchBarOffsetTop}, 'slow');
+        }
+      }.bind(this), 0);
+    },
+    componentWillReceiveProps: function () {
+      this.scrollToSearchBar();
     },
     render: function () {
       var profilePicPublicId = "blank_profile_qqetgr";

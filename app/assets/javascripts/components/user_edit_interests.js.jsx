@@ -76,7 +76,10 @@
                       }, this)
                     }
                     <div className="row form-group">
-                        <button type="submit" className="btn btn-default">Update Interests</button>
+                        <button type="submit"
+                                className="btn btn-default btn-primary">
+                                  Update Interests
+                        </button>
                         <Link to="profile" className="btn btn-default">Cancel</Link>
                     </div>
                   </RB.Col>

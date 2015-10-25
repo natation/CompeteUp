@@ -37,6 +37,15 @@
       this._handleKeyPress({target: {value: name}}, true);
       this.setState({interestsAppear: false});
     },
+    scrollToSearchBar: function () {
+      setTimeout(function () {
+        if (window.location.hash.match(/#\/find/)) {
+          var searchBarOffsetTop =
+                $('.search-bar').offset().top - $('.navbar').outerHeight();
+          $('body').animate({scrollTop: searchBarOffsetTop}, 'slow');
+        }
+      }.bind(this), 0);
+    },
     render: function () {
       var glyphShown = "";
       var interestsList = "";
@@ -56,6 +65,7 @@
                placeholder={placeholder}
                onChange={this._handleKeyPress}
                value={this.state.searchText}
+               onClick={this.scrollToSearchBar}
                standalone>
              </RB.Input>
              {glyphShown}

@@ -39,6 +39,8 @@
   $a.on("click", function (e) {
     $('#user_email').val(email);
     $('#user_password').val(password);
-    login();
+    setTimeout(function () {
+      login();
+    }, 1000);
   });
 </script>

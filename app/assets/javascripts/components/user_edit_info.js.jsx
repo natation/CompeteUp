@@ -86,7 +86,10 @@
                   <div className="col-md-offset-3 col-md-5">
                     <RB.Grid>
                       <div className="row form-group">
-                        <button type="submit" className="btn btn-default">Update</button>
+                        <button type="submit"
+                                className="btn btn-default btn-primary">
+                                  Update
+                        </button>
                         <Link to="profile" className="btn btn-default">Cancel</Link>
                       </div>
                     </RB.Grid>
