@@ -21,6 +21,7 @@
         ApiUtil.fetchCompetitionMatches(searchQuery);
         this.setState({searchText: ""});
       } else {
+        this.setState({interestsAppear: true});
         ApiUtil.fetchAllInterests({searchByName: searchString});
       }
     },
@@ -31,11 +32,6 @@
         this.setState({interestsAppear: false});
       }
       this._handleKeyPress({target: {value: ""}}, true);
-    },
-    _handleClick: function () {
-      if (!this.state.searchByName) {
-        this.setState({interestsAppear: !this.state.interestsAppear});
-      }
     },
     _handleInterestClick: function (name, e) {
       this._handleKeyPress({target: {value: name}}, true);
@@ -59,7 +55,6 @@
                type="text"
                placeholder={placeholder}
                onChange={this._handleKeyPress}
-               onClick={this._handleClick}
                value={this.state.searchText}
                standalone>
              </RB.Input>

@@ -66,84 +66,86 @@
     },
     render: function () {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <div className="row form-group">
-            <div className="col-md-offset-3 col-md-6">
-              <label>Location:</label>
-              <select className="form-control" valueLink={this.linkState("location")}>
-                {
-                  LOCATIONS.map(function(location, idx) {
-                    return <option key={idx} valueLink={location}>{location}</option>;
-                  })
-                }
-              </select>
-            </div>
-          </div>
+        <RB.Grid className="start-competition">
+          <RB.Row>
+            <RB.Col>
+              <form onSubmit={this.handleSubmit}>
+                <div className="row form-group">
+                  <div className="col-md-offset-3 col-md-6">
+                    <label>Location:</label>
+                    <select className="form-control" valueLink={this.linkState("location")}>
+                      {
+                        LOCATIONS.map(function(location, idx) {
+                          return <option key={idx} valueLink={location}>{location}</option>;
+                        })
+                      }
+                    </select>
+                  </div>
+                </div>
 
-          <div className="row form-group">
-            <div className="col-md-offset-3 col-md-6">
-              <label>Associated Interests: </label>
-              {
-                window.INTERESTS.map(function (interest, idx) {
-                  var foundInterestIdx = _.findIndex(this.state.checkedInterests,
-                                                  {name: interest.name});
-                  var isChecked = true;
-                  if (foundInterestIdx < 0) {
-                    isChecked = false;
-                  }
-                  return (
-                    <label key={idx} className="checkbox-inline">
-                      <input
-                        type="checkbox"
-                        name={interest.name}
-                        value={interest.id}
-                        onChange={this.handleCheckboxClicked}
-                        checked={isChecked}>
-                          {interest.name}
-                      </input>
-                    </label>
-                  );
-                }, this)
-              }
-            </div>
-          </div>
-          <div className="row form-group">
-            <div className="col-md-offset-3 col-md-6">
-              <label>Name: </label>
-              <input type="text" className="form-control"
-                     valueLink={this.linkState("name")}/>
-            </div>
-          </div>
-          <div className="row form-group">
-            <div className="col-md-offset-3 col-md-6">
-              <label>Description: </label>
-              <textarea className="form-control"
-                        valueLink={this.linkState("description")}></textarea>
-            </div>
-          </div>
-          <div className="row form-group">
-            <div className="col-md-offset-3 col-md-6">
-              <button className="btn btn-default"
-                      onClick={this.handleNewPicUpload}
-                      id="uploadWidget">
-                        Upload New Profile Picture
-              </button>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-offset-3 col-md-5">
-              <div className="row">
-                <button type="submit"
-                        className="btn btn-default">
-                        Create Competition
-                </button>
-              </div>
-              <div className="col-md-4">
-                <Link to="/" className="btn btn-default">Cancel</Link>
-              </div>
-            </div>
-          </div>
-        </form>
+                <div className="row form-group">
+                  <div className="col-md-offset-3 col-md-6">
+                    <label className="associate-label">Associated Interests: </label>
+                    {
+                      window.INTERESTS.map(function (interest, idx) {
+                        var foundInterestIdx = _.findIndex(this.state.checkedInterests,
+                                                        {name: interest.name});
+                        var isChecked = true;
+                        if (foundInterestIdx < 0) {
+                          isChecked = false;
+                        }
+                        return (
+                          <label key={idx} className="checkbox-inline">
+                            <input
+                              type="checkbox"
+                              name={interest.name}
+                              value={interest.id}
+                              onChange={this.handleCheckboxClicked}
+                              checked={isChecked}>
+                                {interest.name}
+                            </input>
+                          </label>
+                        );
+                      }, this)
+                    }
+                  </div>
+                </div>
+                <div className="row form-group">
+                  <div className="col-md-offset-3 col-md-6">
+                    <label>Name: </label>
+                    <input type="text" className="form-control"
+                           valueLink={this.linkState("name")}/>
+                  </div>
+                </div>
+                <div className="row form-group">
+                  <div className="col-md-offset-3 col-md-6">
+                    <label>Description: </label>
+                    <textarea className="form-control"
+                              valueLink={this.linkState("description")}></textarea>
+                  </div>
+                </div>
+                <div className="row form-group">
+                  <div className="col-md-offset-3 col-md-6">
+                    <button className="btn btn-default"
+                            onClick={this.handleNewPicUpload}
+                            id="uploadWidget">
+                              Add Competition Profile Picture
+                    </button>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-offset-3 col-md-5">
+                      <button type="submit"
+                              className="btn btn-default btn-primary">
+                              Create Competition
+                      </button>
+                      <Link to="/" className="btn btn-default">Cancel</Link>
+                  </div>
+                </div>
+              </form>
+            </RB.Col>
+          </RB.Row>
+        </RB.Grid>
       );
     }
   });
