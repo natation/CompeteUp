@@ -21,9 +21,14 @@
       else {
         alertType = "danger";
       }
+      if (receivedMessage.responseJSON instanceof(Array)) {
+        receivedMessage = receivedMessage.responseJSON.join(", ");
+      } else {
+        receivedMessage = receivedMessage.responseJSON;
+      }
       this.setState({alertVisible: true,
                      alertType: alertType,
-                     message: receivedMessage.responseJSON});
+                     message: receivedMessage});
     },
     handleAlertDismiss: function () {
       this.setState({alertVisible: false});

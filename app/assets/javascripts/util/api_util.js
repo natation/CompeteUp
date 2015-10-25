@@ -62,6 +62,16 @@
         type: "GET",
         dataType: "json",
         success: function (user) {
+          ApiActions.receiveCurrentUser(user);
+        }
+      });
+    },
+    fetchSingleUser: function () {
+      $.ajax({
+        url: "/users/1",
+        type: "GET",
+        dataType: "json",
+        success: function (user) {
           ApiActions.receiveSingleUser(user);
         }
       });

@@ -3,17 +3,17 @@
   var Link = ReactRouter.Link;
   root.UserInfo = React.createClass({
     getInitialState: function () {
-      return {user: UserStore.getUser()};
+      return {user: UserStore.getCurrentUser()};
     },
     _onChange: function () {
-      this.setState({user: UserStore.getUser()});
+      this.setState({user: UserStore.getCurrentUser()});
     },
     componentWillMount: function () {
-      UserStore.addChangeListener(this._onChange);
+      UserStore.addCurrentUserListener(this._onChange);
       ApiUtil.fetchCurrentUser();
     },
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onChange);
+      UserStore.removeCurrentUserListener(this._onChange);
     },
     render: function () {
       var userName = "";

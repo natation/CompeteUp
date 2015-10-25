@@ -1,7 +1,5 @@
 <% if flash[type] %>
-  <ul class="<%= type.to_s %>">
-    <% flash[type].each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+  <div id="<%= type.to_s %>">
+    <button><%= flash[type].join(", ") %></button>
+  </div>
 <% end %>

@@ -1,6 +1,8 @@
 locations = ["San Francisco, CA", "Berkeley, CA", "Los Angeles, CA", "Eureka, CA"]
 User.create!({name: "Vic", email: "vic@vic.com", location:"San Francisco, CA",
               bio: "I'm working", password: "123456"})
+User.create!({name: "Olaf", email: "olaf@frozen.com", location:"San Francisco, CA",
+              bio: "I'm working", password: "123456"})
 
 5.times do |i|
   User.create!({name: "user #{i}", email: "user#{i}@example.com",

@@ -24,7 +24,7 @@
         if (done) {
           return;
         }
-        var publicId = "competition-default_cyldui.png";
+        var publicId = "blank_competition_profile_nrea8m";
         if (competition.profile_pic_url) {
           publicId = competition.profile_pic_url;
         }

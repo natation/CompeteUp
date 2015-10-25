@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to root_url
     else
-      render_info(["Invalid email or password. Please try again."])
+      render_errors(["Invalid email or password. Please try again."], true, true)
       render :new
     end
   end

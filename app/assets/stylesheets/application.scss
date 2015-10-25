@@ -37,6 +37,7 @@ body {
 }
 
 .navbar-html {
+  position: relative;
   padding-bottom: 5px;
   border-bottom: 1px dotted $red;
 }
@@ -201,6 +202,9 @@ body {
                    3px 3px 5px $red;
     }
   }
+  img {
+    background-color: gray;
+  }
   .competition-focus {
     width: 100%;
     transition: all 0.5s ease;
@@ -264,6 +268,15 @@ body {
 
 .alerts {
   position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+#info, #errors {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  transform: translateX(-10%);
   width: 100%;
   z-index: 2;
 }

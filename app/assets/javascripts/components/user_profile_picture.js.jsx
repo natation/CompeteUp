@@ -3,27 +3,27 @@
   var Link = ReactRouter.Link;
   root.UserProfilePicture = React.createClass({
     getInitialState: function () {
-      return {user: UserStore.getUser()};
+      return {user: UserStore.getCurrentUser()};
     },
     _onChange: function () {
-      this.setState({user: UserStore.getUser()});
+      this.setState({user: UserStore.getCurrentUser()});
     },
     componentWillMount: function () {
-      UserStore.addChangeListener(this._onChange);
+      UserStore.addCurrentUserListener(this._onChange);
       ApiUtil.fetchCurrentUser();
     },
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onChange);
+      UserStore.removeCurrentUserListener(this._onChange);
     },
     render: function () {
-      var publicId = "blank-profile_ox71we";
+      var publicId = "blank_profile_qqetgr";
       if (typeof this.state.user !== "undefined") {
         if (this.state.user.profile_pic_url) {
           publicId = this.state.user.profile_pic_url;
         }
       }
       var url = $.cloudinary.url(publicId,
-                                {width: 200, height: 150, crop: 'fill'});
+                                {width: 200, height: 200, crop: 'scale'});
       return (
         <RB.Col md={12}>
           <RB.Grid>

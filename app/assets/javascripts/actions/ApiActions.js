@@ -31,6 +31,12 @@
         events: events
       });
     },
+    receiveCurrentUser: function (user) {
+      AppDispatcher.dispatch({
+        actionType: UserConstants.CURRENT_USER_RECEIVED,
+        user: user
+      });
+    },
     receiveSingleUser: function (user) {
       AppDispatcher.dispatch({
         actionType: UserConstants.USERS_RECEIVED,

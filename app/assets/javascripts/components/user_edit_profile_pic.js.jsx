@@ -3,19 +3,19 @@
   var Link = ReactRouter.Link;
   root.UserEditProfilePic = React.createClass({
     getInitialState: function () {
-      return {user: UserStore.getUser()};
+      return {user: UserStore.getCurrentUser()};
     },
     componentWillMount: function () {
-      UserStore.addChangeListener(this._onChange);
+      UserStore.addCurrentUserListener(this._onChange);
       MessageStore.addChangeListener(this._onReceiveMessage);
       this.profilePicUrl = "";
     },
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onChange);
+      UserStore.removeCurrentUserListener(this._onChange);
       MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     _onChange: function () {
-      this.setState({user: UserStore.getUser()});
+      this.setState({user: UserStore.getCurrentUser()});
     },
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();
@@ -45,7 +45,7 @@
       ApiUtil.updateCurrentUser(user);
     },
     render: function () {
-      var publicId = "blank-profile_ox71we.png";
+      var publicId = "blank_profile_qqetgr.png";
       if (typeof this.state.user !== "undefined") {
         if (this.state.user.profile_pic_url) {
           publicId = this.state.user.profile_pic_url;

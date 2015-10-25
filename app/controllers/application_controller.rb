@@ -25,15 +25,23 @@ class ApplicationController < ActionController::Base
     if now
       flash.now[:info] = message
     else
-      flash[:errors] = message
+      flash[:info] = message
     end
   end
 
-  def render_errors(obj, now = true)
-    if now
-      flash.now[:errors] = obj.errors.full_messages if obj
+  def render_errors(obj, now = true, override = false)
+    if override
+      if now
+        flash.now[:errors] = obj if obj
+      else
+        flash[:errors] = obj if obj
+      end
     else
-      flash[:errors] = obj.errors.full_messages if obj
+      if now
+        flash.now[:errors] = obj.errors.full_messages if obj
+      else
+        flash[:errors] = obj.errors.full_messages if obj
+      end
     end
   end
 

@@ -10,16 +10,16 @@
               bio: ""};
     },
     componentWillMount: function () {
-      UserStore.addChangeListener(this._onChange);
+      UserStore.addCurrentUserListener(this._onChange);
       MessageStore.addChangeListener(this._onReceiveMessage);
       ApiUtil.fetchCurrentUser();
     },
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onChange);
+      UserStore.removeCurrentUserListener(this._onChange);
       MessageStore.removeChangeListener(this._onReceiveMessage);
     },
     _onChange: function () {
-      var user = UserStore.getUser();
+      var user = UserStore.getCurrentUser();
       this.setState(
         {
           name: user.name,
