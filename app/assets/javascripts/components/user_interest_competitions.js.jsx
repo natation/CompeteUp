@@ -26,11 +26,18 @@
           var url = $.cloudinary.url(publicId,
                                     { width: 50, height: 50, crop: 'fill'});
           competitions.push(
-            <RB.ListGroupItem key={idx}
-              href={"#/competitions/" + competition.id}>
-               {competition.name}
-               <img alt={competition.name} src={url}/>
-            </RB.ListGroupItem>
+            <div key={idx} className="media">
+              <div className="media-left">
+                <a href={"#/competitions/" + competition.id}>
+                  <img className="media-object" src={url} alt={competition.name}/>
+                </a>
+              </div>
+              <div className="media-body">
+                <a href={"#/competitions/" + competition.id}>
+                  <h4 className="media-heading">{competition.name}</h4>
+                </a>
+              </div>
+            </div>
           );
         });
       }

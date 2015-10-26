@@ -26,7 +26,8 @@ class Api::CompetitionsController < ApplicationController
       elsif query[:searchByInterest]
         interests = Interest.where("lower(name) = ?",
                                    query[:searchByInterest].downcase)
-        @competitions = interests.first.competitions
+        @interest = interests.first
+        @competitions = @interest.competitions
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions
       elsif query[:getCurrentCompetition]
@@ -36,7 +37,7 @@ class Api::CompetitionsController < ApplicationController
         @competitions = competition.getCompetitionSuggestions
       elsif query[:getInterestCompetitions]
         @competitions = Interest.find_by_name(query[:getInterestCompetitions])
-                                .competitions.limit(5).order("RANDOM()")
+                                .competitions.limit(3).order("RANDOM()")
       end
     else
       @competitions = Competition.limit(100).order("RANDOM()")

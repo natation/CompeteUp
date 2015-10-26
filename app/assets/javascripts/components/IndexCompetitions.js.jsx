@@ -17,9 +17,10 @@
       CompetitionStore.removeChangeListener(this._onChange);
     },
     render: function () {
-      var finished = [];
-      var competitionsForRow = [];
-      var done = false;
+      var finished = [],
+          competitionsForRow = [],
+          done = false,
+          interestName = "";
       _.each(this.state.competitions, function (competition, idx) {
         if (done) {
           return;
@@ -30,6 +31,7 @@
         }
         var url = $.cloudinary.url(publicId,
                                   { width: 300, height: 230, crop: 'fill'});
+        interestName = competition.interestName;
         competitionsForRow.push(
           <div key={idx} className="col-md-4">
             <Link to={"competitions/" + competition.id}>
@@ -54,6 +56,8 @@
       var header = "";
       if (finished.length === 0) {
         header = <h2>No competitions found</h2>;
+      } else if (interestName) {
+        header = <h2>Competitions with interest: {interestName}</h2>;
       }
       return (
         <RB.Grid className="competitions">
