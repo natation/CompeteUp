@@ -31,6 +31,7 @@ class Api::CompetitionsController < ApplicationController
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions
       elsif query[:getCurrentCompetition]
+        @getColors = true;
         @competitions = Competition.where("id = ?", query[:getCurrentCompetition])
       elsif query[:suggestionFor]
         competition = Competition.find(query[:suggestionFor])

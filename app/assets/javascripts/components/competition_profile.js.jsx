@@ -60,11 +60,10 @@
             <CompetitionNavbar selectedKey={this.state.selectedKey}
                                name={this.state.competition.name}
                                handleSelect={this.handleCompetitionNavbarSelect}
-                               colors={this.state.profileColors}/>
+                               colors={this.state.competition.colors}/>
             <RB.Row>
               <RB.Col md={4}>
-                <CompetitionSidebar {...this.state.competition}
-                                    setProfileColors={this.setProfileColors}/>
+                <CompetitionSidebar {...this.state.competition}/>
               </RB.Col>
               <RB.Col md={8}>
                 {this.props.children}

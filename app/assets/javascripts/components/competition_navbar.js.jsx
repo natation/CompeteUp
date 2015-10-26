@@ -5,9 +5,12 @@
   var NavItem = ReactBootstrap.NavItem;
   root.CompetitionNavbar = React.createClass({
     render: function () {
+      var c1 = this.props.colors[0],
+          c2 = this.props.colors[1],
+          jumbotronStyle = {background: 'linear-gradient(' + c1 + ', ' + c2 + ')'};
       return (
         <RB.Row>
-          <Jumbotron>
+          <Jumbotron style={jumbotronStyle}>
           <h1>{this.props.name}</h1>
             <Nav bsStyle="pills" activeKey={this.props.selectedKey}
                  onSelect={this.props.handleSelect}>

@@ -21,7 +21,7 @@
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();
       if (message.status < 400) {
-        this.props.history.pushState(null, "/profile");
+        this.props.history.pushState(null, "/");
       }
     },
     handleCheckboxClicked: function (e) {
@@ -61,7 +61,9 @@
       competition.location = this.state.location;
       competition.name = this.state.name;
       competition.description = this.state.description;
-      competition.profile_pic_url = this.profilePicUrl;
+      if (this.profile_pic_url) {
+        competition.profile_pic_url = this.profilePicUrl;
+      }
       ApiUtil.createCompetition(competition);
     },
     render: function () {

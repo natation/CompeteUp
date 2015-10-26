@@ -64,11 +64,6 @@ Competition.create!({name: "Starring Stars", location: "Los Angeles, CA",
                      competition_owner_id: 2,
                      profile_pic_url: "taylor-karlie-vogue-video_gpx6uo"})
 
-Competition.create!({name: "Eating", location: "Eureka, CA",
-                    description: "Food, food, and more food!",
-                    competition_owner_id: 6,
-                    profile_pic_url: ""})
-
 Interest.create!(name: "Sports")
 Interest.create!(name: "Coding")
 Interest.create!(name: "Cats")

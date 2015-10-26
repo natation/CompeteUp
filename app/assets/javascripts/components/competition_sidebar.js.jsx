@@ -4,8 +4,7 @@
     render: function () {
       return (
         <RB.Col md={12}>
-          <CompetitionProfilePicture profile_pic_url={this.props.profile_pic_url}
-                                     setProfileColors={this.props.setProfileColors}/>
+          <CompetitionProfilePicture profile_pic_url={this.props.profile_pic_url}/>
           <CompetitionInfo {...this.props}/>
           <CompetitionInterests id={this.props.id}/>
           <CompetitionSuggestions id={this.props.id}/>
