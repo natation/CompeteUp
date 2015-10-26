@@ -19,4 +19,5 @@
   root.RB.Overlay = ReactBootstrap.Overlay;
   root.RB.Popover = ReactBootstrap.Popover;
   root.RB.Panel = ReactBootstrap.Panel;
+  root.RB.Tooltip = ReactBootstrap.Tooltip;
 }(this));

@@ -42,7 +42,7 @@
           }
         });
         rendered = (
-          <RB.Row>
+          <RB.Row className="competition-suggestions">
             <h4>Other competition suggestions: </h4>
             <RB.Col>
               {finished}

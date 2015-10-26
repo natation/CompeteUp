@@ -40,6 +40,7 @@
                       trigger="click"
                       rootClose
                       placement="left"
+                      id="popover"
                       key={idx}
                       overlay={
                         <RB.Popover title="Competitions with this interest">
