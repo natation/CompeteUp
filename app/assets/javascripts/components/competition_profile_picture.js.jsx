@@ -7,8 +7,7 @@
         publicId = this.props.profile_pic_url;
       }
       var url = $.cloudinary.url(publicId,
-                                {width: 200, height: 250, crop: 'fill',
-                                 radius: 20});
+                                {width: 250, height: 300, crop: 'fill'});
       return (
         <RB.Row>
           <img src={url} alt="Profile Pic"/>

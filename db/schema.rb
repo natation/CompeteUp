@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024213025) do
+ActiveRecord::Schema.define(version: 20151026100030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20151024213025) do
   add_index "competition_photos", ["competition_id"], name: "index_competition_photos_on_competition_id", using: :btree
 
   create_table "competitions", force: :cascade do |t|
-    t.string   "name",                 null: false
-    t.string   "location",             null: false
-    t.text     "description",          null: false
-    t.string   "profile_pic_url"
-    t.integer  "competition_owner_id", null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "name",                                                              null: false
+    t.string   "location",                                                          null: false
+    t.text     "description",                                                       null: false
+    t.string   "profile_pic_url",      default: "blank_competition_profile_nrea8m"
+    t.integer  "competition_owner_id",                                              null: false
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
   end
 
   add_index "competitions", ["competition_owner_id"], name: "index_competitions_on_competition_owner_id", using: :btree
@@ -96,15 +96,15 @@ ActiveRecord::Schema.define(version: 20151024213025) do
   add_index "user_interests", ["user_id", "interest_id"], name: "index_user_interests_on_user_id_and_interest_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "profile_pic_url"
+    t.string   "email",                                            null: false
+    t.string   "profile_pic_url", default: "blank_profile_qqetgr"
     t.text     "bio"
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "name",            null: false
-    t.string   "location",        null: false
+    t.string   "password_digest",                                  null: false
+    t.string   "session_token",                                    null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.string   "name",                                             null: false
+    t.string   "location",                                         null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

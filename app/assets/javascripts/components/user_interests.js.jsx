@@ -40,10 +40,11 @@
                       trigger="click"
                       rootClose
                       placement="left"
-                      id="popover"
                       key={idx}
                       overlay={
-                        <RB.Popover title="Competitions with this interest">
+                        <RB.Popover
+                            id="popover"
+                            title="Competitions with this interest">
                           <UserInterestCompetitions name={interest.name}/>
                           <RB.Button id={interest.name}
                                      onClick={this._removeInterest}

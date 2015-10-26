@@ -14,7 +14,8 @@
         break;
       }
       return {competition: {},
-              selectedKey: selectedKey};
+              selectedKey: selectedKey,
+              profileColors: []};
     },
     componentWillMount: function () {
       CompetitionStore.addChangeListener(this._onChange);
@@ -30,6 +31,9 @@
       this.state.selectedKey = 1;
       ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.params.id});
       this.basePath = "/competitions/" + nextProps.params.id + "/";
+    },
+    setProfileColors: function (colors) {
+      this.setState({profileColors: colors});
     },
     _onChange: function () {
       this.setState({competition: CompetitionStore.getCurrentCompetition()});
@@ -55,10 +59,12 @@
           <RB.Grid className="competition-profile">
             <CompetitionNavbar selectedKey={this.state.selectedKey}
                                name={this.state.competition.name}
-                               handleSelect={this.handleCompetitionNavbarSelect}/>
+                               handleSelect={this.handleCompetitionNavbarSelect}
+                               colors={this.state.profileColors}/>
             <RB.Row>
               <RB.Col md={4}>
-                <CompetitionSidebar {...this.state.competition}/>
+                <CompetitionSidebar {...this.state.competition}
+                                    setProfileColors={this.setProfileColors}/>
               </RB.Col>
               <RB.Col md={8}>
                 {this.props.children}

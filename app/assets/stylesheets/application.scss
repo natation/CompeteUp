@@ -292,6 +292,11 @@ body {
 
 .competition-profile {
   margin-bottom: 50px;
+  img {
+    padding: 1px;
+    border: 1px solid black;
+    background-color: $red;
+  }
 }
 
 .start-competition {

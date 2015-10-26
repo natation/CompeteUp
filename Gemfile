@@ -32,6 +32,7 @@ gem 'flux-rails-assets'
 gem 'underscore-rails'
 gem 'react-bootstrap-rails'
 gem 'figaro'
+gem 'cloudinary'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
