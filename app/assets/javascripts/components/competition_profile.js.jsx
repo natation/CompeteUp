@@ -15,9 +15,9 @@
       }
       return {competition: {},
               selectedKey: selectedKey,
-              profileColors: []};
+              navColors: ["", ""]};
     },
-    componentWillMount: function () {
+    componentDidMount: function () {
       CompetitionStore.addChangeListener(this._onChange);
       MessageStore.addChangeListener(this._onReceiveMessage);
       ApiUtil.fetchCompetitionMatches({getCurrentCompetition: this.props.params.id});
@@ -31,26 +31,26 @@
       this.state.selectedKey = 1;
       ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.params.id});
       this.basePath = "/competitions/" + nextProps.params.id + "/";
-    },
-    setProfileColors: function (colors) {
-      this.setState({profileColors: colors});
+      if (nextProps.colors) {
+        this.setState({navColors: nextProps.colors});
+      }
     },
     _onChange: function () {
-      this.setState({competition: CompetitionStore.getCurrentCompetition()});
+      var competition = CompetitionStore.getCurrentCompetition();
+      this.setState({competition: competition});
+      if (competition.colors) {
+        this.setState({navColors: competition.colors});
+      }
     },
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();
       if (message.status < 400) {
-        this.handleCompetitionNavbarSelect(1, "home");
+        this.handleCompetitionNavbarSelect(1, "");
       }
     },
     handleCompetitionNavbarSelect: function (selectedKey, path) {
-      if (path !== "join") {
         this.setState({selectedKey: selectedKey});
         this.props.history.pushState(null, this.basePath + path);
-      } else {
-        ApiUtil.joinCompetition({id: this.props.params.id});
-      }
     },
     render: function () {
       var rendered = <RB.Grid></RB.Grid>;
@@ -58,9 +58,9 @@
         rendered = (
           <RB.Grid className="competition-profile">
             <CompetitionNavbar selectedKey={this.state.selectedKey}
-                               name={this.state.competition.name}
-                               handleSelect={this.handleCompetitionNavbarSelect}
-                               colors={this.state.competition.colors}/>
+                               {...this.state.competition}
+                               navColors={this.state.navColors}
+                               handleSelect={this.handleCompetitionNavbarSelect}/>
             <RB.Row>
               <RB.Col md={4}>
                 <CompetitionSidebar {...this.state.competition}/>

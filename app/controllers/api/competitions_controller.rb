@@ -2,9 +2,14 @@ class Api::CompetitionsController < ApplicationController
   def create
     join_competition = params[:joinCompetition]
     if (join_competition)
-      current_user.competition_ids =
-        (current_user.competition_ids + [join_competition[:id]]).uniq
-      render json: {responseJSON: "Competition joined!", status: 200}
+      if (join_competition[:join])
+        current_user.competition_ids =
+          (current_user.competition_ids + [join_competition[:id].to_i]).uniq
+        render json: {responseJSON: "Competition joined!", status: 200}
+      else
+        current_user.competition_ids = current_user.competition_ids - [join_competition[:id].to_i]
+        render json: {responseJSON: "Competition removed!", status: 200}
+      end
     else
       @competition = Competition.new(competition_params.merge(
                         {competition_owner_id: current_user.id}))
@@ -31,7 +36,9 @@ class Api::CompetitionsController < ApplicationController
       elsif query[:getCurrentUserJoinedCompetitions]
         @competitions = current_user.competitions
       elsif query[:getCurrentCompetition]
-        @getColors = true;
+        if query[:getColors]
+          @getColors = true;
+        end
         @competitions = Competition.where("id = ?", query[:getCurrentCompetition])
       elsif query[:suggestionFor]
         competition = Competition.find(query[:suggestionFor])

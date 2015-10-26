@@ -31,7 +31,6 @@ $(function() {
          <IndexRoute component={CompetitionHome}/>
          <Route path="members" component={CompetitionMembers}/>
          <Route path="photos" component={CompetitionPhotos}/>
-         <Route path="join" component={CompetitionJoin}/>
        </Route>
        <Route path="startCompetition" component={StartCompetition}/>
      </Route>

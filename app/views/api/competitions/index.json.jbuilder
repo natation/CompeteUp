@@ -10,6 +10,7 @@ json.array! @competitions do |competition|
                              :competition_owner_id, :id, :profile_pic_url
   json.set! :established, competition.created_at.strftime("%B %e, %Y")
   json.set! :interestName, @interest ? @interest.name : ""
+  json.set! :currentUserIsJoined, current_user.competition_ids.include?(competition.id)
   if @getColors
     color_arr = Cloudinary::Api.resource(competition.profile_pic_url,
                                       cloud_attrs)["colors"].take(2)

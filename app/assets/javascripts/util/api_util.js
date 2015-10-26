@@ -140,7 +140,7 @@
         }
       });
     },
-    joinCompetition: function (competition) {
+    toggleJoinCompetition: function (competition) {
       $.ajax({
         url: "/api/competitions/",
         type: "POST",

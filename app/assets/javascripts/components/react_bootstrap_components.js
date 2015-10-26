@@ -7,6 +7,7 @@
   root.RB.Button = ReactBootstrap.Button;
   root.RB.Jumbotron = ReactBootstrap.Jumbotron;
   root.RB.Thumbnail = ReactBootstrap.Thumbnail;
+  root.RB.Nav = ReactBootstrap.Nav;
   root.RB.Navbar = ReactBootstrap.Navbar;
   root.RB.NavItem = ReactBootstrap.NavItem;
   root.RB.MenuItem = ReactBootstrap.MenuItem;

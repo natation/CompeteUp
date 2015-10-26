@@ -55,18 +55,16 @@
         users: users
       });
     },
-    sendSuccess: function (message, flashNow) {
+    sendSuccess: function (message) {
       AppDispatcher.dispatch({
         actionType: MessageConstants.MESSAGE_RECEIVED,
-        message: message,
-        flashNow: flashNow
+        message: message
       });
     },
-    sendError: function (error, flashNow) {
+    sendError: function (error) {
       AppDispatcher.dispatch({
         actionType: MessageConstants.ERROR_RECEIVED,
-        error: error,
-        flashNow: flashNow
+        error: error
       });
     }
   };

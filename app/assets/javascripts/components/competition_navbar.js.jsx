@@ -4,22 +4,63 @@
   var Nav = ReactBootstrap.Nav;
   var NavItem = ReactBootstrap.NavItem;
   root.CompetitionNavbar = React.createClass({
+    getInitialState: function () {
+      return {joinButtonDisabled: false};
+    },
+    componentDidMount: function () {
+      ApiUtil.fetchCompetitionMatches({getCurrentCompetition: this.props.id,
+                                       getColors: true});
+    },
+    componentWillReceiveProps: function (nextProps) {
+      if (nextProps.currentUserIsJoined !== this.props.currentUserIsJoined) {
+        this.setState({joinButtonDisabled: false});
+      }
+      if (nextProps.id !== this.props.id) {
+        ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.id,
+                                         getColors: true});
+      }
+    },
+    _handleJoin: function (e) {
+      e.preventDefault();
+      this.setState({joinButtonDisabled: true});
+      if (this.props.currentUserIsJoined) {
+        ApiUtil.toggleJoinCompetition({id: this.props.id});
+      } else {
+        ApiUtil.toggleJoinCompetition({id: this.props.id, join: true});
+      }
+    },
     render: function () {
-      var c1 = this.props.colors[0],
-          c2 = this.props.colors[1],
-          jumbotronStyle = {background: 'linear-gradient(' + c1 + ', ' + c2 + ')'};
+      var c1 = this.props.navColors[0],
+          c2 = this.props.navColors[1],
+          jumbotronStyle = {background: 'linear-gradient(' + c1 + ', ' + c2 + ')'},
+          joinButtonText = "Click to Join!",
+          joinButtonStyle = "success";
+      if (this.state.joinButtonDisabled) {
+        joinButtonText = this.props.currentUserIsJoined ? "Unjoining..." : "Joining...";
+        joinButtonStyle = "info";
+      } else if (this.props.currentUserIsJoined) {
+        joinButtonText = "Unjoin " + this.props.name;
+        joinButtonStyle = "danger";
+      }
       return (
         <RB.Row>
-          <Jumbotron style={jumbotronStyle}>
-          <h1>{this.props.name}</h1>
-            <Nav bsStyle="pills" activeKey={this.props.selectedKey}
+          <RB.Jumbotron style={jumbotronStyle}>
+              <h1>{this.props.name}</h1>
+            <RB.Nav bsStyle="pills" activeKey={this.props.selectedKey}
                  onSelect={this.props.handleSelect}>
-              <NavItem eventKey={1} href="">Home</NavItem>
-              <NavItem eventKey={2} href="members">Members</NavItem>
-              <NavItem eventKey={3} href="photos">Photos</NavItem>
-              <NavItem eventKey={4} href="join">Join Us!</NavItem>
-            </Nav>
-          </Jumbotron>
+                  <RB.NavItem eventKey={1} href="">Home</RB.NavItem>
+                  <RB.NavItem eventKey={2} href="members">Members</RB.NavItem>
+                  <RB.NavItem eventKey={3} href="photos">Photos</RB.NavItem>
+                <RB.Col>
+                  <RB.Button bsStyle={joinButtonStyle}
+                             bsSize="large"
+                             onClick={this._handleJoin}
+                             disabled={this.state.joinButtonDisabled}>
+                    {joinButtonText}
+                  </RB.Button>
+                </RB.Col>
+            </RB.Nav>
+          </RB.Jumbotron>
         </RB.Row>
       );
     }
