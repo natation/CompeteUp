@@ -45,19 +45,18 @@
       ApiUtil.updateCurrentUser(user);
     },
     render: function () {
-      var publicId = "blank_profile_qqetgr.png";
+      var url,
+          image = <div></div>;
       if (typeof this.state.user !== "undefined") {
-        if (this.state.user.profile_pic_url) {
-          publicId = this.state.user.profile_pic_url;
-        }
+        var publicId = this.state.user.profile_pic_url;
+        url = $.cloudinary.url(publicId, {width: 100, height: 150, crop: 'fill'});
+        image = <img src={url} alt="Profile Pic"/>;
       }
-      var url = $.cloudinary.url(publicId,
-                                {width: 100, height: 150, crop: 'fill'});
       return (
         <RB.Grid className="user-edit-profile-pic">
           <RB.Row>
             <RB.Col md={3} mdOffset={3}>
-              <img src={url} alt="Profile Pic"/>
+              {image}
             </RB.Col>
           </RB.Row>
           <RB.Row>

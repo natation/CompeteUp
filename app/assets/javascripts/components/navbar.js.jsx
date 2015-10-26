@@ -33,15 +33,13 @@
       this.scrollToSearchBar();
     },
     render: function () {
-      var profilePicPublicId = "blank_profile_qqetgr";
+      var publicId;
       var nav = <nav></nav>;
       if (this.state.currentUser.name) {
-        if (this.state.currentUser.profile_pic_url) {
-          profilePicPublicId = this.state.currentUser.profile_pic_url;
-        }
-        var url = $.cloudinary.url(profilePicPublicId, {height: 30,
-                                                      crop: 'scale',
-                                                      radius: 20});
+        publicId = this.state.currentUser.profile_pic_url;
+        var url = $.cloudinary.url(publicId, {height: 30,
+                                              crop: 'scale',
+                                              radius: 20});
         nav = (
           <nav className="navbar navbar-default override-navbar">
             <div className="container-fluid">

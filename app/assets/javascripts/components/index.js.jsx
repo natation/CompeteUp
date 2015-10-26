@@ -2,6 +2,7 @@
   'use strict';
   root.Index = React.createClass({
     getInitialState: function () {
+      $('body').scrollTop(0);
       return {user: UserStore.getCurrentUser()};
     },
     _onChange: function () {

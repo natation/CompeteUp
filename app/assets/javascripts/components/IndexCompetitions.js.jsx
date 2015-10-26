@@ -25,10 +25,7 @@
         if (done) {
           return;
         }
-        var publicId = "blank_competition_profile_nrea8m";
-        if (competition.profile_pic_url) {
-          publicId = competition.profile_pic_url;
-        }
+        var publicId = competition.profile_pic_url;
         var url = $.cloudinary.url(publicId,
                                   { width: 300, height: 230, crop: 'fill'});
         interestName = competition.interestName;
