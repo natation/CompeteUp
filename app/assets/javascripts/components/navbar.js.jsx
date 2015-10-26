@@ -16,7 +16,8 @@
     _onChange: function () {
       this.setState({currentUser: UserStore.getCurrentUser()});
     },
-    handleLogout: function () {
+    handleLogout: function (e) {
+      e.preventDefault();
       ApiUtil.logOut();
     },
     scrollToSearchBar: function () {
@@ -82,7 +83,7 @@
                     <ul className="dropdown-menu">
                       <li><a href="#/profile">Profile</a></li>
                       <li role="separator" className="divider"></li>
-                      <li><a href="#" onClick={this.handleLogout}>Log Out</a></li>
+                      <li><a href="/#" onClick={this.handleLogout}>Log Out</a></li>
                     </ul>
                   </li>
                 </ul>

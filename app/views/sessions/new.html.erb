@@ -8,7 +8,7 @@
     <h4>
       Not registered yet?
       <a href="<%= new_user_url %>">Sign up</a> or use a
-      <a href="#">demo account</a>
+      <strong><a href="/#">demo account</a></strong>
     </h4>
   </div>
   <div class="col-md-offset-2 col-md-8">
@@ -37,6 +37,7 @@
   }
 
   $a.on("click", function (e) {
+    e.preventDefault();
     $('#user_email').val(email);
     $('#user_password').val(password);
     $('.btn-primary').attr("disabled", true);
