@@ -14,6 +14,7 @@
     },
     componentWillReceiveProps: function (nextProps) {
       ApiUtil.fetchCompetitionSuggestions({suggestionFor: nextProps.id});
+      $('body').animate({scrollTop: 0}, 'slow');
     },
     _onChange: function () {
       this.setState({competitions: CompetitionStore.allSuggestions()});

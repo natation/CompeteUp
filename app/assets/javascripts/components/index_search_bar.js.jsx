@@ -1,9 +1,14 @@
 (function(root) {
   'use strict';
-  root.SearchBar = React.createClass({
+  root.IndexSearchBar = React.createClass({
     getInitialState: function () {
+      if (this.props.interest) {
+        setTimeout(function () {
+          this._handleKeyPress({target: {value: this.props.interest}}, true);
+        }.bind(this), 0);
+      }
       return {searchText: "",
-              searchByName: true,
+              searchByName: true && !this.props.interest,
               interestsAppear: false};
     },
     _handleKeyPress: function (e, interestsClosing) {
@@ -79,7 +84,7 @@
               <RB.Col md={6}>
                 <RB.Input
                   type="select"
-                  placeholder="name"
+                  value={this.state.searchByName ? "name": "interest"}
                   standalone
                   onChange={this._handleOnChange}>
                     <option value="name">Name</option>

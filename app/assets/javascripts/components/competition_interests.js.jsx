@@ -1,5 +1,6 @@
 (function(root) {
   'use strict';
+  var Link = ReactRouter.Link;
   root.CompetitionInterests = React.createClass({
     getInitialState: function () {
       return {interests: InterestStore.all()};
@@ -24,9 +25,11 @@
         header = <h4>We're about:</h4>;
         _.each(this.state.interests, function (interest, idx){
           interests.push(
-            <RB.Button key={idx} bsStyle="default">
-              {interest.name}
-            </RB.Button>
+            <Link key={idx} to="find" query={{interest: interest.name}}>
+              <RB.Button bsStyle="default">
+                {interest.name}
+              </RB.Button>
+            </Link>
           );
         });
       }

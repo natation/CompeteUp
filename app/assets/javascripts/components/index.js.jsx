@@ -15,6 +15,12 @@
       UserStore.removeCurrentUserListener(this._onChange);
     },
     render: function () {
+      var search = this.props.location.search,
+          interestIdx = search.lastIndexOf("="),
+          interest;
+      if (interestIdx > 0) {
+        interest = search.substr(interestIdx + 1);
+      }
       return (
         <div className="container-fluid">
           <RB.Row>
@@ -23,7 +29,7 @@
             </RB.Jumbotron>
           </RB.Row>
           <RB.Grid className="search-bar">
-            <SearchBar/>
+            <IndexSearchBar interest={interest}/>
           </RB.Grid>
           <IndexCompetitions/>
         </div>
