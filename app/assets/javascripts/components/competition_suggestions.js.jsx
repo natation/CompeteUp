@@ -14,9 +14,7 @@
     },
     componentWillReceiveProps: function (nextProps) {
       ApiUtil.fetchCompetitionSuggestions({suggestionFor: nextProps.id});
-      setTimeout(function () {
-        $('body').scrollTop(0);
-      }, 1000);
+      $('body').scrollTop(0);
     },
     _onChange: function () {
       this.setState({competitions: CompetitionStore.allSuggestions()});

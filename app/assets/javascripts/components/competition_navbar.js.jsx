@@ -8,17 +8,15 @@
       return {joinButtonDisabled: false};
     },
     componentDidMount: function () {
-      ApiUtil.fetchCompetitionMatches({getCurrentCompetition: this.props.id,
-                                       getColors: true});
+      ApiUtil.fetchCompetitionMatches({getCurrentCompetition: this.props.id});
     },
     componentWillReceiveProps: function (nextProps) {
       if (nextProps.currentUserIsJoined !== this.props.currentUserIsJoined) {
         this.setState({joinButtonDisabled: false});
       }
-      if (nextProps.id !== this.props.id) {
-        ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.id,
-                                         getColors: true});
-      }
+      // if (nextProps.id !== this.props.id) {
+      //   ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.id});
+      // }
     },
     _handleJoin: function (e) {
       e.preventDefault();
@@ -30,8 +28,8 @@
       }
     },
     render: function () {
-      var c1 = this.props.navColors[0],
-          c2 = this.props.navColors[1],
+      var c1 = this.props.color1,
+          c2 = this.props.color2,
           jumbotronStyle = {background: 'linear-gradient(' + c1 + ', ' + c2 + ')'},
           joinButtonText = "Click to Join!",
           joinButtonStyle = "success";

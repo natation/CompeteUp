@@ -48,4 +48,23 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to new_session_url unless current_user
   end
+
+  protected
+  def get_colors(public_id)
+    cloud_attrs = {
+        cloud_name: ENV["cloudinary_cloud_name"],
+        api_key: ENV["cloudinary_api_key"],
+        api_secret: ENV["cloudinary_api_secret"],
+        colors: true
+    }
+    colors = {}
+    if public_id
+      color_arr = Cloudinary::Api.resource(public_id,
+                                        cloud_attrs)["colors"].take(2)
+      color_arr.each.with_index do |color_description, i|
+        colors["color#{i+1}".to_sym] = color_description.first
+      end
+    end
+    return colors
+  end
 end

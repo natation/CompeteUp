@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def create
-    @user = User.new(user_params)
+    colors = self.get_colors(user_params[:profile_pic_url])
+    @user = User.new(user_params.merge(colors))
     if @user.save
       login!(@user)
       redirect_to root_url
@@ -31,8 +32,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    colors = self.get_colors(user_params[:profile_pic_url])
     @user = current_user
-    if @user.update(user_params)
+    if @user.update(user_params.merge(colors))
       render json: {responseJSON: "User update successful", status: 200}
     else
       render json: @user.errors.full_messages, status: :unprocessable_entity

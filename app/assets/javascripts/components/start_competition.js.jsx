@@ -61,7 +61,7 @@
       competition.location = this.state.location;
       competition.name = this.state.name;
       competition.description = this.state.description;
-      if (this.profile_pic_url) {
+      if (this.profilePicUrl) {
         competition.profile_pic_url = this.profilePicUrl;
       }
       ApiUtil.createCompetition(competition);

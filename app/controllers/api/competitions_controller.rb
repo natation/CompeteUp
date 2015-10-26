@@ -11,8 +11,9 @@ class Api::CompetitionsController < ApplicationController
         render json: {responseJSON: "Competition removed!", status: 200}
       end
     else
+      colors = self.get_colors(competition_params[:profile_pic_url])
       @competition = Competition.new(competition_params.merge(
-                        {competition_owner_id: current_user.id}))
+                        {competition_owner_id: current_user.id}.merge(colors)))
       if @competition.save
         current_user.competition_ids += [@competition.id]
         render json: {responseJSON: "Competition #{params[:name]} created!", status: 200}

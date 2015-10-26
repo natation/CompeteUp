@@ -49,7 +49,7 @@
           image = <div></div>;
       if (typeof this.state.user !== "undefined") {
         var publicId = this.state.user.profile_pic_url;
-        url = $.cloudinary.url(publicId, {width: 100, height: 150, crop: 'fill'});
+        url = $.cloudinary.url(publicId, {width: 300, height: 200, crop: 'fill'});
         image = <img src={url} alt="Profile Pic"/>;
       }
       return (

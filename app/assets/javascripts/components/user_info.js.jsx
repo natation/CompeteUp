@@ -16,19 +16,24 @@
       UserStore.removeCurrentUserListener(this._onChange);
     },
     render: function () {
-      var userName = "";
-      var location = "";
-      var userBio = "";
-      var memberSince = "";
+      var userName = "",
+          location = "",
+          userBio = "",
+          memberSince = "",
+          c1 = "",
+          c2 = "";
       if (this.state.user) {
         userName = this.state.user.name;
         location = this.state.user.location;
         userBio = this.state.user.bio;
         memberSince = this.state.user.memberSince;
+        c1 = this.state.user.color1;
+        c2 = this.state.user.color2;
       }
+      var bgStyle = {background: 'linear-gradient(' + c1 + ', ' + c2 + ')'};
       return (
         <div className="col-md-7 user-info">
-          <div className="row user-name">
+          <div className="row user-name" style={bgStyle}>
             <div className="col-md-3">
               <h2>{userName}</h2>
               <Link to="profile/editUserInfo">Edit Info</Link>

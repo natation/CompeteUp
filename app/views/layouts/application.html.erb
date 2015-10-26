@@ -21,13 +21,17 @@
       window.LOCATIONS = ["San Francisco, CA", "Berkeley, CA",
                       "Los Angeles, CA", "Eureka, CA"];
       window.INTERESTS = <%= interests.to_json.html_safe %>;
-      window.cloud_name = "<%= ENV["cloudinary_cloud_name"] %>";
-      window.upload_preset = "<%= ENV["cloudinary_upload_preset"] %>";
-      $.cloudinary.config("cloud_name", cloud_name);
     </script>
   <% end %>
 
   <script type="text/javascript">
+    window.cloud_name = "<%= ENV["cloudinary_cloud_name"] %>";
+    window.upload_preset = "<%= ENV["cloudinary_upload_preset"] %>";
+    $.cloudinary.config("cloud_name", cloud_name);
+  </script>
+
+  <script type="text/javascript">
+
     $info = $('#info');
     $error = $('#errors');
     if ($info.length) {
