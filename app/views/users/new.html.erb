@@ -1,13 +1,14 @@
 <%= render "shared/navbar", for_sign_up: true %>
-
-<div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <%= render "shared/form_for_sign_up_or_sign_in", for_sign_up: true %>
+<div class="sign-up">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <%= render "shared/form_for_sign_up_or_sign_in", for_sign_up: true %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-offset-4 col-md-4">
-    <h3>Already a member? <a href="<%= new_session_url %>">Log in</a></h3>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <h3>Already a member? <a href="<%= new_session_url %>">Log in</a></h3>
+    </div>
   </div>
 </div>
 
@@ -30,4 +31,10 @@
       }
     );
   });
+
+  window.cloud_name = "<%= ENV["cloudinary_cloud_name"] %>";
+  window.upload_preset = "<%= ENV["cloudinary_upload_preset"] %>";
+  $.cloudinary.config("cloud_name", cloud_name);
+  var url = $.cloudinary.url("swim_zr3puv", {width: 2000, height: 2000, crop: 'fill'});
+  $('body').css("background", 'url(' + url + ') no-repeat');
 </script>

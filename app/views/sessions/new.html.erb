@@ -1,14 +1,14 @@
 <%= render "shared/navbar", for_sign_up: false %>
 
-<div class="row">
+<div class="row sign-in">
   <div class="col-md-offset-4 col-md-4">
     <h1>Log in</h1>
   </div>
   <div class="col-md-offset-4 col-md-4">
     <h4>
       Not registered yet?
-      <a href="<%= new_user_url %>">Sign up</a> or use a
-      <strong><a href="/#">demo account</a></strong>
+      <button class="btn btn-default btn-warning" href="<%= new_user_url %>">Sign up</button> or use a
+      <button class="btn btn-primary btn-success" href="/#">demo account</button>
     </h4>
   </div>
   <div class="col-md-offset-2 col-md-8">
@@ -17,7 +17,7 @@
 </div>
 
 <script type="text/javascript">
-  $a = $('h4').children().last();
+  $button = $('.btn-success');
 
   var email = "olaf@frozen.com",
       password = "123456";
@@ -36,7 +36,7 @@
     });
   }
 
-  $a.on("click", function (e) {
+  $button.on("click", function (e) {
     e.preventDefault();
     $('#user_email').val(email);
     $('#user_password').val(password);
@@ -44,4 +44,9 @@
     $('.btn-primary').text("Logging In");
     login();
   });
+  window.cloud_name = "<%= ENV["cloudinary_cloud_name"] %>";
+  window.upload_preset = "<%= ENV["cloudinary_upload_preset"] %>";
+  $.cloudinary.config("cloud_name", cloud_name);
+  var url = $.cloudinary.url("fireworks_dt0utu", {width: 2000, crop: 'fill'});
+  $('body').css("background", 'url(' + url + ') no-repeat');
 </script>

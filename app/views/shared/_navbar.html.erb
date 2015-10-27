@@ -3,14 +3,17 @@
     <div class="col-xs-offset-1 col-xs-1">
       <a href="/"><img src="/assets/logo.png"/></a>
     </div>
+    <div class="col-xs-offset-2 col-xs-5">
+      <h1>A Meetup for Competitions!</h1>
+    </div>
     <% if for_sign_up %>
-      <div class="col-xs-offset-6 col-xs-1">
+      <div class="col-xs-offset-1 col-xs-1">
         <a href="<%= new_session_url %>">
           <button class="btn btn-default btn-lg" style="margin-top:20px;">Log in</button>
         </a>
       </div>
     <% else %>
-      <div class="col-xs-offset-6 col-xs-1">
+      <div class="col-xs-offset-1 col-xs-1">
         <a href="<%= new_user_url %>">
           <button class="btn btn-default btn-lg" style="margin-top:20px;">Sign up</button>
         </a>

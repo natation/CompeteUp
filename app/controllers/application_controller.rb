@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   LOCATIONS = ["San Francisco, CA", "Berkeley, CA",
-                  "Los Angeles, CA", "Eureka, CA"]
+                  "Los Angeles, CA", "Santa Cruz, CA",
+                  "Stanford, CA", "New York, NY"]
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception

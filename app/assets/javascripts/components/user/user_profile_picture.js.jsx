@@ -23,7 +23,7 @@
         }
       }
       var url = $.cloudinary.url(publicId,
-                                {width: 300, height: 200, crop: 'fill'});
+                                {width: 300, height: 300, crop: 'fill'});
       return (
         <RB.Col md={12}>
           <RB.Grid>
