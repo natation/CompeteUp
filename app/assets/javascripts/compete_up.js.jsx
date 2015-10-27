@@ -30,7 +30,7 @@ $(function() {
        <Route path="competitions/:id" component={CompetitionProfile}>
          <IndexRoute component={CompetitionHome}/>
          <Route path="members" component={CompetitionMembers}/>
-         <Route path="photos" component={CompetitionPhotos}/>
+         <Route path="addEvent" component={CompetitionAddEvent}/>
        </Route>
        <Route path="startCompetition" component={StartCompetition}/>
      </Route>

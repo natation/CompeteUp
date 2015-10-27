@@ -18,6 +18,13 @@
       this.setState({user: UserStore.getOrganizer()});
     },
     render: function () {
+      var url,
+          image = <div></div>;
+      var publicId = this.state.user.profile_pic_url;
+      if (publicId) {
+        url = $.cloudinary.url(publicId, {width: 50, height: 50, crop: 'fill'});
+        image = <img src={url} alt="Profile Pic"/>;
+      }
       var rendered = <RB.Row></RB.Row>;
       if (this.props.name) {
         rendered = (
@@ -36,10 +43,13 @@
               <RB.OverlayTrigger
                 trigger="click" rootClose placement="right"
                 overlay={
-                  <RB.Popover title="About the organizer">
+                  <RB.Popover title="About the organizer" id="popover">
                     {this.state.user.bio}
+                    {image}
                   </RB.Popover>}>
-                  <a href="">{this.state.user.name}</a>
+                  <RB.Button bsStyle="warning" bsSize="large">
+                    {this.state.user.name}
+                  </RB.Button>
               </RB.OverlayTrigger>
           </RB.Row>
         );

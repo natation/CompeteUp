@@ -140,6 +140,20 @@
         }
       });
     },
+    createEvent: function (e) {
+      $.ajax({
+        url: "/api/events/",
+        type: "POST",
+        dataType: "json",
+        data: {event: e},
+        success: function (message) {
+          ApiActions.sendSuccess(message);
+        },
+        error: function (error) {
+          ApiActions.sendError(error);
+        }
+      });
+    },
     toggleJoinCompetition: function (competition) {
       $.ajax({
         url: "/api/competitions/",

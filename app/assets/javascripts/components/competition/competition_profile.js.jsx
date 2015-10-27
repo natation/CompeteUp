@@ -9,9 +9,6 @@
         case "members":
           selectedKey = 2;
           break;
-        case "photos":
-          selectedKey = 3;
-        break;
       }
       return {competition: {},
               selectedKey: selectedKey};

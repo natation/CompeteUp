@@ -1,9 +1,9 @@
 (function(root) {
   'use strict';
-
+  var Link = ReactRouter.Link;
   root.CompetitionHome = React.createClass({
     getInitialState: function () {
-      return {events: []};
+      return {events: ""};
     },
     componentDidMount: function () {
       EventStore.addChangeListener(this._onChange);
@@ -19,12 +19,15 @@
       this.setState({events: EventStore.all()});
     },
     render: function () {
-      var events = "none",
+      var events = "",
           content = [];
+      if (this.state.events instanceof(Array)) {
+        events = "none";
+      }
       if (this.state.events.length > 0) {
-        _.each(this.state.events, function (event, idx) {
+        _.each(this.state.events, function (e, idx) {
             content.push(
-              <CompetitionEvent key={idx} {...event}/>
+              <CompetitionEvent key={idx} {...e}/>
             );
         });
         events = content;
@@ -32,7 +35,12 @@
       return (
         <RB.Row>
           <h2>Upcoming Events:</h2>
-          {events}
+          <div>
+            {events}
+          </div>
+          <div>
+            <Link to={this.props.location.pathname + "/addEvent"}>Add Event</Link>
+          </div>
         </RB.Row>
       );
     }

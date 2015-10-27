@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :destroy, :new]
   namespace :api, defaults: {format: :json} do
     resources :competitions, only: [:create, :index, :update]
-    resources :events, only: [:index, :show]
+    resources :events, only: [:index, :create]
     resources :interests, only: [:create, :destroy, :index]
     resources :user_interests, only: [:index]
     resources :competition_interests, only: [:index]

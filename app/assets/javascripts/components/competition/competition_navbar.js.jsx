@@ -45,7 +45,6 @@
                  onSelect={this.props.handleSelect}>
                   <RB.NavItem eventKey={1} href="">Home</RB.NavItem>
                   <RB.NavItem eventKey={2} href="members">Members</RB.NavItem>
-                  <RB.NavItem eventKey={3} href="photos">Photos</RB.NavItem>
                 <RB.Col>
                   <RB.Button bsStyle={joinButtonStyle}
                              bsSize="large"

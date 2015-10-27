@@ -8,6 +8,16 @@ class Api::EventsController < ApplicationController
     end
   end
 
-  def show
+  def create
+    @event = Event.new(event_params)
+    if @event.save
+      render json: {responseJSON: "Event #{event_params[:name]} created!", status: 200}
+    else
+      render json: @event.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def event_params
+    params.require(:event).permit(:name, :description, :competition_id)
   end
 end

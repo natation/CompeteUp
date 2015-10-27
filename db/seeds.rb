@@ -27,7 +27,7 @@ User.create!({name: "Olaf", email: "olaf@frozen.com", location:"San Francisco, C
                 location: locations[rand(4)]})
 end
 
-Competition.create!({name: "lala", location: "San Francisco, CA",
+Competition.create!({name: "Basketball", location: "San Francisco, CA",
                      description: "Ball it up! Come join us for 5 on 5 every day at 7pm",
                      competition_owner_id: 1,
                      profile_pic_url: "bball_lwexne"}.merge(generate_colors("bball_lwexne")))
