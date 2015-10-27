@@ -8,13 +8,13 @@ CompeteUp is a [Meetup](http://www.meetup.com/) inspired web application that
 I created using a Ruby on Rails backend and a frontend implemented with
 React.js, JSX, and jQuery. CompeteUp allows people to:
 
-- [ ] Sign up for an account
-- [ ] Log in / Log out
-- [ ] Search for different competitions to help improve different skills
-- [ ] Have a profile page upon account creation
-- [ ] Create competitions
-- [ ] See other members' profile pages
-- [ ] See a competition's home page and be able to join the competition
+- [x] Sign up for an account
+- [x] Log in / Log out
+- [x] Search for different competitions to help improve different skills
+- [x] Have a profile page upon account creation
+- [x] Create competitions
+- [x] See other members' profile pages
+- [x] See a competition's home page and be able to join the competition
 
 ## Design Docs
 * [Components and Wireframes](./docs/wireframes.md)
