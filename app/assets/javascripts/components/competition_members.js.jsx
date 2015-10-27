@@ -18,15 +18,20 @@
       var rendered = "",
           memberList = [];
       _.each(this.state.members, function (member, idx) {
-        memberList.push(<li key={idx}>{member.name}</li>);
+        memberList.push(
+          <CompetitionMember key={idx } {...member}/>
+          );
       });
       if (memberList.length > 0) {
-        rendered = <ul>{memberList}</ul>;
+        rendered = <RB.ListGroup>
+                      {memberList}
+                   </RB.ListGroup>;
       }
       return (
-        <RB.Grid>
+        <RB.Row>
+          <h2>Members:</h2>
           {rendered}
-        </RB.Grid>
+        </RB.Row>
       );
     }
   });

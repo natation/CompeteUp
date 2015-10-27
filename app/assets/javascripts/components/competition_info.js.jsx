@@ -1,6 +1,5 @@
 (function(root) {
   'use strict';
-  var Link = ReactRouter.Link;
   root.CompetitionInfo = React.createClass({
     getInitialState: function () {
       return {user: {}};
@@ -34,9 +33,14 @@
                 <RB.Button bsStyle="default">About us...</RB.Button>
             </RB.OverlayTrigger>
             <h4>Organizer:</h4>
-              <Link to={"users/" + this.state.user.id}>
-                {this.state.user.name}
-              </Link>
+              <RB.OverlayTrigger
+                trigger="click" rootClose placement="right"
+                overlay={
+                  <RB.Popover title="About the organizer">
+                    {this.state.user.bio}
+                  </RB.Popover>}>
+                  <a href="">{this.state.user.name}</a>
+              </RB.OverlayTrigger>
           </RB.Row>
         );
       }

@@ -14,9 +14,6 @@
       if (nextProps.currentUserIsJoined !== this.props.currentUserIsJoined) {
         this.setState({joinButtonDisabled: false});
       }
-      // if (nextProps.id !== this.props.id) {
-      //   ApiUtil.fetchCompetitionMatches({getCurrentCompetition: nextProps.id});
-      // }
     },
     _handleJoin: function (e) {
       e.preventDefault();
