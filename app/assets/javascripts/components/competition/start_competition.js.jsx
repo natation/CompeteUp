@@ -13,16 +13,22 @@
     },
     componentWillMount: function () {
       MessageStore.addChangeListener(this._onReceiveMessage);
+      CompetitionStore.addChangeListener(this._onChange);
       this.profilePicUrl = "";
     },
     componentWillUnmount: function () {
       MessageStore.removeChangeListener(this._onReceiveMessage);
+      CompetitionStore.removeChangeListener(this._onChange);
     },
     _onReceiveMessage: function () {
       var message = MessageStore.getMessages();
       if (message.status < 400) {
-        this.props.history.pushState(null, "/");
+        ApiUtil.fetchCompetitionMatches({searchByName: this.state.name});
       }
+    },
+    _onChange: function () {
+      var id = CompetitionStore.all()[0].id;
+      this.props.history.pushState(null, "/competitions/" + id);
     },
     handleCheckboxClicked: function (e) {
       var clickedInterest = {id: parseInt(e.target.value), name: e.target.name};
