@@ -1,11 +1,11 @@
 # CompeteUp
 
-[Visit CompeteUp!](http://competeup.herokuapp.com)
+[Live](http://www.competeup.xyz)
 
 ## Minimum Viable Product
 
 CompeteUp is a [Meetup](http://www.meetup.com/) inspired web application that
-I created using a Ruby on Rails backend and a frontend implemented with
+I created using a Ruby on Rails API backend and a front-end implemented with
 React.js, JSX, and jQuery. CompeteUp allows people to:
 
 - [x] Sign up for an account
@@ -60,7 +60,7 @@ and the main section. The main section will change to whatever is selected on
 the navigation bar. Once this is all complete, a user will be able to see
 the competition's information, description, upcoming events, members, and
 photos. Also, on the Index page, a random, but pertinent, competition image will
-appear. Users can join and create/edit competitions.
+appear. Users can join and create competitions.
 
 [Details](./docs/phases/phase4.md)
 
