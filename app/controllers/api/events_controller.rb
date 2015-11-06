@@ -3,6 +3,7 @@ class Api::EventsController < ApplicationController
     query = params[:query]
     if query.present?
       if query[:competition_id]
+        @competition = Competition.find(query[:competition_id])
         @events = Event.where("competition_id = ?", query[:competition_id])
       end
     end

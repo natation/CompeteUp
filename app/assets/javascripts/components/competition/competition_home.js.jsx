@@ -3,11 +3,13 @@
   var Link = ReactRouter.Link;
   root.CompetitionHome = React.createClass({
     getInitialState: function () {
-      return {events: ""};
+      return {events: "",
+              competitionIsJoined: false};
     },
     componentDidMount: function () {
       EventStore.addChangeListener(this._onChange);
       ApiUtil.fetchAllEvents({competition_id: this.props.params.id});
+      debugger
     },
     componentWillUnmount: function () {
       EventStore.removeChangeListener(this._onChange);
@@ -16,11 +18,14 @@
       ApiUtil.fetchAllEvents({competition_id: nextProps.params.id});
     },
     _onChange: function () {
-      this.setState({events: EventStore.all()});
+      this.setState({events: EventStore.all(),
+                     competitionIsJoined: EventStore.competitionIsJoined()});
     },
     render: function () {
+      debugger
       var events = "",
-          content = [];
+          content = [],
+          addEventLink = <div></div>;
       if (this.state.events instanceof(Array)) {
         events = "none";
       }
@@ -32,6 +37,11 @@
         });
         events = content;
       }
+      if (this.state.competitionIsJoined) {
+        addEventLink = (
+          <Link to={this.props.location.pathname + "/addEvent"}>Add Event</Link>
+        );
+      }
       return (
         <RB.Row>
           <h2>Upcoming Events:</h2>
@@ -39,7 +49,7 @@
             {events}
           </div>
           <div>
-            <Link to={this.props.location.pathname + "/addEvent"}>Add Event</Link>
+            {addEventLink}
           </div>
         </RB.Row>
       );
